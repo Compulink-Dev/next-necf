@@ -1,9 +1,13 @@
-import React from 'react'
+import MainLayout from "@/components/layout";
+import React from "react";
+import Hero from "./_components/hero";
 
 function Programs() {
-    return (
-        <div>Programs</div>
-    )
+  return (
+    <MainLayout>
+      <Hero />
+    </MainLayout>
+  );
 }
 
-export default Programs
+export default Programs;
