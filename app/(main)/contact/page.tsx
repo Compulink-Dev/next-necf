@@ -6,7 +6,6 @@ import ContactDetails from "./_components/contactdetails";
 function Contact() {
   return (
     <MainLayout>
-      <ContactDetails />
       <ContactForm />
     </MainLayout>
   );
