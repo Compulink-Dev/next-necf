@@ -13,7 +13,7 @@ function TeamForm() {
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
             Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
             gentrify, subway tile poke farm-to-table. Franzen you probably
-            haven't heard of them.
+            have not heard of them.
           </p>
         </div>
         <div className="flex flex-wrap -m-4 items-center justify-center mx-auto gap-10">

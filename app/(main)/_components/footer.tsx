@@ -18,7 +18,7 @@ function Footer() {
             className="w-48 h-52 object-cover"
           />
           <p className="mx-10 -mt-12">
-            " A think tank on economic and social policy issues. "
+            A think tank on economic and social policy issues.
           </p>
           <div className="flex items-center justify-center gap-12 mx-auto">
             <FaFacebook size={24} color="green" />

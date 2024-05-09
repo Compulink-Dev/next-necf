@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 function DashboardHome() {
@@ -6,7 +7,7 @@ function DashboardHome() {
       <div className="h-19.5">
         <i className="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden" sidenav-close></i>
         <a className="block px-8 py-6 m-0 text-sm whitespace-nowrap text-slate-700" href="javascript:;" target="_blank">
-          <img src="./assets/img/logo-ct.png" className="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" />
+          <Image src="./assets/img/logo-ct.png" className="inline h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" />
           <span className="ml-1 font-semibold transition-all duration-200 ease-nav-brand">Soft UI Dashboard</span>
         </a>
       </div>
@@ -290,7 +291,7 @@ function DashboardHome() {
                     <a className="ease-soft py-1.2 clear-both block w-full whitespace-nowrap rounded-lg bg-transparent px-4 duration-300 hover:bg-gray-200 hover:text-slate-700 lg:transition-colors" href="javascript:;">
                       <div className="flex py-1">
                         <div className="my-auto">
-                          <img src="./assets/img/team-2.jpg" className="inline-flex items-center justify-center mr-4 text-sm text-white h-9 w-9 max-w-none rounded-xl" />
+                          <Image alt='legs' src="./assets/img/team-2.jpg" className="inline-flex items-center justify-center mr-4 text-sm text-white h-9 w-9 max-w-none rounded-xl" />
                         </div>
                         <div className="flex flex-col justify-center">
                           <h6 className="mb-1 text-sm font-normal leading-normal"><span className="font-semibold">New message</span> from Laur</h6>
@@ -307,7 +308,7 @@ function DashboardHome() {
                     <a className="ease-soft py-1.2 clear-both block w-full whitespace-nowrap rounded-lg px-4 transition-colors duration-300 hover:bg-gray-200 hover:text-slate-700" href="javascript:;">
                       <div className="flex py-1">
                         <div className="my-auto">
-                          <img src="./assets/img/small-logos/logo-spotify.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white bg-gradient-to-tl from-gray-900 to-slate-800 h-9 w-9 max-w-none rounded-xl" />
+                          <Image alt='legs' src="./assets/img/small-logos/logo-spotify.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white bg-gradient-to-tl from-gray-900 to-slate-800 h-9 w-9 max-w-none rounded-xl" />
                         </div>
                         <div className="flex flex-col justify-center">
                           <h6 className="mb-1 text-sm font-normal leading-normal"><span className="font-semibold">New album</span> by Travis Scott</h6>
@@ -368,7 +369,7 @@ function DashboardHome() {
                 <div className="flex flex-row -mx-3">
                   <div className="flex-none w-2/3 max-w-full px-3">
                     <div>
-                      <p className="mb-0 font-sans text-sm font-semibold leading-normal">Today's Money</p>
+                      <p className="mb-0 font-sans text-sm font-semibold leading-normal">Today Money</p>
                       <h5 className="mb-0 font-bold">
                         $53,000
                         <span className="text-sm leading-normal font-weight-bolder text-lime-500">+55%</span>
@@ -392,7 +393,7 @@ function DashboardHome() {
                 <div className="flex flex-row -mx-3">
                   <div className="flex-none w-2/3 max-w-full px-3">
                     <div>
-                      <p className="mb-0 font-sans text-sm font-semibold leading-normal">Today's Users</p>
+                      <p className="mb-0 font-sans text-sm font-semibold leading-normal">Today Users</p>
                       <h5 className="mb-0 font-bold">
                         2,300
                         <span className="text-sm leading-normal font-weight-bolder text-lime-500">+3%</span>
@@ -477,9 +478,9 @@ function DashboardHome() {
                   </div>
                   <div className="max-w-full px-3 mt-12 ml-auto text-center lg:mt-0 lg:w-5/12 lg:flex-none">
                     <div className="h-full bg-gradient-to-tl from-purple-700 to-pink-500 rounded-xl">
-                      <img src="./assets/img/shapes/waves-white.svg" className="absolute top-0 hidden w-1/2 h-full lg:block" alt="waves" />
+                      <Image src="./assets/img/shapes/waves-white.svg" className="absolute top-0 hidden w-1/2 h-full lg:block" alt="waves" />
                       <div className="relative flex items-center justify-center h-full">
-                        <img className="relative z-20 w-full pt-6" src="./assets/img/illustrations/rocket-white.png" alt="rocket" />
+                        <Image className="relative z-20 w-full pt-6" src="./assets/img/illustrations/rocket-white.png" alt="rocket" />
                       </div>
                     </div>
                   </div>
@@ -702,7 +703,7 @@ function DashboardHome() {
                         <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                           <div className="flex px-2 py-1">
                             <div>
-                              <img src="./assets/img/small-logos/logo-xd.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="xd" />
+                              <Image src="./assets/img/small-logos/logo-xd.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="xd" />
                             </div>
                             <div className="flex flex-col justify-center">
                               <h6 className="mb-0 text-sm leading-normal">Soft UI XD Version</h6>
@@ -712,28 +713,28 @@ function DashboardHome() {
                         <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                           <div className="mt-2 avatar-group">
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-1.jpg" className="w-full rounded-full" alt="team1" />
+                              <Image src="./assets/img/team-1.jpg" className="w-full rounded-full" alt="team1" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Ryan Tompson
                               <div className="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']" data-popper-arrow></div>
                             </div>
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-2.jpg" className="w-full rounded-full" alt="team2" />
+                              <Image src="./assets/img/team-2.jpg" className="w-full rounded-full" alt="team2" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Romina Hadid
                               <div className="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']" data-popper-arrow></div>
                             </div>
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-3.jpg" className="w-full rounded-full" alt="team3" />
+                              <Image src="./assets/img/team-3.jpg" className="w-full rounded-full" alt="team3" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Alexander Smith
                               <div className="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']" data-popper-arrow></div>
                             </div>
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-4.jpg" className="w-full rounded-full" alt="team4" />
+                              <Image src="./assets/img/team-4.jpg" className="w-full rounded-full" alt="team4" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Jessica Doe
@@ -761,7 +762,7 @@ function DashboardHome() {
                         <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                           <div className="flex px-2 py-1">
                             <div>
-                              <img src="./assets/img/small-logos/logo-atlassian.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="atlassian" />
+                              <Image src="./assets/img/small-logos/logo-atlassian.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="atlassian" />
                             </div>
                             <div className="flex flex-col justify-center">
                               <h6 className="mb-0 text-sm leading-normal">Add Progress Track</h6>
@@ -771,14 +772,14 @@ function DashboardHome() {
                         <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                           <div className="mt-2 avatar-group">
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-2.jpg" className="w-full rounded-full" alt="team5" />
+                              <Image src="./assets/img/team-2.jpg" className="w-full rounded-full" alt="team5" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Romina Hadid
                               <div className="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']" data-popper-arrow></div>
                             </div>
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-4.jpg" className="w-full rounded-full" alt="team6" />
+                              <Image src="./assets/img/team-4.jpg" className="w-full rounded-full" alt="team6" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Jessica Doe
@@ -806,7 +807,7 @@ function DashboardHome() {
                         <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                           <div className="flex px-2 py-1">
                             <div>
-                              <img src="./assets/img/small-logos/logo-slack.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="team7" />
+                              <Image src="./assets/img/small-logos/logo-slack.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="team7" />
                             </div>
                             <div className="flex flex-col justify-center">
                               <h6 className="mb-0 text-sm leading-normal">Fix Platform Errors</h6>
@@ -816,14 +817,14 @@ function DashboardHome() {
                         <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                           <div className="mt-2 avatar-group">
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-3.jpg" className="w-full rounded-full" alt="team8" />
+                              <Image src="./assets/img/team-3.jpg" className="w-full rounded-full" alt="team8" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Romina Hadid
                               <div className="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']" data-popper-arrow></div>
                             </div>
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-1.jpg" className="w-full rounded-full" alt="team9" />
+                              <Image src="./assets/img/team-1.jpg" className="w-full rounded-full" alt="team9" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Jessica Doe
@@ -851,7 +852,7 @@ function DashboardHome() {
                         <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                           <div className="flex px-2 py-1">
                             <div>
-                              <img src="./assets/img/small-logos/logo-spotify.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="spotify" />
+                              <Image src="./assets/img/small-logos/logo-spotify.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="spotify" />
                             </div>
                             <div className="flex flex-col justify-center">
                               <h6 className="mb-0 text-sm leading-normal">Launch our Mobile App</h6>
@@ -861,28 +862,28 @@ function DashboardHome() {
                         <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                           <div className="mt-2 avatar-group">
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-4.jpg" className="w-full rounded-full" alt="user1" />
+                              <Image src="./assets/img/team-4.jpg" className="w-full rounded-full" alt="user1" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Ryan Tompson
                               <div className="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']" data-popper-arrow></div>
                             </div>
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-3.jpg" className="w-full rounded-full" alt="user2" />
+                              <Image src="./assets/img/team-3.jpg" className="w-full rounded-full" alt="user2" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Romina Hadid
                               <div className="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']" data-popper-arrow></div>
                             </div>
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-4.jpg" className="w-full rounded-full" alt="user3" />
+                              <Image src="./assets/img/team-4.jpg" className="w-full rounded-full" alt="user3" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Alexander Smith
                               <div className="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']" data-popper-arrow></div>
                             </div>
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-1.jpg" className="w-full rounded-full" alt="user4" />
+                              <Image src="./assets/img/team-1.jpg" className="w-full rounded-full" alt="user4" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Jessica Doe
@@ -910,7 +911,7 @@ function DashboardHome() {
                         <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                           <div className="flex px-2 py-1">
                             <div>
-                              <img src="./assets/img/small-logos/logo-jira.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="jira" />
+                              <Image src="./assets/img/small-logos/logo-jira.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="jira" />
                             </div>
                             <div className="flex flex-col justify-center">
                               <h6 className="mb-0 text-sm leading-normal">Add the New Pricing Page</h6>
@@ -920,7 +921,7 @@ function DashboardHome() {
                         <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                           <div className="mt-2 avatar-group">
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-4.jpg" className="w-full rounded-full" alt="user5" />
+                              <Image src="./assets/img/team-4.jpg" className="w-full rounded-full" alt="user5" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Ryan Tompson
@@ -948,7 +949,7 @@ function DashboardHome() {
                         <td className="p-2 align-middle bg-transparent border-0 whitespace-nowrap">
                           <div className="flex px-2 py-1">
                             <div>
-                              <img src="./assets/img/small-logos/logo-invision.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="invision" />
+                              <Image src="./assets/img/small-logos/logo-invision.svg" className="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="invision" />
                             </div>
                             <div className="flex flex-col justify-center">
                               <h6 className="mb-0 text-sm leading-normal">Redesign New Online Shop</h6>
@@ -958,14 +959,14 @@ function DashboardHome() {
                         <td className="p-2 align-middle bg-transparent border-0 whitespace-nowrap">
                           <div className="mt-2 avatar-group">
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-1.jpg" className="w-full rounded-full" alt="user6" />
+                              <Image src="./assets/img/team-1.jpg" className="w-full rounded-full" alt="user6" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Ryan Tompson
                               <div className="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']" data-popper-arrow></div>
                             </div>
                             <a href="javascript:;" className="relative z-20 inline-flex items-center justify-center w-6 h-6 -ml-4 text-xs text-white transition-all duration-200 border-2 border-white border-solid rounded-full ease-soft-in-out hover:z-30" data-target="tooltip_trigger" data-placement="bottom">
-                              <img src="./assets/img/team-4.jpg" className="w-full rounded-full" alt="user7" />
+                              <Image src="./assets/img/team-4.jpg" className="w-full rounded-full" alt="user7" />
                             </a>
                             <div data-target="tooltip" className="hidden px-2 py-1 text-sm text-white bg-black rounded-lg" role="tooltip">
                               Jessica Doe
@@ -1076,11 +1077,10 @@ function DashboardHome() {
                 <div className="text-sm leading-normal text-center text-slate-500 lg:text-left">
                   ©
                   <script>
-                    document.write(new Date().getFullYear() + ",");
+                    document.write(new Date().getFullYear() + ,);
                   </script>
                   made with <i className="fa fa-heart"></i> by
-                  <a href="https://www.creative-tim.com" className="font-semibold text-slate-700" target="_blank">Creative Tim</a>
-                  for a better web.
+                  <a href="https://www.creative-tim.com" className="font-semibold text-slate-700" target="_blank">Compulink Systems</a>
                 </div>
               </div>
               <div className="w-full max-w-full px-3 mt-0 shrink-0 lg:w-1/2 lg:flex-none">

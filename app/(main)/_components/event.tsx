@@ -1,4 +1,5 @@
 import Button from "@/components/button";
+import Image from "next/image";
 import React from "react";
 
 function Event() {
@@ -12,7 +13,7 @@ function Event() {
 
           <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
             <div className="lg:flex">
-              <img
+              <Image
                 className="object-cover w-full h-56 rounded-lg lg:w-64"
                 src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                 alt=""
@@ -34,7 +35,7 @@ function Event() {
             </div>
 
             <div className="lg:flex">
-              <img
+              <Image
                 className="object-cover w-full h-56 rounded-lg lg:w-64"
                 src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                 alt=""
@@ -56,7 +57,7 @@ function Event() {
             </div>
 
             <div className="lg:flex">
-              <img
+              <Image
                 className="object-cover w-full h-56 rounded-lg lg:w-64"
                 src="https://images.unsplash.com/photo-1544654803-b69140b285a1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                 alt=""
@@ -78,7 +79,7 @@ function Event() {
             </div>
 
             <div className="lg:flex">
-              <img
+              <Image
                 className="object-cover w-full h-56 rounded-lg lg:w-64"
                 src="https://images.unsplash.com/photo-1530099486328-e021101a494a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1547&q=80"
                 alt=""
@@ -100,7 +101,7 @@ function Event() {
             </div>
 
             <div className="lg:flex">
-              <img
+              <Image
                 className="object-cover w-full h-56 rounded-lg lg:w-64"
                 src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1484&q=80"
                 alt=""
@@ -122,7 +123,7 @@ function Event() {
             </div>
 
             <div className="lg:flex">
-              <img
+              <Image
                 className="object-cover w-full h-56 rounded-lg lg:w-64"
                 src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                 alt=""
