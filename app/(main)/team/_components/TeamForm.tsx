@@ -25,6 +25,7 @@ function TeamForm() {
                 <TeamCard
                   name={person.name}
                   title={person.title}
+                  imageUrl={person.imageUrl}
                 />
               ))
             }
@@ -38,6 +39,7 @@ function TeamForm() {
                 <TeamCard
                   name={person.name}
                   title={person.title}
+                  imageUrl={person.imageUrl}
                 />
               ))
             }
@@ -51,6 +53,7 @@ function TeamForm() {
                 <TeamCard
                   name={person.name}
                   title={person.title}
+                  imageUrl={person.imageUrl}
                 />
               ))
             }
