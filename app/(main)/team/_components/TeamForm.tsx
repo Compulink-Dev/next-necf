@@ -23,6 +23,7 @@ function TeamForm() {
             {
               Chairperson.map((person) => (
                 <TeamCard
+                  key={person.id}
                   name={person.name}
                   title={person.title}
                   imageUrl={person.imageUrl}
@@ -37,6 +38,7 @@ function TeamForm() {
             {
               Committee.map((person) => (
                 <TeamCard
+                  key={person.id}
                   name={person.name}
                   title={person.title}
                   imageUrl={person.imageUrl}
@@ -51,6 +53,7 @@ function TeamForm() {
             {
               Team.map((person) => (
                 <TeamCard
+                  key={person.id}
                   name={person.name}
                   title={person.title}
                   imageUrl={person.imageUrl}
