@@ -46,7 +46,7 @@ function ContactForm() {
                   Our friendly team is here to help.
                 </p>
                 <p className="mt-2 text-sm text-green-500 dark:text-green-400">
-                  hello@merakiui.com
+                  info@necf.co.zw
                 </p>
               </div>
 

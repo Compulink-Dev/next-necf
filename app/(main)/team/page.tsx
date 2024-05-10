@@ -1,6 +1,6 @@
 import React from 'react'
-import TeamForm from './_components/page'
 import MainLayout from '@/components/layout'
+import TeamForm from './_components/TeamForm'
 
 function Team() {
     return (

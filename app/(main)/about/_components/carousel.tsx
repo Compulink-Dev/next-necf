@@ -44,6 +44,8 @@ const Carousel = ({ data }: {
                                 alt={`carousel-image-${i}`}
                                 fill
                                 src={v.image || "https://random.imagecdn.app/500/500"}
+                                width={300}
+                                height={300}
                             />
                         </div>
                     ))}

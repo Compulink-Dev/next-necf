@@ -28,7 +28,7 @@ function TopSection() {
           </div>{" "}
           <div className="flex flex-col items-center justify-center p-4 hover:shadow-2xl">
             <MdAllInclusive size={34} color="white" className="w-14 h-14" />
-            <p className="text-white">Inclusivity</p>
+            <p className="text-white">Inclusively</p>
           </div>{" "}
           <div className="flex flex-col items-center justify-center p-4 hover:shadow-2xl">
             <RxTransparencyGrid size={34} color="white" className="w-14 h-14" />
@@ -46,7 +46,6 @@ function TopSection() {
             <MdAllInclusive size={34} color="white" className="w-14 h-14" />
             <p className="text-white">Innovativeness</p>
           </div>{" "}
-          \
         </div>
       </div>
     </div>
