@@ -15,9 +15,10 @@ import {
     MdOutlineContactPage,
     MdEventNote,
 } from "react-icons/md"
+import { IoCloudDownload } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa";
 import MenuLink from './Menulink'
-import { Colors } from '@/constant/colors';
+import { Colors } from '@/constants/colors';
 
 
 
@@ -41,19 +42,19 @@ const menuItems = [
                 icon: <MdInfoOutline />,
             },
             {
-                title: "Speakers",
-                path: "/dashboard/speakers",
-                icon: <MdOutlineMic />,
+                title: "Downloads",
+                path: "/dashboard/downloads",
+                icon: <IoCloudDownload />,
             },
             {
-                title: "Sponsors",
-                path: "/dashboard/sponsors",
-                icon: <FaUsers />,
-            },
-            {
-                title: "Events",
-                path: "/dashboard/event",
+                title: "Programs",
+                path: "/dashboard/programs",
                 icon: <MdEventNote />,
+            },
+            {
+                title: "Team",
+                path: "/dashboard/team",
+                icon: < FaUsers />,
             },
             {
                 title: "Contact",
@@ -104,13 +105,13 @@ function Sidebar() {
     return (
         <div className='h-full w-full border-r sticky top-28'>
             <div className="p-4 flex items-center justify-center">
-                <Image src={'/home/logo.png'} alt='logo' width={100} height={100} />
+                <Image src={'/logon.png'} alt='logo' width={100} height={100} />
             </div>
             {
                 menuItems.map((cat) => (
                     <ul
                         key={cat.title}
-                        className="flex items-center  px-4 pt-2 text-blue-950 w-full">
+                        className="flex items-center  px-4 pt-2 text-green-950 w-full">
                         <li className="font-bold text-lg">{cat.title}
                             <span className="font-normal text-sm w-full">
                                 {

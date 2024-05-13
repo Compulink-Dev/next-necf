@@ -7,7 +7,7 @@ function AnnouncementForm() {
         <div
             style={{ height: '300px' }}
             className='p-2 border rounded-lg'>
-            <p className="text-lg font-extrabold text-blue-950">AnnouncementForm</p>
+            <p className="text-lg font-extrabold text-green-950">AnnouncementForm</p>
             <div className="mt-1">
                 <AnnouncementCard />
             </div>

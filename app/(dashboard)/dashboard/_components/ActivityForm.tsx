@@ -15,7 +15,7 @@ function ActivityForm() {
             </div>
             <div className="flex items-center justify-between">
                 <p className="">Total activities</p>
-                <Button className='bg-blue-500'>See Activity</Button>
+                <Button className='bg-green-500'>See Activity</Button>
             </div>
         </div>
     )
