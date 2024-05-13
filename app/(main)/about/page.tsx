@@ -40,7 +40,7 @@ function About() {
                         </div>
                         <div className="h-20 w-full bg-green-500 rounded p-4">
                             <p className="text-sm text-white">
-                                To contribute to the country's socio-economic development through research as well as consultative and inclusive smart partnership dialogue.
+                                {"To contribute to the country's socio-economic development through research as well as consultative and inclusive smart partnership dialogue."}
                             </p>
                         </div>
                     </div>

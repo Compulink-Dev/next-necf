@@ -55,17 +55,7 @@ function Programme() {
                 INTERNATIONAL BUSINESS CONFERENCE (IBC)
               </h1>
               <p className="text-sm">
-                The NECF hosts the International Business Conference in
-                partnership with the Zimbabwe International Trade Fair Company
-                (ZITF) on a Wednesday of the Trade Fair Week. The Conference is
-                held at the end of the year’s first quarter and has become
-                Zimbabwe’s largest business forum for both public and private
-                sector decision makers. The high-level conference brings
-                together policy makers, both local and international captains of
-                industry and commerce, indigenous entrepreneurs, academics and
-                business leaders who have a vested interest in positively
-                contributing to the economic discourse and development of the
-                country."
+                {' The NECF hosts the International Business Conference in partnership with the Zimbabwe International Trade Fair Company (ZITF) on a Wednesday of the Trade Fair Week. The Conference is held at the end of the year’s first quarter and has become Zimbabwe’s largest business forum for both public and private sector decision makers. The high-level conference brings together policy makers, both local and international captains of industry and commerce, indigenous entrepreneurs, academics and business leaders who have a vested interest in positively contributing to the economic discourse and development of the country."'}
               </p>
               <Button className="bg-green-800 hover:bg-green-600 text-white uppercase my-4 p-2 w-full">
                 Register
