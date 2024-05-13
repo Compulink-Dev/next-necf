@@ -2,7 +2,8 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import GalleryCard from "./gallerycard";
-import Programz from "./programz";
+import Programme from "./programme";
+import { Button } from "@/components/ui/button";
 
 function AllPrograms() {
   const [toggle, setToggle] = useState(1);
@@ -10,26 +11,26 @@ function AllPrograms() {
     setToggle(id);
   }
   return (
-    <div className="flex flex-col  top-0 mt-10  ">
-      <div className=" flex items-center  h-10 mx-10">
-        <button
+    <div className="flex flex-col  top-0 mt-10">
+      <div className=" flex items-center h-10 mx-10 gap-2">
+        <Button
           type="button"
           onClick={() => updateToggle(1)}
-          className="flex items-center justify-center gap-1 py-2 px-5 hover:bg-white focus:outline-none focus:bg-green-600 focus:text-white border border-green-600"
+          className="flex items-center justify-center gap-1 py-2 px-5 bg-green-700 hover:bg-green-500 focus:outline-none focus:bg-green-600 focus:text-white"
         >
           Programs
-        </button>{" "}
-        <button
+        </Button>{" "}
+        <Button
           type="button"
           onClick={() => updateToggle(2)}
-          className="py-2 px-5 hover:bg-white focus:outline-none focus:bg-green-600 active: focus:text-white border border-green-600 "
+          className="py-2 px-5 bg-green-700 hover:bg-green-500 focus:outline-none focus:bg-green-600 active: focus:text-white"
         >
           Gallery
-        </button>
+        </Button>
       </div>
       <div className="">
         <div className={toggle == 1 ? "block" : "hidden"}>
-          <Programz />
+          <Programme />
         </div>
         <div className={toggle == 2 ? "block" : "hidden"}>
           <div className=" flex flex-wrap items-center justify-center gap-4 mx-auto my-4">

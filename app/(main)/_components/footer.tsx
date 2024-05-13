@@ -35,16 +35,22 @@ function Footer() {
             Home
           </Link>
           <Link
-            href={"/about"}
+            href={"/services"}
             className="hover:text-green-700 focus:text-green-700 active:"
           >
-            About
+            Office of the President and Cabinet
           </Link>
           <Link
             href={"/services"}
             className="hover:text-green-700 focus:text-green-700 active:"
           >
-            Services
+            Ministry of Finance
+          </Link>
+          <Link
+            href={"/services"}
+            className="hover:text-green-700 focus:text-green-700 active:"
+          >
+            Ministry of Industry and Commerce
           </Link>
           <Link
             href={"/contact"}

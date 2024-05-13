@@ -8,12 +8,10 @@ import Statistic from "./_components/statistic";
 import Subscribe from "@/components/subscribe";
 import Event from "./_components/event";
 import AboutImage from "./_components/aboutImage";
-import MainHero from "./_components/mainhero";
 
 function Home() {
   return (
     <MainLayout>
-      <MainHero />
       <HeroSection />
       <AboutImage />
       <Event />

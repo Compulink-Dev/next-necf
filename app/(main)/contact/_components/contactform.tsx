@@ -109,7 +109,7 @@ function ContactForm() {
                   Mon-Fri from 8am to 5pm.
                 </p>
                 <p className="mt-2 text-sm text-green-500 dark:text-green-400">
-                  +263 242-701094 / +263 780 258 751 / +263 773 851 644{" "}
+                  +263 8612 701 094
                 </p>
               </div>
             </div>
