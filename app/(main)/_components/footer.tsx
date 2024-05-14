@@ -63,8 +63,7 @@ function Footer() {
           <h1 className="text-2xl font-semibold">Contact Us</h1>
           <p>34 Elizabeth Windsor Road, Marlborough</p>
           <p>
-            Tel:+263 242-701094 / +263 780 258 751 / +263 773 851 644 / +263 774
-            834 526
+            Tel:+263 8612 701 094
           </p>
           <p>info@necf.org.zw</p>
           <p>www.necf.org.zw</p>
