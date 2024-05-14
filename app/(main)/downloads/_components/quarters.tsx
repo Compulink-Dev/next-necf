@@ -13,6 +13,7 @@ import {
     TabsList,
     TabsTrigger,
 } from "@/components/ui/tabs"
+import DownloadCard from "./downloadCard"
 
 export function Quarters() {
     return (
@@ -26,32 +27,32 @@ export function Quarters() {
             <TabsContent value="research">
                 <Card>
                     <CardHeader>
-                        <CardTitle></CardTitle>
+                        <CardTitle>Research Report</CardTitle>
                         <CardDescription>
-
+                            Research report
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
-
+                        <DownloadCard />
+                        <DownloadCard />
                     </CardContent>
                     <CardFooter>
-                        <Button>Save changes</Button>
                     </CardFooter>
                 </Card>
             </TabsContent>
             <TabsContent value="task">
                 <Card>
                     <CardHeader>
-                        <CardTitle></CardTitle>
+                        <CardTitle>Task Force Report</CardTitle>
                         <CardDescription>
-
+                            Task Force Report
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
-
+                        <DownloadCard />
+                        <DownloadCard />
                     </CardContent>
                     <CardFooter>
-                        <Button>Save password</Button>
                     </CardFooter>
                 </Card>
             </TabsContent>
@@ -64,7 +65,7 @@ export function Quarters() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
-
+                        <DownloadCard />
                     </CardContent>
                     <CardFooter>
                         <Tabs className="w-full">
@@ -74,16 +75,16 @@ export function Quarters() {
                             <TabsContent value="presentation">
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle></CardTitle>
+                                        <CardTitle>Conference Presentation</CardTitle>
                                         <CardDescription>
-
+                                            Conference Presentation
                                         </CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-2">
-
+                                        <DownloadCard />
+                                        <DownloadCard />
                                     </CardContent>
                                     <CardFooter>
-                                        <Button>Save password</Button>
                                     </CardFooter>
                                 </Card>
                             </TabsContent>
@@ -94,16 +95,16 @@ export function Quarters() {
             <TabsContent value="policy">
                 <Card>
                     <CardHeader>
-                        <CardTitle></CardTitle>
+                        <CardTitle>Policy Analysis Reports</CardTitle>
                         <CardDescription>
-
+                            Policy Analysis Reports
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
-
+                        <DownloadCard />
+                        <DownloadCard />
                     </CardContent>
                     <CardFooter>
-                        <Button>Save password</Button>
                     </CardFooter>
                 </Card>
             </TabsContent>

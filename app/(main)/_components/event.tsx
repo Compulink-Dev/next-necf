@@ -1,5 +1,6 @@
 import Button from "@/components/button";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 interface EventProps {
@@ -21,12 +22,12 @@ const EventCard = ({ imageUrl, title, date, link }: EventProps) => {
       />
 
       <div className="flex flex-col justify-between items-center py-6 lg:mx-6">
-        <a
-          href="#"
+        <Link
+          href="/programs"
           className="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
         >
           {title}
-        </a>
+        </Link>
 
         <Button name={"Register"} link={link} />
         <span className="text-sm text-gray-500 dark:text-gray-300">

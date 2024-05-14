@@ -15,7 +15,7 @@ function Downloads() {
                     <IoIosCloudDownload className='text-5xl ' />
                     <p className="text-2xl font-bold">Downloads</p>
                 </div>
-                <div className="my-4 flex items-center gap-4">
+                <div className="my-4 flex flex-col md:flex-row items-center gap-4">
                     <DownloadCard />
                     <DownloadCard />
                 </div>

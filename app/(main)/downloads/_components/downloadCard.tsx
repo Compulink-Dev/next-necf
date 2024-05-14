@@ -13,7 +13,7 @@ interface DownloadProps {
 
 function DownloadCard() {
     return (
-        <div className='h-44 bg-green-500 w-full rounded p-6 flex items-center gap-4'>
+        <div className='h-auto bg-green-500 w-full rounded p-6 flex flex-col md:flex-row items-center gap-4'>
             <div className="h-40 bg-white w-36 rounded"></div>
             <div className="flex flex-col gap-2">
                 <div className="text-white flex items-center gap-2">
@@ -26,7 +26,6 @@ function DownloadCard() {
                 </div>
                 <Button className='bg-green-900 hover:bg-green-700'>Download</Button>
             </div>
-
         </div>
     )
 }
