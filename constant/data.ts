@@ -50,7 +50,7 @@ export const Team = [
     {
         id: 1,
         name: "Mr. M. Muzite",
-        imageUrl: "/mutize.jpeg",
+        imageUrl: "mutize.jpeg",
         title: "Acting Executive Secretary",
         desc: "",
         fbLink: "",
@@ -60,7 +60,7 @@ export const Team = [
     {
         id: 2,
         name: "Mr. G. Murehwa",
-        imageUrl: "/kawiri.jpeg",
+        imageUrl: "kawiri.jpeg",
         title: "",
         desc: "",
         fbLink: "",
@@ -79,7 +79,7 @@ export const Team = [
     },
     {
         id: 4,
-        name: "Mrs. S. Makiwa",
+        name: "Ms. S. Makiwa",
         imageUrl: "",
         title: "H.R and Administration Manager",
         desc: "",
@@ -100,7 +100,7 @@ export const Team = [
     {
         id: 6,
         name: "Mr. J. Dzama",
-        imageUrl: "/dzama.jpeg",
+        imageUrl: "dzama.jpeg",
         title: "Manager Economic Research",
         desc: "",
         fbLink: "",
@@ -119,7 +119,7 @@ export const Team = [
     },
     {
         id: 8,
-        name: "Mr. S. Maponda",
+        name: "Mr. S. Maponga",
         imageUrl: "",
         title: "Economist",
         desc: "",
@@ -130,7 +130,7 @@ export const Team = [
     {
         id: 9,
         name: "Mrs. M. Nyoni",
-        imageUrl: "/nyoni.jpg",
+        imageUrl: "nyoni.jpg",
         title: "Executive Assistant",
         desc: "",
         fbLink: "",
@@ -139,7 +139,7 @@ export const Team = [
     }, {
         id: 10,
         name: "Mrs. M.C. Masukusa",
-        imageUrl: "/masukusa.jpeg",
+        imageUrl: "masukusa.jpeg",
         title: "Executive Assistants",
         desc: "",
         fbLink: "",
@@ -149,7 +149,7 @@ export const Team = [
     {
         id: 11,
         name: "Mr. R. Njerere",
-        imageUrl: "/njerere.jpg",
+        imageUrl: "njerere.jpg",
         title: "Accounting Assistant",
         desc: "",
         fbLink: "",
@@ -169,7 +169,7 @@ export const Team = [
     {
         id: 13,
         name: "Mr. M. Mudavanhu",
-        imageUrl: "/mudavanhu.jpg",
+        imageUrl: "mudavanhu.jpg",
         title: "Driver",
         desc: "",
         fbLink: "",

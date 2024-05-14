@@ -3,6 +3,8 @@ import { MdPerson } from "react-icons/md";
 import TeamCard from "./TeamCard";
 import { Chairperson, Committee, Team } from "@/constant/data";
 
+console.log(Team);
+
 function TeamForm() {
   return (
     <section className="text-gray-600 body-font">
@@ -12,9 +14,7 @@ function TeamForm() {
             NECF TEAM
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-            Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-            gentrify, subway tile poke farm-to-table. Franzen you probably
-            have not heard of them.
+            Welcome to our virtual oasis! Explore our curated collection of content and discover serenity and inspiration.
           </p>
         </div>
         <div className="">
