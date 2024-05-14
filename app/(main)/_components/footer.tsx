@@ -79,7 +79,7 @@ function Footer() {
               className="text-white ml-1"
               target="_blank"
             >
-              @Compulink
+              @ Compulink
             </a>
           </p>
           <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
