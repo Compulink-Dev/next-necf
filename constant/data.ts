@@ -158,7 +158,7 @@ export const Team = [
     },
     {
         id: 11,
-        name: "Mr. R. Njerere",
+        name: "Ms. R. Njerere",
         imageUrl: "njerere.jpg",
         title: "Accounting Assistant",
         desc: "",

@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
                     {
                         links.map((link) => (
                             <li key={link.id}>
-                                <Link href={link.link}>
+                                <Link href={link.link} className='text-sm'>
                                     {link.name}
                                 </Link>
                             </li>
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
                     {
                         links.map((link) => (
                             <li key={link.id} className='pr-4'>
-                                <Link href={link.link} className='hover:text-slate-300'>
+                                <Link href={link.link} className='hover:text-slate-300 text-sm'>
                                     {link.name}
                                 </Link>
                             </li>
