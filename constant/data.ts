@@ -60,8 +60,8 @@ export const Team = [
     {
         id: 2,
         name: "Mr. G. Murehwa",
-        imageUrl: "kawiri.jpeg",
-        title: "",
+        imageUrl: "murehwa.jpg",
+        title: "Director Economics and Research",
         desc: "",
         fbLink: "",
         twitterLink: "",
@@ -70,7 +70,7 @@ export const Team = [
     {
         id: 3,
         name: "Mrs. A. Kawiri",
-        imageUrl: "",
+        imageUrl: "kawiri.jpeg",
         title: "Director Finance,Administration & H.R",
         desc: "",
         fbLink: "",
@@ -102,6 +102,16 @@ export const Team = [
         name: "Mr. J. Dzama",
         imageUrl: "dzama.jpeg",
         title: "Manager Economic Research",
+        desc: "",
+        fbLink: "",
+        twitterLink: "",
+        gmail: ""
+    },
+    {
+        id: 6,
+        name: "Mr. B. Machiya",
+        imageUrl: "dzama.jpeg",
+        title: "Senior Economist",
         desc: "",
         fbLink: "",
         twitterLink: "",
