@@ -32,7 +32,7 @@ function TeamCard({ name, imageUrl, title, desc, fbLink, twitterLink, gmail }: T
         }
       </div>
       <div className="flex-1 flex flex-col items-center justify-center gap-1 w-full h-[35%] bg-green-800 object-cover">
-        <p className="text-white font-semibold text-lg ">{name}</p>
+        <p className="text-white font-semibold text-sm ">{name}</p>
         <p className="text-gray-300">{title}</p>
         <div className="flex items-center justify-center gap-12 mx-auto">
           <Link href={'/'}>
