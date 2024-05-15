@@ -30,9 +30,9 @@ const ScrollToTop: React.FC = () => {
     }, []);
 
     return (
-        <div style={{ position: 'fixed', bottom: '2rem', right: '2rem', zIndex: 1000 }}>
+        <div style={{ position: 'fixed', bottom: '4rem', right: '2rem', zIndex: 1000 }}>
             {isVisible && (
-                <div className='h-12 w-12 rounded-lg bg-green-600 flex items-center justify-center' onClick={scrollToTop}>
+                <div className='h-12 w-12 rounded-lg bg-green-900 flex items-center justify-center' onClick={scrollToTop}>
                     <RiArrowUpSFill className='text-2xl text-white' />
                 </div>
             )}

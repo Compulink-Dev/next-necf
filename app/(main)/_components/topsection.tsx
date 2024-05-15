@@ -7,7 +7,7 @@ import { IoIosPeople } from "react-icons/io";
 
 function TopSection() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 w-[90%] h-full py-10 bg-[#009900] mx-auto -translate-y-32 ">
+    <div className="grid grid-cols-1 md:grid-cols-3 w-[90%] h-full py-10 bg-green-600 rounded-lg mx-auto -translate-y-32 ">
       <div className="col-span-1  flex flex-col items-center justify-center">
         <SiSecurityscorecard size={78} color="white" className=" w-32 h-32" />
         <h1 className="text-3xl font-semibold text-white py-4">Core Values</h1>
