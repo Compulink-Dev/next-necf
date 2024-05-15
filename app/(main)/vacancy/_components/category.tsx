@@ -35,7 +35,7 @@ function Category() {
                 <CategoryCard text='Economists'>
                     <BsPersonFillUp />
                 </CategoryCard>
-                <CategoryCard text='I.T.C'>
+                <CategoryCard text='I.C.T'>
                     <GrTechnology />
                 </CategoryCard>
                 <CategoryCard text='Secretaries'>

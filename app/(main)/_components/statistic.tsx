@@ -6,7 +6,7 @@ function Statistic() {
             <section className="text-gray-600 body-font bg-green-300">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-col text-center w-full mb-20">
-                        <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Master Cleanse Reliac Heirloom</h1>
+                        <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">NECF Milestone</h1>
                         <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably havent heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
                     </div>
                     <div className="flex flex-wrap -m-4 text-center">
@@ -16,7 +16,7 @@ function Statistic() {
                                     <path d="M8 17l4 4 4-4m-4-5v9"></path>
                                     <path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"></path>
                                 </svg>
-                                <h2 className="title-font font-medium text-3xl text-gray-900">2.7K</h2>
+                                <h2 className="title-font font-medium text-3xl text-gray-900">240</h2>
                                 <p className="leading-relaxed">Downloads</p>
                             </div>
                         </div>
@@ -38,7 +38,7 @@ function Statistic() {
                                     <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path>
                                 </svg>
                                 <h2 className="title-font font-medium text-3xl text-gray-900">74</h2>
-                                <p className="leading-relaxed">Files</p>
+                                <p className="leading-relaxed">Conferences</p>
                             </div>
                         </div>
                         <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
