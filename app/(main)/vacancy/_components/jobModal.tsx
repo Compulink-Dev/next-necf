@@ -20,14 +20,10 @@ const JobModal: React.FC<ModalProps> = ({ open, onClose }) => {
     return (
         //@ts-ignore
         <Dialog open={open} onClose={onClose}>
-            <DialogTrigger asChild>
-                <Button variant="outline">Edit Profile</Button>
-            </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Edit profile</DialogTitle>
                     <DialogDescription>
-                        Make changes to your profile here. Click save when you're done.
+                        Send your CV to our team  to apply for a job position
                     </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">

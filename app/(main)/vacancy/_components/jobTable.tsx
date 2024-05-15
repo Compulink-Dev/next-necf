@@ -65,12 +65,13 @@ export default function JobTable() {
                                     onClick={handleOpenDialog}>
                                     Apply
                                 </Button>
-                                <JobModal open={isDialogOpen} onClose={handleCloseDialog} />
+
                             </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
+            <JobModal open={isDialogOpen} onClose={handleCloseDialog} />
         </TableContainer>
     );
 }
