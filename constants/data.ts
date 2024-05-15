@@ -29,4 +29,9 @@ export const links = [
     name: "Contact",
     link: "contact",
   },
+  {
+    id: 7,
+    name: 'Vacancies',
+    link: 'vacancy'
+  }
 ];

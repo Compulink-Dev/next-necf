@@ -50,7 +50,7 @@ export const Team = [
     {
         id: 1,
         name: "Mr. M. Muzite",
-        imageUrl: "mutize.jpeg",
+        imageUrl: "/mutize.jpeg",
         title: "Acting Executive Secretary",
         desc: "",
         fbLink: "",
@@ -60,7 +60,7 @@ export const Team = [
     {
         id: 2,
         name: "Mr. G. Murehwa",
-        imageUrl: "murehwa.jpg",
+        imageUrl: "/murehwa.jpg",
         title: "Director Economics and Research",
         desc: "",
         fbLink: "",
@@ -70,7 +70,7 @@ export const Team = [
     {
         id: 3,
         name: "Mrs. A. Kawiri",
-        imageUrl: "kawiri.jpeg",
+        imageUrl: "/kawiri.jpeg",
         title: "Director Finance,Administration & H.R",
         desc: "",
         fbLink: "",
@@ -90,7 +90,7 @@ export const Team = [
     {
         id: 5,
         name: "Mr. G. Gowere",
-        imageUrl: "gowere.jpg",
+        imageUrl: "/gowere.jpg",
         title: "Manager Policy Analysis",
         desc: "",
         fbLink: "",
@@ -100,7 +100,7 @@ export const Team = [
     {
         id: 6,
         name: "Mr. J. Dzama",
-        imageUrl: "dzama.jpeg",
+        imageUrl: "/dzama.jpeg",
         title: "Manager Economic Research",
         desc: "",
         fbLink: "",
@@ -110,7 +110,7 @@ export const Team = [
     {
         id: 6,
         name: "Mr. B. Machiya",
-        imageUrl: "dzama.jpeg",
+        imageUrl: "",
         title: "Senior Economist",
         desc: "",
         fbLink: "",
@@ -140,7 +140,7 @@ export const Team = [
     {
         id: 9,
         name: "Mrs. M. Nyoni",
-        imageUrl: "nyoni.jpg",
+        imageUrl: "/nyoni.jpg",
         title: "Executive Assistant",
         desc: "",
         fbLink: "",
@@ -149,7 +149,7 @@ export const Team = [
     }, {
         id: 10,
         name: "Mrs. M.C. Masukusa",
-        imageUrl: "masukusa.jpeg",
+        imageUrl: "/masukusa.jpeg",
         title: "Executive Assistant",
         desc: "",
         fbLink: "",

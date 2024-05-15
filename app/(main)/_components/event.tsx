@@ -14,7 +14,7 @@ const EventCard = ({ imageUrl, title, date, link }: EventProps) => {
   return (
     <div className="lg:flex">
       <Image
-        className="object-cover w-full h-56 rounded-lg lg:w-64"
+        className="object-contain md:object-cover w-full h-56 rounded-lg lg:w-64"
         src={imageUrl}
         alt=""
         width={300}
@@ -51,19 +51,19 @@ function Event() {
           <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
             <EventCard
               title="INTERNATIONAL BUSINESS CONFERENCE (IBC)"
-              imageUrl=""
+              imageUrl="/ibcmain.jpeg"
               link="/"
               date="8 October 2024"
             />
             <EventCard
               title="THE INFRASTRUCTURE SUMMIT AND EXPO (ISE)"
-              imageUrl=""
-              link="/"
+              imageUrl="/trans.jpg"
+              link=""
               date="8 October 2024"
             />
             <EventCard
               title="ANNUAL NATIONAL AGRI-BUSINESS CONFERENCE (ANAC)"
-              imageUrl=""
+              imageUrl="/agric.jpeg"
               link="/"
               date="8 October 2024"
             />

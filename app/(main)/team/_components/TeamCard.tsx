@@ -27,7 +27,7 @@ function TeamCard({ name, imageUrl, title, desc, fbLink, twitterLink, gmail }: T
             <MdPerson size={250} color="green" className="mx-auto" />
           )
             : (
-              <Image src={`/${imageUrl}`} alt="logo" width={300} height={300} className="w-full h-full rounded-full" />
+              <Image src={`/${imageUrl}`} alt="logo" width={200} height={200} className="w-full h-full rounded-full" />
             )
         }
       </div>

@@ -70,10 +70,10 @@ function AboutImage() {
 
                         <div className="hidden lg:flex lg:items-center lg:w-1/2 lg:justify-center">
                             <Image
-                                width={300}
-                                height={300}
-                                className="w-[28rem] h-[28rem] object-cover xl:w-[34rem] xl:h-[34rem] rounded-full"
-                                src="" alt="" />
+                                width={200}
+                                height={200}
+                                className="w-[26rem] h-[26rem] object-contain xl:w-[30rem] xl:h-[30rem] rounded-full"
+                                src="/ibc20.JPG" alt="" />
                         </div>
                     </div>
 
