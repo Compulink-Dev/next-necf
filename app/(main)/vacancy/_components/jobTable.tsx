@@ -8,7 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@/components/ui/button';
-import JobModal from './jobModal';
+import { JobModal } from './jobModal';
+
 
 function createData(
     id: number,
@@ -59,19 +60,12 @@ export default function JobTable() {
                             <TableCell align="right">{row.jobType}</TableCell>
                             <TableCell align="right">{row.salary}</TableCell>
                             <TableCell>
-                                <Button
-                                    className='bg-green-600 hover:bg-green-400'
-                                    color="primary"
-                                    onClick={handleOpenDialog}>
-                                    Apply
-                                </Button>
-
+                                <JobModal />
                             </TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
-            <JobModal open={isDialogOpen} onClose={handleCloseDialog} />
         </TableContainer>
     );
 }

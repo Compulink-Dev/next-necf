@@ -1,6 +1,9 @@
+import { Copy } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
+    DialogClose,
     DialogContent,
     DialogDescription,
     DialogFooter,
@@ -11,49 +14,43 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-interface ModalProps {
-    open: boolean;
-    onClose: () => void;
-}
-
-const JobModal: React.FC<ModalProps> = ({ open, onClose }) => {
+export function JobModal() {
     return (
-        //@ts-ignore
-        <Dialog open={open} onClose={onClose}>
-            <DialogContent className="sm:max-w-[425px]">
+        <Dialog>
+            <DialogTrigger asChild>
+                <Button className="bg-green-700 hover:bg-green-400">Apply</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
                 <DialogHeader>
+                    <DialogTitle>Share link</DialogTitle>
                     <DialogDescription>
-                        Send your CV to our team  to apply for a job position
+                        Upload your CV and send to apply
                     </DialogDescription>
                 </DialogHeader>
-                <div className="grid gap-4 py-4">
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="name" className="text-right">
-                            Name
+                <div className="flex items-center space-x-2">
+                    <div className="grid flex-1 gap-2">
+                        <Label htmlFor="link" className="sr-only">
+                            Link
                         </Label>
                         <Input
-                            id="name"
-                            defaultValue="Pedro Duarte"
-                            className="col-span-3"
+                            id="link"
+                            defaultValue="https://ui.shadcn.com/docs/installation"
+                            readOnly
                         />
                     </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-                            Username
-                        </Label>
-                        <Input
-                            id="username"
-                            defaultValue="@peduarte"
-                            className="col-span-3"
-                        />
-                    </div>
+                    <Button type="submit" size="sm" className="px-3">
+                        <span className="sr-only">Copy</span>
+                        <Copy className="h-4 w-4" />
+                    </Button>
                 </div>
-                <DialogFooter>
-                    <Button type="submit">Save changes</Button>
+                <DialogFooter className="sm:justify-start">
+                    <DialogClose asChild>
+                        <Button type="button" variant="secondary">
+                            Close
+                        </Button>
+                    </DialogClose>
                 </DialogFooter>
             </DialogContent>
         </Dialog>
     )
 }
-
-export default JobModal
