@@ -44,7 +44,7 @@ function Footer() {
             href={"/services"}
             className="hover:text-green-700 focus:text-green-700 active:"
           >
-            Ministry of Finance
+            Ministry of Finance and Investment Promotion
           </Link>
           <Link
             href={"/services"}
