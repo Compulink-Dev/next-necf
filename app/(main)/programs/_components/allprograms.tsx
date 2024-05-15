@@ -5,6 +5,7 @@ import GalleryCard from "./galleryCard";
 import Programme from "./programme";
 import { Button } from "@/components/ui/button";
 import { galleries } from "@/constants/data";
+import { GalleryModal } from "./galleryModal";
 
 function AllPrograms() {
   const [toggle, setToggle] = useState(1);
@@ -37,11 +38,12 @@ function AllPrograms() {
           <div className=" grid grid-col-1 sm:grid-cols-2 md:grid-cols-4 items-center gap-4 mx-auto my-4">
             {
               galleries.map((data) => (
-                <GalleryCard
+                <GalleryModal
+                  id={data.id}
                   key={data.id}
                   imageUrl={data.imageUrl}
                   title={data.title}
-                  description={data.title}
+                  desc={data.desc}
                 />
               ))
             }

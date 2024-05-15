@@ -8,7 +8,7 @@ interface CardProps {
 
 const GalleryCard: React.FC<CardProps> = ({ imageUrl, title, description }) => {
   return (
-    <div className="relative w-full h-80 overflow-hidden rounded border border-x-4 border-green-600">
+    <div className="relative w-full h-80 overflow-hidden rounded border border-x-4 border-green-600 cursor-pointer">
       <div
         className="absolute inset-0 bg-cover bg-center opacity-45 hover:opacity-100 transition-opacity duration-300"
         style={{ backgroundImage: `url(${imageUrl})` }}

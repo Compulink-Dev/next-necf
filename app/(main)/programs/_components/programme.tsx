@@ -27,7 +27,7 @@ const ProgramCard = ({ title, desc, imageUrl }: ProgramProps) => {
           <p className="text-sm">
             {desc}
           </p>
-          <Button className="bg-green-600 text-white text-sm uppercase my-4 p-2 hover:bg-green-950">
+          <Button className="bg-green-600 w-full  text-white text-sm uppercase my-4 p-2 hover:bg-green-700">
             Register
           </Button>
         </div>
@@ -57,35 +57,35 @@ function Programme() {
               <p className="text-sm">
                 {' The NECF hosts the International Business Conference in partnership with the Zimbabwe International Trade Fair Company (ZITF) on a Wednesday of the Trade Fair Week. The Conference is held at the end of the year’s first quarter and has become Zimbabwe’s largest business forum for both public and private sector decision makers. The high-level conference brings together policy makers, both local and international captains of industry and commerce, indigenous entrepreneurs, academics and business leaders who have a vested interest in positively contributing to the economic discourse and development of the country."'}
               </p>
-              <Button className="bg-green-800 hover:bg-green-600 text-white uppercase my-4 p-2 w-full">
+              <Button className="bg-green-600 hover:bg-green-700 text-white uppercase my-4 p-2 w-full">
                 Register
               </Button>
             </div>
           </div>
         </div>
-        <div className="col-span-2 mt-[550px] sm:mt-[300px] md:mt-0">
-          <div className="flex flex-col gap-4 bg-green-200 m-4 md:mt-0 rounded">
+        <div className="col-span-2 mt-[550px] sm:mt-[300px] md:mt-0 text-white">
+          <div className="flex flex-col gap-4 bg-green-800 m-4 md:mt-0 rounded">
             <input
               name="name"
               type="text"
               placeholder="Search"
               className="p-3 rounded w-[94%] mx-auto outline-none mt-4"
             />
-            <button className="w-[94%] bg-green-600 rounded text-center text-white mx-auto p-2 mb-4">
+            <Button className="w-[94%] bg-green-600 hover:bg-green-700 rounded text-center text-white mx-auto p-2 mb-4">
               Search
-            </button>
+            </Button>
           </div>
 
-          <div className="flex flex-col gap-4 bg-green-200 m-4 md:mt-0 rounded">
+          <div className="flex flex-col gap-4 bg-green-900 m-4 md:mt-0 rounded">
             <h1 className="text-lg font-semibold ml-3 mt-4">Category</h1>
             <hr className="w-[94%] mx-auto mb-4 bg-gray-900 py-[0.5px]" />
           </div>
 
-          <div className="flex flex-col gap-4 bg-green-200 m-4 md:mt-0 rounded">
+          <div className="flex flex-col gap-4 bg-green-900 m-4 md:mt-0 rounded">
             <h1 className="text-lg font-semibold ml-3 mt-4">Recent Posts</h1>
             <hr className="w-[94%] mx-auto mb-4 bg-gray-900 py-[0.5px]" />
           </div>
-          <div className="flex flex-col gap-4 bg-green-200 mx-4 md:mt-0 ">
+          <div className="flex flex-col gap-4 bg-green-900 rounded mx-4 md:mt-0 ">
             <h1 className="text-lg font-semibold ml-3 mt-4">NewsLetter</h1>
             <hr className="w-[94%] mx-auto bg-gray-900 py-[0.5px]" />
             <input
@@ -94,9 +94,9 @@ function Programme() {
               placeholder="email"
               className="p-3 rounded-sm w-[94%] mx-auto outline-none "
             />
-            <button className="w-[94%] bg-green-600 text-center text-white mx-auto p-2 mb-4">
+            <Button className="w-[94%] bg-green-600 hover:bg-green-700 text-center text-white mx-auto p-2 mb-4">
               Subscribe
-            </button>
+            </Button>
           </div>
         </div>
       </div>

@@ -10,12 +10,28 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import GalleryCard from "./galleryCard"
+import Image from "next/image"
 
-export function DialogDemo() {
+
+interface GalleryProps {
+    id: number,
+    imageUrl: string,
+    title: string,
+    desc: string
+}
+
+
+export function GalleryModal({ id, imageUrl, title, desc }: GalleryProps) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline">Edit Profile</Button>
+                <GalleryCard
+                    key={id}
+                    imageUrl={imageUrl}
+                    title={title}
+                    description={desc}
+                />
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
@@ -24,27 +40,8 @@ export function DialogDemo() {
                         Make changes to your profile here. Click save when you are done.
                     </DialogDescription>
                 </DialogHeader>
-                <div className="grid gap-4 py-4">
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="name" className="text-right">
-                            Name
-                        </Label>
-                        <Input
-                            id="name"
-                            defaultValue="Pedro Duarte"
-                            className="col-span-3"
-                        />
-                    </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-                            Username
-                        </Label>
-                        <Input
-                            id="username"
-                            defaultValue="@peduarte"
-                            className="col-span-3"
-                        />
-                    </div>
+                <div className="w-full h-full">
+                    <Image src={imageUrl} alt="" width={500} height={500} className="w-full h-full" />
                 </div>
                 <DialogFooter>
                     <Button type="submit">Save changes</Button>
