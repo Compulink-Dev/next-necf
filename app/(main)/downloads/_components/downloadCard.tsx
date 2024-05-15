@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Timer } from 'lucide-react';
 import { FaBook } from "react-icons/fa";
 import React from 'react'
+import { IoCloudDownloadSharp } from "react-icons/io5";
 
 interface DownloadProps {
     imageUrl: string,
@@ -14,7 +15,9 @@ interface DownloadProps {
 function DownloadCard() {
     return (
         <div className='h-auto bg-green-500 w-full rounded p-6 flex flex-col md:flex-row items-center gap-4'>
-            <div className="h-40 bg-white w-36 rounded"></div>
+            <div className="h-40 bg-white w-36 rounded flex items-center justify-center">
+                <IoCloudDownloadSharp className='text-4xl text-green-800' />
+            </div>
             <div className="flex flex-col gap-2">
                 <div className="text-white flex items-center gap-2">
                     <Timer className='text-white' />

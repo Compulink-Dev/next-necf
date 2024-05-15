@@ -105,6 +105,43 @@ export function Quarters() {
                         <DownloadCard />
                     </CardContent>
                     <CardFooter>
+                        <Tabs className="w-full">
+                            <TabsList className="flex bg-green-500 text-white">
+                                <TabsTrigger value="monthly">Monthly Bulletins</TabsTrigger>
+                                <TabsTrigger value="quarterly">Quarterly Environmental Analysis Report</TabsTrigger>
+                            </TabsList>
+                            <TabsContent value="monthly">
+                                <Card>
+                                    <CardHeader>
+                                        <CardTitle>Monthly Bulletin</CardTitle>
+                                        <CardDescription>
+                                            Monthly Bulletin
+                                        </CardDescription>
+                                    </CardHeader>
+                                    <CardContent className="space-y-2">
+                                        <DownloadCard />
+                                        <DownloadCard />
+                                    </CardContent>
+                                    <CardFooter>
+                                    </CardFooter>
+                                </Card>
+                            </TabsContent>
+                            <TabsContent value="quarterly">
+                                <Card>
+                                    <CardHeader>
+                                        <CardTitle>Quarterly Environmental Analysis Report</CardTitle>
+                                        <CardDescription>
+                                            Quarterly Environmental Analysis Report
+                                        </CardDescription>
+                                    </CardHeader>
+                                    <CardContent className="space-y-2">
+                                        <DownloadCard />
+                                    </CardContent>
+                                    <CardFooter>
+                                    </CardFooter>
+                                </Card>
+                            </TabsContent>
+                        </Tabs>
                     </CardFooter>
                 </Card>
             </TabsContent>

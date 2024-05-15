@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './navbar'
 import Footer from '@/app/(main)/_components/footer'
 import MainHero from '@/app/(main)/_components/mainhero'
+import ScrollToTop from './scrollToTop'
 
 function MainLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -9,6 +10,7 @@ function MainLayout({ children }: { children: React.ReactNode }) {
             <Navbar />
             <MainHero />
             {children}
+            <ScrollToTop />
             <Footer />
         </div>
     )

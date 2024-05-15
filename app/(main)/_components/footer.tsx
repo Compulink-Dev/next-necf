@@ -26,7 +26,7 @@ function Footer() {
             <FaLinkedin size={24} color="green" />
           </div>
         </div>
-        <div className="flex flex-col items-start justify-center gap-5">
+        <div className="flex flex-col items-start justify-center gap-5 text-sm">
           <h1 className="text-2xl font-semibold">Quick Links</h1>
           <Link
             href={"/"}

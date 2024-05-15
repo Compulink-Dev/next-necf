@@ -5,7 +5,7 @@ function Subscribe() {
         <div>
             <section className="bg-green-300 dark:bg-gray-900">
                 <div className="container px-4 py-16 mx-auto lg:flex lg:items-center lg:justify-between">
-                    <h2 className="text-2xl font-semibold tracking-tight text-gray-800 xl:text-3xl dark:text-white">
+                    <h2 className="text-lg font-semibold tracking-tight text-gray-800 xl:text-3xl dark:text-white">
                         Join us and get the update from anywhere
                     </h2>
 
