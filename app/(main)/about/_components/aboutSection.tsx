@@ -5,8 +5,8 @@ import { FaDotCircle } from "react-icons/fa";
 const SectionPin = ({ text }: { text: string }) => {
     return (
         <div className="flex items-center gap-2">
-            <FaDotCircle className='w-10 text-green-500' />
-            <p className="text-sm">{text}</p>
+            <FaDotCircle className='w-10 text-green-900' />
+            <p className="text-sm text-slate-700">{text}</p>
         </div>
     )
 }

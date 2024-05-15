@@ -22,8 +22,7 @@ function About() {
                 <div className="flex items-center justify-center gap-4">
                     <div className="flex items-center gap-4">
                         <div
-                            style={{ backgroundColor: Colors.primary }}
-                            className="h-16 w-20 bg-green-700 rounded flex items-center justify-center">
+                            className="h-16 w-20 bg-green-900 rounded flex items-center justify-center">
                             <AiOutlineRise className='text-4xl font-bold text-white' />
                         </div>
                         <div className="h-20 w-full bg-green-500 rounded p-4">
@@ -34,8 +33,7 @@ function About() {
                     </div>
                     <div className="flex items-center gap-4">
                         <div
-                            style={{ backgroundColor: Colors.primary }}
-                            className="h-16 w-20 bg-green-700 rounded flex items-center justify-center">
+                            className="h-16 w-20 bg-green-900 rounded flex items-center justify-center">
                             <ImTarget className='text-4xl font-bold text-white' />
                         </div>
                         <div className="h-20 w-full bg-green-500 rounded p-4">
