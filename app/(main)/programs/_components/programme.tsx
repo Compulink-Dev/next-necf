@@ -40,8 +40,8 @@ const ProgramCard = ({ title, desc, imageUrl }: ProgramProps) => {
 function Programme() {
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-3 mt-4">
-        <div className="col-span-1 md:col-span-2 mx-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-5 mt-4">
+        <div className="col-span-1 md:col-span-3 mx-4 gap-6">
           <div className="border h-[400px] border-green-600 shadow-lg">
             <Image
               src={"/program3.jpg"}
@@ -63,7 +63,7 @@ function Programme() {
             </div>
           </div>
         </div>
-        <div className="col-span-1 mt-[550px] sm:mt-[300px] md:mt-0">
+        <div className="col-span-2 mt-[550px] sm:mt-[300px] md:mt-0">
           <div className="flex flex-col gap-4 bg-green-200 m-4 md:mt-0 rounded">
             <input
               name="name"

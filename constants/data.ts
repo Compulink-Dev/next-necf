@@ -65,57 +65,90 @@ export const miniGallery = [
 export const galleries = [
   {
     id: 1,
-    imageUrl: '/ibc.JPG'
+    imageUrl: '/ibc.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   },
   {
     id: 2,
-    imageUrl: '/ibc2.JPG'
+    imageUrl: '/ibc2.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   },
   {
     id: 3,
-    imageUrl: '/ibc3.JPG'
+    imageUrl: '/ibc3.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   }, {
     id: 4,
-    imageUrl: '/ibc4.JPG'
+    imageUrl: '/ibc4.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   }, {
     id: 5,
-    imageUrl: '/ibc5.JPG'
+    imageUrl: '/ibc5.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   }, {
     id: 6,
-    imageUrl: '/ibc6.JPG'
+    imageUrl: '/ibc6.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   },
   {
     id: 7,
-    imageUrl: '/ibc7.JPG'
+    imageUrl: '/ibc7.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   },
   {
     id: 8,
-    imageUrl: '/ibc8.JPG'
+    imageUrl: '/ibc8.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   }, {
     id: 9,
-    imageUrl: '/ibc9.JPG'
+    imageUrl: '/ibc9.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   }, {
     id: 10,
-    imageUrl: '/ibc10.JPG'
+    imageUrl: '/ibc10.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   }, {
     id: 11,
-    imageUrl: '/ibc11.JPG'
+    imageUrl: '/ibc11.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   },
   {
     id: 12,
-    imageUrl: '/ibc12.JPG'
+    imageUrl: '/ibc12.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   },
   {
     id: 13,
-    imageUrl: '/ibc13.JPG'
-  }, {
+    imageUrl: '/ibc13.JPG',
+    title: 'Necf',
+    desc: 'Necf'
+  },
+  {
     id: 14,
-    imageUrl: '/ibc14.JPG'
+    imageUrl: '/ibc14.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   }, {
     id: 15,
-    imageUrl: '/ibc15.JPG'
+    imageUrl: '/ibc15.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   }, {
     id: 16,
-    imageUrl: '/ibc16.JPG'
+    imageUrl: '/ibc16.JPG',
+    title: 'Necf',
+    desc: 'Necf'
   },
 ]

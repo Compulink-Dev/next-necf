@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-import GalleryCard from "./gallerycard";
+import GalleryCard from "./galleryCard";
 import Programme from "./programme";
 import { Button } from "@/components/ui/button";
+import { galleries } from "@/constants/data";
 
 function AllPrograms() {
   const [toggle, setToggle] = useState(1);
@@ -11,7 +12,7 @@ function AllPrograms() {
     setToggle(id);
   }
   return (
-    <div className="flex flex-col  top-0 mt-10">
+    <div className="flex flex-col top-0 mt-10">
       <div className=" flex items-center h-10 mx-10 gap-2">
         <Button
           type="button"
@@ -32,38 +33,18 @@ function AllPrograms() {
         <div className={toggle == 1 ? "block" : "hidden"}>
           <Programme />
         </div>
-        <div className={toggle == 2 ? "block" : "hidden"}>
-          <div className=" flex flex-wrap items-center justify-center gap-4 mx-auto my-4">
-            <GalleryCard
-              imageUrl="/logo.png"
-              title="NECF"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-            <GalleryCard
-              imageUrl="/logo.png"
-              title="NECF"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-            <GalleryCard
-              imageUrl="/logo.png"
-              title="NECF"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-            <GalleryCard
-              imageUrl="/logo.png"
-              title="NECF"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-            <GalleryCard
-              imageUrl="/logo.png"
-              title="NECF"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
-            <GalleryCard
-              imageUrl="/logo.png"
-              title="NECF"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            />
+        <div className={toggle == 2 ? "block px-10" : "hidden"}>
+          <div className=" grid grid-col-1 sm:grid-cols-2 md:grid-cols-4 items-center gap-4 mx-auto my-4">
+            {
+              galleries.map((data) => (
+                <GalleryCard
+                  key={data.id}
+                  imageUrl={data.imageUrl}
+                  title={data.title}
+                  description={data.title}
+                />
+              ))
+            }
           </div>
         </div>
       </div>
