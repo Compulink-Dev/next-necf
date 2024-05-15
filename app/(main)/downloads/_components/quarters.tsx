@@ -27,7 +27,7 @@ export function Quarters() {
             <TabsContent value="research">
                 <Card>
                     <CardHeader>
-                        <CardTitle>Research Report</CardTitle>
+                        <CardTitle className="text-green-600">Research Report</CardTitle>
                         <CardDescription>
                             Research report
                         </CardDescription>
@@ -43,7 +43,7 @@ export function Quarters() {
             <TabsContent value="task">
                 <Card>
                     <CardHeader>
-                        <CardTitle>Task Force Report</CardTitle>
+                        <CardTitle className="text-green-600">Task Force Report</CardTitle>
                         <CardDescription>
                             Task Force Report
                         </CardDescription>
@@ -59,7 +59,7 @@ export function Quarters() {
             <TabsContent value="conference">
                 <Card>
                     <CardHeader>
-                        <CardTitle>Conference</CardTitle>
+                        <CardTitle className="text-green-600">Conference</CardTitle>
                         <CardDescription>
                             Conference & Presentations
                         </CardDescription>
@@ -69,13 +69,13 @@ export function Quarters() {
                     </CardContent>
                     <CardFooter>
                         <Tabs className="w-full">
-                            <TabsList className="flex bg-green-100">
+                            <TabsList className="flex bg-green-600 text-white">
                                 <TabsTrigger value="presentation">Conference Presentation</TabsTrigger>
                             </TabsList>
                             <TabsContent value="presentation">
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle>Conference Presentation</CardTitle>
+                                        <CardTitle className="text-green-600">Conference Presentation</CardTitle>
                                         <CardDescription>
                                             Conference Presentation
                                         </CardDescription>
@@ -95,7 +95,7 @@ export function Quarters() {
             <TabsContent value="policy">
                 <Card>
                     <CardHeader>
-                        <CardTitle>Policy Analysis Reports</CardTitle>
+                        <CardTitle className="text-green-600">Policy Analysis Reports</CardTitle>
                         <CardDescription>
                             Policy Analysis Reports
                         </CardDescription>
@@ -113,7 +113,7 @@ export function Quarters() {
                             <TabsContent value="monthly">
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle>Monthly Bulletin</CardTitle>
+                                        <CardTitle className="text-green-600">Monthly Bulletin</CardTitle>
                                         <CardDescription>
                                             Monthly Bulletin
                                         </CardDescription>
@@ -129,7 +129,7 @@ export function Quarters() {
                             <TabsContent value="quarterly">
                                 <Card>
                                     <CardHeader>
-                                        <CardTitle>Quarterly Environmental Analysis Report</CardTitle>
+                                        <CardTitle className="text-green-600">Quarterly Environmental Analysis Report</CardTitle>
                                         <CardDescription>
                                             Quarterly Environmental Analysis Report
                                         </CardDescription>
