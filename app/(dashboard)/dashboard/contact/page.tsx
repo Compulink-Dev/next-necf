@@ -1,8 +1,11 @@
 import React from 'react'
+import ContactForm from './_components/ContactForm'
 
 function Contact() {
     return (
-        <div>Contact</div>
+        <div className='p-8'>
+            <ContactForm />
+        </div>
     )
 }
 
