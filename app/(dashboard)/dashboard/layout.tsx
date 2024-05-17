@@ -1,10 +1,20 @@
 import React from 'react'
 import Sidebar from './_components/Sidebar'
 import Navbar from './_components/Navbar'
+import { getServerSession } from "next-auth"
+import { redirect } from "next/navigation"
+import { options } from '@/app/api/auth/[...nextauth]/options'
 
 
-function DashboardLayout
+
+async function DashboardLayout
     ({ children }: { children: React.ReactNode }) {
+    // const session = await getServerSession(options)
+
+    // if (!session) {
+    //     redirect('/api/auth/signin?callbackUrl=/dashboard')
+    // }
+
     return (
         <div>
             <div className="flex">

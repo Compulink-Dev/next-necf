@@ -1,8 +1,11 @@
 import React from 'react'
+import { ProgramTab } from './_components/programTab'
 
 function Programs() {
     return (
-        <div>Programs</div>
+        <div className='p-8'>
+            <ProgramTab />
+        </div>
     )
 }
 

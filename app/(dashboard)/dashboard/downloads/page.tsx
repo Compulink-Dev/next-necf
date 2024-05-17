@@ -1,8 +1,11 @@
 import React from 'react'
+import { DownloadTab } from './_components/downloadTab'
 
 function Downloads() {
     return (
-        <div>Downloads</div>
+        <div className='p-8'>
+            <DownloadTab />
+        </div>
     )
 }
 

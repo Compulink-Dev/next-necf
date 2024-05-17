@@ -1,8 +1,11 @@
 import React from 'react'
+import { AboutTab } from './_components/aboutTabs'
 
 function About() {
     return (
-        <div>About</div>
+        <div className='p-8'>
+            <AboutTab />
+        </div>
     )
 }
 

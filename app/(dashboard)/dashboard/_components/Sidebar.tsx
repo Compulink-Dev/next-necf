@@ -15,7 +15,9 @@ import {
     MdOutlineContactPage,
     MdEventNote,
 } from "react-icons/md"
+import { BsPersonFillAdd } from "react-icons/bs";
 import { IoCloudDownload } from "react-icons/io5";
+import { IoFootsteps } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa";
 import MenuLink from './Menulink'
 import { Colors } from '@/constants/colors';
@@ -26,11 +28,6 @@ const menuItems = [
     {
         title: "Pages",
         list: [
-            {
-                title: "Dashboard",
-                path: "/dashboard",
-                icon: <MdDashboard />,
-            },
             {
                 title: "Home",
                 path: "/dashboard/home",
@@ -60,6 +57,16 @@ const menuItems = [
                 title: "Contact",
                 path: "/dashboard/contact",
                 icon: <MdOutlineContactPage />,
+            },
+            {
+                title: "Vacancies",
+                path: "/dashboard/vacancy",
+                icon: <BsPersonFillAdd />,
+            },
+            {
+                title: "Footer",
+                path: "/dashboard/footer",
+                icon: <IoFootsteps />,
             },
         ],
     },
