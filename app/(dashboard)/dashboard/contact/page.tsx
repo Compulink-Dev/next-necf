@@ -1,11 +1,14 @@
 import React from 'react'
-import ContactForm from './_components/ContactForm'
-import AddContact from './_components/addContact'
+import ContactList from './_components/ContactList'
+import getContacts from '@/lib/getContact'
 
-function Contact() {
+async function Contact() {
+
+    const contacts = await getContacts()
+
     return (
-        <div className='p-8'>
-            <AddContact />
+        <div className=''>
+            <ContactList contacts={contacts} />
         </div>
     )
 }
