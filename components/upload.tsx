@@ -1,38 +1,53 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Button } from './ui/button'
 import { Label } from './ui/label'
 import { Input } from './ui/input'
+import Image from 'next/image'
 
 function Upload() {
 
     const { register, handleSubmit } = useForm()
 
+    const [imageUrl, setImageUrl] = useState()
+
     const onSubmit = async (data: any) => {
         const image = data.profile[0]
+
+        console.log(image);
+
 
         const formData = new FormData()
 
         formData.append('file', image)
 
-        formData.append('upload_preset', "Compulink")
+        formData.append('upload_preset', "next_necf")
 
         const uploadResponse = await fetch(
-            "https://api.cloudinary.com/v1_1/Compulink/image/upload", {
+            "https://api.cloudinary.com/v1_1/dxkna0tuc/image/upload", {
             method: "POST",
             body: formData
         }
         )
 
         const uploadedImageData = await uploadResponse.json()
+
+        const uploadUrl = uploadedImageData.secure_url
+        setImageUrl(uploadUrl)
+        console.log(uploadUrl);
+
+
     }
+
 
     return (
         <form className="mx-16" onSubmit={handleSubmit(onSubmit)}>
             <div className="grid w-full max-w-sm items-center gap-1.5">
                 <Label htmlFor="picture">Upload Picture</Label>
-                <Input id="picture" type="file" />
+                <Input
+                    {...register('profile')}
+                    id="picture" type="file" />
             </div>
             <p
                 className="mt-1 text-sm text-gray-500 dark:text-gray-300"
@@ -47,6 +62,18 @@ function Upload() {
             >
                 Upload to Cloud
             </Button>
+            <div className="">
+                {
+                    imageUrl && (
+                        <Image
+                            width={500}
+                            height={350}
+                            src={imageUrl}
+                            alt=''
+                        />
+                    )
+                }
+            </div>
         </form>
     )
 }

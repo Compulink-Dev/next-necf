@@ -57,13 +57,26 @@
 //   const isAuthorized = await checkAuth(context.req, context.res);
 //   return { isAuthorized };
 // };
-
+'use client'
 
 import React from 'react'
+import { CldImage, CldUploadWidget } from 'next-cloudinary';
+import { Button } from '@/components/ui/button';
+
 
 function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <div>
+      <CldUploadWidget uploadPreset="next_necf">
+        {({ open }) => {
+          return (
+            <Button className='bg-green-600 hover:bg-green-500' onClick={() => open()}>
+              Upload an Image
+            </Button>
+          );
+        }}
+      </CldUploadWidget>
+    </div>
   )
 }
 
