@@ -36,50 +36,58 @@ function Footer() {
           </Link>
           <Link
             href={
-              "https://www.zim.gov.zw/index.php/en/my-government/government-ministries/opc"
+              "https://zim.gov.zw/index.php/en/my-government/government-ministries/opc"
             }
+            target="_blank"
             className="hover:text-green-700 focus:text-green-700 active:"
           >
             Office of the President and Cabinet
           </Link>
           <Link
-            href={"https://www.veritaszim.net/node/684"}
+            href={"https://veritaszim.net/node/684"}
+            target="_blank"
             className="hover:text-green-700 focus:text-green-700 active:"
           >
             Ministry of Finance and Investment Promotion
           </Link>
           <Link
-            href={"https://www.mic.gov.zw/"}
+            href={"https://mic.gov.zw/"}
+            target="_blank"
             className="hover:text-green-700 focus:text-green-700 active:"
           >
             Ministry of Industry and Commerce
           </Link>
           <Link
-            href={"https://www.rbz.co.zw/"}
+            href={"https://rbz.co.zw/"}
+            target="_blank"
             className="hover:text-green-700 focus:text-green-700 active:"
           >
             Reserve Bank Zimbabwe
           </Link>{" "}
           <Link
-            href={"https://www.czi.co.zw/"}
+            href={"https://czi.co.zw/"}
+            target="_blank"
             className="hover:text-green-700 focus:text-green-700 active:"
           >
             Confederation of Zimbabwe Industries
           </Link>{" "}
           <Link
             href={"https://tradezimbabwe.com/"}
+            target="_blank"
             className="hover:text-green-700 focus:text-green-700 active:"
           >
             Zim Trade
           </Link>{" "}
           <Link
-            href={"https://www.zncc.co.zw/"}
+            href={"https://zncc.co.zw/"}
+            target="_blank"
             className="hover:text-green-700 focus:text-green-700 active:"
           >
             Zimbabwe National Chamber of Commerce
           </Link>
           <Link
-            href={"https://www.nangozim.org/"}
+            href={"https://nangozim.org/"}
+            target="_blank"
             className="hover:text-green-700 focus:text-green-700 active:"
           >
             National Association of NGOs (NANGO)
