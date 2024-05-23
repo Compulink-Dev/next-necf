@@ -7,7 +7,7 @@ export default function TaskForces() {
   return (
     <div className="col-span-1 gap-10">
       {taskforces.map((tf) => (
-        <div className="border border-green-600 shadow-lg rounded">
+        <div key={tf.id} className="border border-green-600 shadow-lg rounded">
           <Image
             src={tf.imageUrl}
             alt=""

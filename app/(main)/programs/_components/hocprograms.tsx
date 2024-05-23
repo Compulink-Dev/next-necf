@@ -7,7 +7,7 @@ export default function HocPrograms() {
   return (
     <div className="col-span-1 gap-10">
       {hocprograms.map((hp) => (
-        <div className="border border-green-600 shadow-lg rounded">
+        <div key={hp.id} className="border border-green-600 shadow-lg rounded">
           <Image
             src={hp.imageUrl}
             alt=""
