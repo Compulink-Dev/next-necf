@@ -1,9 +1,6 @@
 import React from 'react'
 import Sidebar from './_components/Sidebar'
 import Navbar from './_components/Navbar'
-import { getServerSession } from "next-auth"
-import { redirect } from "next/navigation"
-import { options } from '@/app/api/auth/[...nextauth]/options'
 
 
 
