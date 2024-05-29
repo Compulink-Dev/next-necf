@@ -158,7 +158,7 @@ export const Team = [
   {
     id: 11,
     name: "Ms. R. Njerere",
-    imageUrl: "njerere.jpg",
+    imageUrl: "/njerere.jpg",
     title: "Accounting Assistant",
     desc: "",
     fbLink: "",
@@ -178,7 +178,7 @@ export const Team = [
   {
     id: 13,
     name: "Mr. M. Mudavanhu",
-    imageUrl: "mudavanhu.jpg",
+    imageUrl: "/mudavanhu.jpg",
     title: "Driver",
     desc: "",
     fbLink: "",

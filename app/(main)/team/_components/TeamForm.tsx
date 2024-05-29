@@ -14,52 +14,51 @@ function TeamForm() {
             NECF TEAM
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-            Welcome to our virtual oasis! Explore our curated collection of content and discover serenity and inspiration.
+            Welcome to our virtual oasis! Explore our curated collection of
+            content and discover serenity and inspiration.
           </p>
         </div>
         <div className="">
-          <h1 className="mb-16 pl-2 text-2xl font-bold">NECF National Co-Chairpersons </h1>
+          <h1 className="mb-16 pl-2 text-2xl font-bold">
+            NECF National Co-Chairpersons{" "}
+          </h1>
           <div className="flex flex-wrap -m-4 items-center justify-center mx-auto gap-10">
-            {
-              Chairperson.map((person) => (
-                <TeamCard
-                  key={person.id}
-                  name={person.name}
-                  title={person.title}
-                  imageUrl={person.imageUrl}
-                />
-              ))
-            }
+            {Chairperson.map((person) => (
+              <TeamCard
+                key={person.id}
+                name={person.name}
+                title={person.title}
+                imageUrl={person.imageUrl}
+              />
+            ))}
           </div>
         </div>
         <div className="">
-          <h1 className="my-16 pl-2 text-2xl font-bold">NECF Steering Committee Co-Chairpersons</h1>
+          <h1 className="my-16 pl-2 text-2xl font-bold">
+            NECF Steering Committee Co-Chairpersons
+          </h1>
           <div className="flex flex-wrap -m-4 items-center justify-center mx-auto gap-10">
-            {
-              Committee.map((person) => (
-                <TeamCard
-                  key={person.id}
-                  name={person.name}
-                  title={person.title}
-                  imageUrl={person.imageUrl}
-                />
-              ))
-            }
+            {Committee.map((person) => (
+              <TeamCard
+                key={person.id}
+                name={person.name}
+                title={person.title}
+                imageUrl={person.imageUrl}
+              />
+            ))}
           </div>
         </div>
         <div className="">
           <h1 className="my-16 pl-2 text-2xl font-bold">NECF SECRETARIAT</h1>
           <div className="flex flex-wrap -m-4 items-center justify-center mx-auto gap-10">
-            {
-              Team.map((person) => (
-                <TeamCard
-                  key={person.id}
-                  name={person.name}
-                  title={person.title}
-                  imageUrl={person.imageUrl}
-                />
-              ))
-            }
+            {Team.map((person) => (
+              <TeamCard
+                key={person.id}
+                name={person.name}
+                title={person.title}
+                imageUrl={person.imageUrl}
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
+import TaskForces from "./taskforces";
+import { taskforces } from "@/constants/taskforces";
+import { hocprograms } from "@/constants/hocprograms";
+import HocPrograms from "./hocprograms";
 
 interface ProgramProps {
-  title: string,
-  desc: string,
-  imageUrl: string
+  title: string;
+  desc: string;
+  imageUrl: string;
 }
-
 
 const ProgramCard = ({ title, desc, imageUrl }: ProgramProps) => {
   return (
@@ -21,21 +24,16 @@ const ProgramCard = ({ title, desc, imageUrl }: ProgramProps) => {
           className="w-[100%]  h-80 mx-auto object-cover"
         />
         <div className="m-6">
-          <h1 className="text-xl font-semibold text-green-600">
-            {title}
-          </h1>
-          <p className="text-sm">
-            {desc}
-          </p>
+          <h1 className="text-xl font-semibold text-green-600">{title}</h1>
+          <p className="text-sm">{desc}</p>
           <Button className="bg-green-600 w-full  text-white text-sm uppercase my-4 p-2 hover:bg-green-700">
             Register
           </Button>
         </div>
       </div>
     </div>
-  )
-}
-
+  );
+};
 
 function Programme() {
   return (
@@ -55,7 +53,9 @@ function Programme() {
                 INTERNATIONAL BUSINESS CONFERENCE (IBC)
               </h1>
               <p className="text-sm">
-                {' The NECF hosts the International Business Conference in partnership with the Zimbabwe International Trade Fair Company (ZITF) on a Wednesday of the Trade Fair Week. The Conference is held at the end of the year’s first quarter and has become Zimbabwe’s largest business forum for both public and private sector decision makers. The high-level conference brings together policy makers, both local and international captains of industry and commerce, indigenous entrepreneurs, academics and business leaders who have a vested interest in positively contributing to the economic discourse and development of the country."'}
+                {
+                  ' The NECF hosts the International Business Conference in partnership with the Zimbabwe International Trade Fair Company (ZITF) on a Wednesday of the Trade Fair Week. The Conference is held at the end of the year’s first quarter and has become Zimbabwe’s largest business forum for both public and private sector decision makers. The high-level conference brings together policy makers, both local and international captains of industry and commerce, indigenous entrepreneurs, academics and business leaders who have a vested interest in positively contributing to the economic discourse and development of the country."'
+                }
               </p>
               <Button className="bg-green-600 hover:bg-green-700 text-white uppercase my-4 p-2 w-full">
                 Register
@@ -100,15 +100,38 @@ function Programme() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 mt-8 md:mt-40 gap-6 mx-4">
-        <ProgramCard
-          title="INTERNATIONAL BUSINESS CONFERENCE (IBC)"
-          desc="The NECF hosts the International Business Conference in partnership with the Zimbabwe International Trade Fair Company (ZITF) on a Wednesday of the Trade Fair Week. The Conference is held at the end of the year’s first quarter and has become Zimbabwe’s largest business forum for both public and private sector decision makers. The high-level conference brings together policy makers, both local and international captains of industry and commerce, indigenous entrepreneurs, academics and business leaders who have a vested interest in positively contributing to the economic discourse and development of the country."
-          imageUrl="/necf3.jpg"
-        />
-        <ProgramCard
-          title="THE INFRASTRUCTURE SUMMIT AND EXPO (ISE)"
-          desc=" The Annual Infrastructure Summit and Expo is a high-level
+
+      <div className="flex flex-col items-center justify-center">
+        <div className="my-10 flex flex-col items-center justify-center">
+          <h1 className="mt-28  text-2xl font-semibold text-center text-green-600 uppercase">
+            Task Forces
+          </h1>
+          {taskforces.length ? (
+            <TaskForces />
+          ) : (
+            <Image
+              src={"/loading.gif"}
+              alt="loading..."
+              height={100}
+              width={100}
+              className=" py-10"
+            />
+          )}
+        </div>
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="  -mb-28 text-2xl font-semibold text-green-600 uppercase">
+            Annual Programs
+          </h1>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 mt-8 md:mt-40 gap-6 mx-4">
+            <ProgramCard
+              title="INTERNATIONAL BUSINESS CONFERENCE (IBC)"
+              desc="The NECF hosts the International Business Conference in partnership with the Zimbabwe International Trade Fair Company (ZITF) on a Wednesday of the Trade Fair Week. The Conference is held at the end of the year’s first quarter and has become Zimbabwe’s largest business forum for both public and private sector decision makers. The high-level conference brings together policy makers, both local and international captains of industry and commerce, indigenous entrepreneurs, academics and business leaders who have a vested interest in positively contributing to the economic discourse and development of the country."
+              imageUrl="/necf3.jpg"
+            />
+            <ProgramCard
+              title="THE INFRASTRUCTURE SUMMIT AND EXPO (ISE)"
+              desc=" The Annual Infrastructure Summit and Expo is a high-level
         dialogue platform that seek ways of putting into practice known
         and novel ways of dealing with the country’s enduring
         infrastructure bottlenecks as a means to catapult the nation
@@ -116,13 +139,32 @@ function Programme() {
         The first edition was held on 8-9 September 2022 at the Elephant
         Hills Resort, Victoria Falls. The next instalment is scheduled
         to be held during the second quarter of 2024"
-          imageUrl="/necf3.jpg"
-        />
-        <ProgramCard
-          title="ANNUAL NATIONAL AGRI-BUSINESS CONFERENCE (ANAC)"
-          desc="In partnership with the Zimbabwe Agricultural Society (ZAS)the NECF holds the ANAC at the Zimbabwe Agricultural Show Grounds every Wednesday of the show week in August of every year. The conference is a dialogue platform and a business networking environment that gives economic players an opportunity to discuss pertinent agribusiness issues."
-          imageUrl="/anac.jpg"
-        />
+              imageUrl="/necf3.jpg"
+            />
+            <ProgramCard
+              title="ANNUAL NATIONAL AGRI-BUSINESS CONFERENCE (ANAC)"
+              desc="In partnership with the Zimbabwe Agricultural Society (ZAS)the NECF holds the ANAC at the Zimbabwe Agricultural Show Grounds every Wednesday of the show week in August of every year. The conference is a dialogue platform and a business networking environment that gives economic players an opportunity to discuss pertinent agribusiness issues."
+              imageUrl="/anac.jpg"
+            />
+          </div>
+        </div>
+        <div className="my-10 flex flex-col items-center justify-center">
+          <h1 className="text-2xl text-center font-semibold text-green-600 uppercase">
+            Ad hoc Programs
+          </h1>
+
+          {hocprograms.length ? (
+            <HocPrograms />
+          ) : (
+            <Image
+              src={"/loading.gif"}
+              alt="loading..."
+              height={100}
+              width={100}
+              className=" py-10"
+            />
+          )}
+        </div>
       </div>
     </>
   );
