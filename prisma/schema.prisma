@@ -20,3 +20,66 @@ model Contact {
   contact String
   image   String
 }
+
+model Team {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  position String
+  link     String
+  image    String
+}
+
+model Core {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  position String
+  link     String
+  image    String
+}
+
+model Chair {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  position String
+  link     String
+  image    String
+}
+
+model Download {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  date  String
+  doc   String
+  image String
+}
+
+model Report {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  date  String
+  doc   String
+  image String
+}
+
+model MainEvent {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  desc  String
+  slug  String
+  image String
+}
+
+model Event {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  desc  String
+  slug  String
+  image String
+}
+
+model Vacancy {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  jobType String
+  dueDate String
+}
