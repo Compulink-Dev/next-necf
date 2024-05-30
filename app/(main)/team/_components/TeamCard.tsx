@@ -7,42 +7,39 @@ import Link from "next/link";
 import Image from "next/image";
 
 interface TeamCardProps {
-  name: string;
-  imageUrl?: string;
+  position: string;
+  image?: string;
   title: string;
   desc?: string;
-  fbLink?: string;
+  link?: string;
   twitterLink?: string;
   gmail?: string;
 }
 
 function TeamCard({
-  name,
-  imageUrl,
+  position,
+  image,
   title,
-  desc,
-  fbLink,
-  twitterLink,
-  gmail,
+  link
 }: TeamCardProps) {
   return (
     <div className="w-72 h-96 border border-green-800 flex flex-col rounded">
-      <div className="flex-1">
-        {imageUrl && imageUrl.trim().length > 0 ? (
+      <div className="flex-1 h-60 w-full flex items-center justify-center ">
+        {image && image.trim().length > 0 ? (
           <Image
-            src={imageUrl}
+            src={image}
             alt="logo"
-            width={100}
-            height={100}
-            className="w-60 h-60 rounded-full mx-auto object-cover"
+            width={80}
+            height={80}
+            className="w-40 h-40 mx-auto object-cover rounded-3xl"
           />
         ) : (
           <MdPerson size={250} color="green" className="mx-auto" />
         )}
       </div>
       <div className="flex-1 flex flex-col items-center justify-center gap-1 w-full h-[35%] bg-green-800 object-cover">
-        <p className="text-white font-semibold text-lg ">{name}</p>
-        <p className="text-gray-300 text-sm">{title}</p>
+        <p className="text-white font-semibold text-lg ">{title}</p>
+        <p className="text-gray-300 text-sm">{position}</p>
         <div className="flex items-center justify-center gap-12 mx-auto">
           <Link href={"/"}>
             <FaFacebook size={18} color="white" />
