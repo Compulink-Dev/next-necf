@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 
 
 
-async function DeleteButton({ id, link }: any) {
+function DeleteButton({ id, link }: any) {
 
     const router = useRouter()
 
