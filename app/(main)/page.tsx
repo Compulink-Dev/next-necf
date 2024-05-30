@@ -9,8 +9,10 @@ import Subscribe from "@/components/subscribe";
 import Event from "./_components/event";
 import AboutImage from "./_components/aboutImage";
 
+
 function Home() {
   return (
+
     <MainLayout>
       <HeroSection />
       <AboutImage />
@@ -19,6 +21,7 @@ function Home() {
       <Testimonials />
       <Subscribe />
     </MainLayout>
+
   );
 }
 
