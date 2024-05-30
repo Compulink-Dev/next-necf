@@ -2,10 +2,14 @@ import React from "react";
 import { MdPerson } from "react-icons/md";
 import TeamCard from "./TeamCard";
 import { Chairperson, Committee, Team } from "@/constant/data";
+import getTeams from "@/lib/team/getTeams";
 
 console.log(Team);
 
-function TeamForm() {
+async function TeamForm() {
+
+  const teams = await getTeams()
+
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
@@ -26,9 +30,9 @@ function TeamForm() {
             {Chairperson.map((person) => (
               <TeamCard
                 key={person.id}
-                name={person.name}
                 title={person.title}
-                imageUrl={person.imageUrl}
+                position={person.position}
+                image={person.image}
               />
             ))}
           </div>
@@ -41,9 +45,9 @@ function TeamForm() {
             {Committee.map((person) => (
               <TeamCard
                 key={person.id}
-                name={person.name}
                 title={person.title}
-                imageUrl={person.imageUrl}
+                position={person.position}
+                image={person.image}
               />
             ))}
           </div>
@@ -51,12 +55,12 @@ function TeamForm() {
         <div className="">
           <h1 className="my-16 pl-2 text-2xl font-bold">NECF SECRETARIAT</h1>
           <div className="flex flex-wrap -m-4 items-center justify-center mx-auto gap-10">
-            {Team.map((person) => (
+            {Team.map((person: any) => (
               <TeamCard
                 key={person.id}
-                name={person.name}
                 title={person.title}
-                imageUrl={person.imageUrl}
+                position={person.position}
+                image={person.image}
               />
             ))}
           </div>

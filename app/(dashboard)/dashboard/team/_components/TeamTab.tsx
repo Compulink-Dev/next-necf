@@ -21,10 +21,16 @@ import { Textarea } from "@/components/ui/textarea"
 import Upload from "@/components/upload"
 import ChairsList from "./ChairsList"
 import getChairs from "@/lib/team/getChairs"
+import getCores from "@/lib/team/getCores"
+import getTeams from "@/lib/team/getTeams"
+import CoreList from "./CoreList"
+import TeamList from "./TeamList"
 
 export async function TeamTab() {
 
     const chairs = await getChairs()
+    const cores = await getCores()
+    const teams = await getTeams()
 
     return (
         <Tabs defaultValue="account" className="w-full">
@@ -51,9 +57,6 @@ export async function TeamTab() {
                             <Input id="subtitle" />
                         </div>
                     </CardContent>
-                    <CardFooter>
-                        <Button className="bg-green-600 hover:bg-green-500">Save changes</Button>
-                    </CardFooter>
                 </Card>
             </TabsContent>
             <TabsContent value="chairperson">
@@ -69,9 +72,6 @@ export async function TeamTab() {
                         </div>
                         <ChairsList chairs={chairs} />
                     </CardContent>
-                    <CardFooter>
-                        <Button className="bg-green-600 hover:bg-green-500">Save password</Button>
-                    </CardFooter>
                 </Card>
             </TabsContent>
             <TabsContent value="steering">
@@ -82,23 +82,11 @@ export async function TeamTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                        <Upload />
-                        <div className="space-y-1">
-                            <Label htmlFor="title">Title</Label>
-                            <Input id="title" />
+                        <div className="pb-4 flex justify-end">
+                            <CreateButton />
                         </div>
-                        <div className="space-y-1">
-                            <Label htmlFor="position">Position</Label>
-                            <Input id="position" />
-                        </div>
-                        <div className="space-y-1">
-                            <Label htmlFor="link1">Facebook Link</Label>
-                            <Input id="link1" />
-                        </div>
+                        <CoreList cores={cores} />
                     </CardContent>
-                    <CardFooter>
-                        <Button className="bg-green-600 hover:bg-green-500">Save password</Button>
-                    </CardFooter>
                 </Card>
             </TabsContent>
             <TabsContent value="secretary">
@@ -109,23 +97,11 @@ export async function TeamTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                        <Upload />
-                        <div className="space-y-1">
-                            <Label htmlFor="title">Title</Label>
-                            <Input id="title" />
+                        <div className="pb-4 flex justify-end">
+                            <CreateButton />
                         </div>
-                        <div className="space-y-1">
-                            <Label htmlFor="position">Position</Label>
-                            <Input id="position" />
-                        </div>
-                        <div className="space-y-1">
-                            <Label htmlFor="link1">Facebook Link</Label>
-                            <Input id="link1" />
-                        </div>
+                        <TeamList teams={teams} />
                     </CardContent>
-                    <CardFooter>
-                        <Button className="bg-green-600 hover:bg-green-500">Save password</Button>
-                    </CardFooter>
                 </Card>
             </TabsContent>
         </Tabs>
