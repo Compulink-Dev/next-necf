@@ -54,7 +54,7 @@ function VacancyForm() {
         let dueDate = values.dueDate
 
         try {
-            const res = await fetch("/api/vacancy", {
+            const res = await fetch("/api/vacancies", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"
