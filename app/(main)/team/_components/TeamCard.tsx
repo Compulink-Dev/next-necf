@@ -40,6 +40,7 @@ function TeamCard({
       <div className="flex-1 flex flex-col items-center justify-center gap-1 w-full h-[35%] bg-green-800 object-cover">
         <p className="text-white font-semibold text-lg ">{title}</p>
         <p className="text-gray-300 text-sm">{position}</p>
+        <p className="">{link}</p>
         <div className="flex items-center justify-center gap-12 mx-auto">
           <Link href={"/"}>
             <FaFacebook size={18} color="white" />

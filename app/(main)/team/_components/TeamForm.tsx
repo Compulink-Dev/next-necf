@@ -1,14 +1,12 @@
 import React from "react";
-import { MdPerson } from "react-icons/md";
 import TeamCard from "./TeamCard";
 import { Chairperson, Committee, Team } from "@/constant/data";
-import getTeams from "@/lib/team/getTeams";
 
 console.log(Team);
 
-async function TeamForm() {
+function TeamForm() {
 
-  const teams = await getTeams()
+
 
   return (
     <section className="text-gray-600 body-font">
