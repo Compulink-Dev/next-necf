@@ -48,7 +48,7 @@ function Footer() {
             target="_blank"
             className="hover:text-green-700 focus:text-green-700 active:"
           >
-            Ministry of Finance and Investment Promotion
+            Ministry of Finance, Economic Development and Investiment Promotion
           </Link>
           <Link
             href={"https://mic.gov.zw/"}
