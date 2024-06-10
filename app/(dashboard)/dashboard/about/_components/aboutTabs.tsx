@@ -16,6 +16,10 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs"
 import Upload from "@/components/upload"
+import TopList from "./topList"
+import AboutList from "./aboutList"
+import SecondList from "./secondList"
+import GalleryList from "./galleryList"
 
 export function AboutTab() {
     return (
@@ -35,13 +39,11 @@ export function AboutTab() {
                     </CardHeader>
                     <CardContent className="space-y-2">
                         <div className="space-y-1">
-                            <Label htmlFor="title">Title</Label>
-                            <Input id="title" className="outline-green-600" />
+                            {/* <Label htmlFor="title">Title</Label>
+                            <Input id="title" className="outline-green-600" /> */}
+                            <TopList />
                         </div>
                     </CardContent>
-                    <CardFooter>
-                        <Button className="bg-green-600 hover:bg-green-500">Save changes</Button>
-                    </CardFooter>
                 </Card>
             </TabsContent>
             <TabsContent value="main">
@@ -52,15 +54,8 @@ export function AboutTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                        <Upload />
-                        <div className="space-y-1">
-                            <Label htmlFor="title">Title</Label>
-                            <Input id="title" className="outline-green-600" />
-                        </div>
+                        <SecondList />
                     </CardContent>
-                    <CardFooter>
-                        <Button className="bg-green-600 hover:bg-green-500">Save password</Button>
-                    </CardFooter>
                 </Card>
             </TabsContent>
             <TabsContent value="about">
@@ -71,15 +66,8 @@ export function AboutTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                        <Upload />
-                        <div className="space-y-1">
-                            <Label htmlFor="title">Title</Label>
-                            <Input id="title" className="outline-green-600" />
-                        </div>
+                        <AboutList />
                     </CardContent>
-                    <CardFooter>
-                        <Button className="bg-green-600 hover:bg-green-500">Save changes</Button>
-                    </CardFooter>
                 </Card>
             </TabsContent>
             <TabsContent value="gallery">
@@ -90,11 +78,8 @@ export function AboutTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                        <Upload />
+                        <GalleryList />
                     </CardContent>
-                    <CardFooter>
-                        <Button className="bg-green-600 hover:bg-green-500">Save changes</Button>
-                    </CardFooter>
                 </Card>
             </TabsContent>
         </Tabs>

@@ -1,88 +1,72 @@
-import db from "@/lib/db";
-import { NextResponse } from "next/server";
+import { connectToDB } from "@/lib/connectToDB";
+import Team from "@/models/teams/team";
+import { NextRequest, NextResponse } from "next/server";
 
 //@ts-ignore
-export async function GET(request, { params: { id } }) {
+export async function GET(request, { params }) {
+    await connectToDB()
     try {
-        const team = await db.team.findUnique({
-            where: { id },
-        });
+        const team = await Team.findById(params.id)
+
         if (!team) {
             return NextResponse.json(
                 {
-                    message: "Team NOT FOUND",
+                    message: "Team not found"
                 },
-                {
-                    status: 404,
-                }
-            );
+                { status: 400 }
+            )
         }
-        return NextResponse.json(team);
+
+        return NextResponse.json(team)
+
     } catch (error) {
-        console.log("Failed to fetch Contact", error);
-        return NextResponse.json(
-            {
-                message: "Failed to fetch contact",
-            },
-            {
-                status: 500,
-            }
-        );
+        return NextResponse.json({ message: "Team error" }, { status: 400 })
     }
 }
 
 
 //@ts-ignore
-export async function PATCH(request, { params: { id } }) {
+export async function PUT(request, { params }) {
+    const body = await request.json()
+    await connectToDB()
     try {
-        const { title, position, link, image } = await request.json()
-        const data = { title, position, link, image }
+        const teamUpdated = await Team.findByIdAndUpdate(params.id, body)
 
-        const updatedTeam = await db.team.update({
-            where: { id },
-            data
-        });
-        if (!updatedTeam) {
+        if (!teamUpdated) {
             return NextResponse.json(
                 {
-                    message: "Contact NOT FOUND",
+                    message: "Team not found"
                 },
-                {
-                    status: 404,
-                }
-            );
+                { status: 404 }
+            )
         }
-        return NextResponse.json(updatedTeam);
+
+        return NextResponse.json(teamUpdated)
+
     } catch (error) {
-        console.log("Failed to update Team", error);
-        return NextResponse.json(
-            {
-                message: "Failed to update team",
-            },
-            {
-                status: 500,
-            }
-        );
+        return NextResponse.json({ message: "Team error" }, { status: 400 })
     }
 }
+
 
 //@ts-ignore
-export async function DELETE(request: Request, { params: { id } }) {
+export async function DELETE(request, { params }) {
+    await connectToDB()
     try {
+        const team = await Team.findByIdAndDelete(params.id)
 
-        await db.team.delete({
-            where: { id }
-        })
-        return NextResponse.json({
-            message: "Team deleted successfully"
-        })
+        if (!team) {
+            return NextResponse.json(
+                {
+                    message: "Team not found"
+                },
+                { status: 400 }
+            )
+        }
+
+        return NextResponse.json(team)
+
     } catch (error) {
-        console.log('Error while deleting', error);
-        return NextResponse.json({
-            message: "Failed to delete member",
-        }, {
-            status: 500
-        })
+        return NextResponse.json({ message: "Team error" }, { status: 400 })
     }
 }
-

@@ -14,7 +14,7 @@ function DeleteButton({ id, link }: any) {
     async function handleDelete() {
         const confirmed = confirm("Are yo sure, you want to delete")
         if (confirmed) {
-            const res = await fetch(`${process.env.API_ROUTE}/api/${link}s/${id}`, {
+            const res = await fetch(`${process.env.API_ROUTE}/api/${link}/${id}`, {
                 method: 'DELETE'
             });
             if (res.ok) {

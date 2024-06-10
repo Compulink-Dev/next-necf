@@ -17,6 +17,8 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs"
 import Upload from "@/components/upload"
+import { ReportTab } from "./reportTabs"
+import DownloadList from "./downloadList"
 
 export function DownloadTab() {
     return (
@@ -33,20 +35,8 @@ export function DownloadTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                        <Upload />
-                        <div className="grid w-full max-w-sm items-center gap-1.5">
-                            <Label htmlFor="picture">Upload Document</Label>
-                            <Input id="picture" type="file" />
-                        </div>
-                        <div className="space-y-1">
-                            <Label htmlFor="title">Title</Label>
-                            <Input id="title" />
-                        </div>
-                        <DatePicker />
+                        <DownloadList />
                     </CardContent>
-                    <CardFooter>
-                        <Button className="bg-green-600 hover:bg-green-500">Save changes</Button>
-                    </CardFooter>
                 </Card>
             </TabsContent>
             <TabsContent value="report">
@@ -57,20 +47,8 @@ export function DownloadTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                        <Upload />
-                        <div className="grid w-full max-w-sm items-center gap-1.5">
-                            <Label htmlFor="picture">Upload Document</Label>
-                            <Input id="picture" type="file" />
-                        </div>
-                        <div className="space-y-1">
-                            <Label htmlFor="title">Title</Label>
-                            <Input id="title" />
-                        </div>
-                        <DatePicker />
+                        <ReportTab />
                     </CardContent>
-                    <CardFooter>
-                        <Button className="bg-green-600 hover:bg-green-500">Save password</Button>
-                    </CardFooter>
                 </Card>
             </TabsContent>
         </Tabs>

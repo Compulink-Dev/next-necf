@@ -1,31 +1,72 @@
-export const dynamic = "force-dynamic"
+import { connectToDB } from "@/lib/connectToDB";
+import Vacancy from "@/models/vacancy";
+import { NextRequest, NextResponse } from "next/server";
 
-import { connectToDB } from "@/lib/connectToDB"
-import Vacancy from "@/models/vacancy"
-
-import { NextRequest, NextResponse } from "next/server"
-
-
-
-
-export async function GET(req: NextRequest) {
-    const id = req.nextUrl.searchParams.get("id")
+//@ts-ignore
+export async function GET(request, { params }) {
     await connectToDB()
-    const vacancy = await Vacancy.findById(id)
-    return NextResponse.json({ vacancy })
+    try {
+        const vacancy = await Vacancy.findById(params.id)
+
+        if (!vacancy) {
+            return NextResponse.json(
+                {
+                    message: "Vacant not found"
+                },
+                { status: 400 }
+            )
+        }
+
+        return NextResponse.json(vacancy)
+
+    } catch (error) {
+        return NextResponse.json({ message: "Vacancy error" }, { status: 400 })
+    }
 }
 
-export async function PATCH(req: NextRequest) {
-    const id = req.nextUrl.searchParams.get("id")
+
+//@ts-ignore
+export async function PUT(request, { params }) {
+    const body = await request.json()
     await connectToDB()
-    const vacancy = await Vacancy.findByIdAndUpdate(id)
-    return NextResponse.json({ vacancy })
+    try {
+        const vacancyUpdated = await Vacancy.findByIdAndUpdate(params.id, body)
+
+        if (!vacancyUpdated) {
+            return NextResponse.json(
+                {
+                    message: "Vacant not found"
+                },
+                { status: 404 }
+            )
+        }
+
+        return NextResponse.json(vacancyUpdated)
+
+    } catch (error) {
+        return NextResponse.json({ message: "Vacancy error" }, { status: 400 })
+    }
 }
 
 
-export async function DELETE(req: NextRequest) {
-    const id = req.nextUrl.searchParams.get("id")
+//@ts-ignore
+export async function DELETE(request, { params }) {
     await connectToDB()
-    await Vacancy.findByIdAndDelete(id)
-    return NextResponse.json({ message: "Vacancy Deleted" }, { status: 201 })
+    try {
+        const vacancy = await Vacancy.findByIdAndDelete(params.id)
+
+        if (!vacancy) {
+            return NextResponse.json(
+                {
+                    message: "Vacant not found"
+                },
+                { status: 400 }
+            )
+        }
+
+        return NextResponse.json(vacancy)
+
+    } catch (error) {
+        return NextResponse.json({ message: "Vacancy error" }, { status: 400 })
+    }
 }

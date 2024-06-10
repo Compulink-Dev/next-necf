@@ -1,9 +1,18 @@
 import React from 'react'
 import ChairsCard from './ChairsCard'
+import { connectToDB } from '@/lib/connectToDB'
+import Chairs from '@/models/chairs'
 
-function ChairsList({ chairs }: any) {
+export async function loadChairs() {
+    await connectToDB()
+    const chairs = await Chairs.find()
+    return chairs
+}
+
+async function ChairsList() {
+    const chairs = await loadChairs()
     return (
-        <div>
+        <div className='flex flex-col gap-4'>
             {chairs.map((chair: any) => (
                 <ChairsCard
                     id={chair.id}

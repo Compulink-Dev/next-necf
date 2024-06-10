@@ -37,7 +37,7 @@ function AddCore() {
 
             const teamData = { ...data, image: imageUrl }
 
-            const response = await fetch("/api/teams/cores", {
+            const response = await fetch("/api/cores", {
                 method: "POST",
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify(teamData)

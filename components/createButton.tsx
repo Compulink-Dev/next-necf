@@ -9,7 +9,7 @@ function CreateButton({ link }: any) {
                 href={`/dashboard/${link}/add`}
                 className='flex gap-2 items-center border rounded p-2'>
                 <MdAdd />
-                Create Contact
+                Create {link}
             </Link>
         </div>
     )

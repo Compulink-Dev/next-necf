@@ -1,43 +1,31 @@
+import { connectToDB } from "@/lib/connectToDB";
 import db from "@/lib/db";
-import { NextResponse } from "next/server";
+import Team from "@/models/teams/team";
+import Vacancy from "@/models/vacancy";
+import { NextRequest, NextResponse } from "next/server";
 
 
 export async function GET() {
-    try {
-        const teams = await db.team.findMany()
+    await connectToDB()
+    const teams = await Team.find()
+    return NextResponse.json({ teams })
+}
 
-        return NextResponse.json(teams, {
-            status: 201
-        })
+
+export async function POST(req: NextRequest) {
+    try {
+        const body = await req.json()
+        const newVacancy = new Team(body)
+        const savedVacancy = await newVacancy.save()
+        return NextResponse.json(savedVacancy)
     } catch (error) {
-        console.log('Error while fetching', error);
-        return NextResponse.json({
-            message: "Failed to fetch member",
-        }, {
-            status: 500
-        })
+        return NextResponse.json({ message: "Failed to post team" }, { status: 400 })
     }
 }
 
-export async function POST(request: Request) {
-    try {
-        const { title, position, link, image } = await request.json()
-        const data = { title, position, link, image }
-
-        const teamData = await db.team.create({ data })
-
-        console.log(teamData);
-
-        return NextResponse.json(teamData, {
-            status: 201
-        })
-
-    } catch (error) {
-        console.log('Error while creating', error);
-        return NextResponse.json({
-            message: "Failed to create member",
-        }, {
-            status: 500
-        })
-    }
+export async function DELETE(req: NextRequest) {
+    const id = req.nextUrl.searchParams.get("id")
+    await connectToDB()
+    await Team.findByIdAndDelete(id)
+    return NextResponse.json({ message: "Team Deleted" }, { status: 201 })
 }
