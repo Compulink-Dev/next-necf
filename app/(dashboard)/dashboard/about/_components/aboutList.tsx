@@ -92,7 +92,9 @@ async function AboutList() {
             {
                 abouts.map((about: any) => {
                     return (
-                        <TopCard about={about} />
+                        <TopCard
+                            key={about.id}
+                            about={about} />
                     )
                 })
             }

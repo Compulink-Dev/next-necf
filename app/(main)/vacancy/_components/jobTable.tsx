@@ -64,7 +64,7 @@ export default async function JobTable() {
                 {vacancy.name}
               </TableCell>
               <TableCell align="right">{vacancy.jobType}</TableCell>
-              <TableCell align="right">{vacancy.salary}</TableCell>
+              <TableCell align="right">{vacancy.dueDate}</TableCell>
               <TableCell>
                 <JobModal />
               </TableCell>

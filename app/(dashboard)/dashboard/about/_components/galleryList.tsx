@@ -46,7 +46,9 @@ async function GalleryList() {
             {
                 abouts.map((about: any) => {
                     return (
-                        <TopCard about={about} />
+                        <TopCard
+                            key={about.id}
+                            about={about} />
                     )
                 })
             }

@@ -1,35 +1,19 @@
-<<<<<<< HEAD
-import React from 'react'
-import CreateButton from '@/components/createButton'
-import VacancyList from './_components/vacancyList';
-
-
-
-async function Vacancy() {
-    return (
-        <div className='p-4'>
-            <div className="pb-4 flex justify-end">
-                <CreateButton link={'vacancy'} />
-            </div>
-            <div>
-                <VacancyList />
-            </div>
-        </div>
-    )
-=======
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import React, { useEffect } from "react";
-import VacancyForm from "./_components/vacancyForm";
-import AddVacancy from "./_components/formVacancy";
-import BackButton from "@/components/backButton";
-import VacancyList from "./_components/vacancyList";
-import getVacancies from "@/lib/vacancy/getVacancies";
 import CreateButton from "@/components/createButton";
+import getVacancies from "@/lib/vacancy/getVacancies";
+import React, { useEffect } from "react";
 import VacanciesCard from "./_components/vacanciesCard";
+import { connectToDB } from "@/lib/connectToDB";
+import Vacancy from "@/models/vacancy";
 
-async function Vacancy() {
-  const vacancies = await getVacancies();
+
+export async function loadVacancy() {
+  await connectToDB()
+  const vacancies = await Vacancy.find()
+  return vacancies
+}
+
+async function VacancyPage() {
+  const vacancies = await loadVacancy();
   console.log(vacancies);
 
   return (
@@ -37,8 +21,8 @@ async function Vacancy() {
       <div className="pb-4 flex justify-end">
         <CreateButton />
       </div>
-      <div>
-        {vacancies?.map((vacancy: any) => (
+      <div className={'flex flex-col gap-4'}>
+        {vacancies.map((vacancy: any) => (
           <VacanciesCard
             key={vacancy._id}
             link={vacancy._id}
@@ -50,7 +34,6 @@ async function Vacancy() {
       </div>
     </div>
   );
->>>>>>> refs/remotes/origin/main
 }
 
-export default Vacancy;
+export default VacancyPage;
