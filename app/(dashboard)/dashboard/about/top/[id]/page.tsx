@@ -1,3 +1,3 @@
-import NewAboutTop from "./newAboutTop";
+import NewAboutTop from "./NewAboutTop";
 
 export default NewAboutTop

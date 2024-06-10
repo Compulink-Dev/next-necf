@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import BackButton from "@/components/backButton";
 
-const newAboutGallery = () => {
+const NewAboutGallery = () => {
     const [newVacant, setNewVacant] = useState({
         title: "",
         title2: "",
@@ -148,4 +148,4 @@ const newAboutGallery = () => {
     );
 };
 
-export default newAboutGallery;
+export default NewAboutGallery;

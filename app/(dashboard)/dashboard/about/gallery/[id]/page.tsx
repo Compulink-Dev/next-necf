@@ -1,3 +1,3 @@
-import newAboutGallery from "./newAboutGallery";
+import NewAboutGallery from "./NewAboutGallery";
 
-export default newAboutGallery
+export default NewAboutGallery
