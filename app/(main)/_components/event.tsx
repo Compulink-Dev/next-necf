@@ -29,7 +29,7 @@ const EventCard = ({ imageUrl, title, date, link }: EventProps) => {
           {title}
         </Link>
 
-        <Button name={"Register"} link={link} />
+        <Button name={"Register"} />
         <span className="text-sm text-gray-500 dark:text-gray-300">
           {date}
         </span>
