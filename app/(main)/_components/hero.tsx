@@ -1,8 +1,9 @@
 "use client";
-import Button from "@/components/button";
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 function HeroSection() {
   return (
@@ -54,7 +55,9 @@ function HeroSection() {
           </p>
           <div className="flex justify-center">
             {/* button */}
-            <Button name={"Contact"} link={""} />
+            <Link href={'/contact'}>
+              <Button className="bg-green-600 hover:bg-green-500">Contact Us</Button>
+            </Link>
           </div>
         </motion.div>
       </div>

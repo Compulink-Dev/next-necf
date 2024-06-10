@@ -37,7 +37,7 @@ function AddChair() {
 
             const teamData = { ...data, image: imageUrl }
 
-            const response = await fetch("/api/teams/chairs", {
+            const response = await fetch("/api/chairs", {
                 method: "POST",
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify(teamData)

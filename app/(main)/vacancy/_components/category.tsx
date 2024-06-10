@@ -17,7 +17,7 @@ const CategoryCard = ({ children, text }: CategoryProps) => {
             <div className="text-7xl text-green-800">
                 {children}
             </div>
-            <p className="text-lg font-semibold text-green-800">{text}</p>
+            <p className="text-sm font-semibold text-green-800">{text}</p>
         </div>
     )
 }

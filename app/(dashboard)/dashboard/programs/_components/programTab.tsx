@@ -18,6 +18,11 @@ import {
 } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 import Upload from "@/components/upload"
+import { ProgramsTab } from "./programsTabs"
+import ProgramCard from "./programCard"
+
+
+
 
 export function ProgramTab() {
     return (
@@ -30,31 +35,21 @@ export function ProgramTab() {
             <TabsContent value="program">
                 <Card>
                     <CardHeader>
-                        <CardTitle>Program</CardTitle>
+                        <CardTitle className="text-green-700">Program</CardTitle>
                         <CardDescription>
                         </CardDescription>
                     </CardHeader>
-                    <CardContent className="space-y-2">
-                        <Upload />
-                        <div className="space-y-1">
-                            <Label htmlFor="title">Title</Label>
-                            <Input id="title" />
-                        </div>
-                        <div className="space-y-1">
-                            <Label htmlFor="slug">Slug</Label>
-                            <Input id="slug" />
-                        </div>
-                        <Textarea placeholder="Description" />
+                    <CardContent className="space-y-4">
+                        <ProgramCard />
+                        <div className="my-2"></div>
+                        <ProgramsTab />
                     </CardContent>
-                    <CardFooter>
-                        <Button className="bg-green-600 hover:bg-green-500">Save changes</Button>
-                    </CardFooter>
                 </Card>
             </TabsContent>
             <TabsContent value="gallery">
                 <Card>
                     <CardHeader>
-                        <CardTitle>Gallery</CardTitle>
+                        <CardTitle className="text-green-700">Gallery</CardTitle>
                         <CardDescription>
                         </CardDescription>
                     </CardHeader>
@@ -69,15 +64,12 @@ export function ProgramTab() {
                             <Input id="subtitle" />
                         </div>
                     </CardContent>
-                    <CardFooter>
-                        <Button className="bg-green-600 hover:bg-green-500">Save password</Button>
-                    </CardFooter>
                 </Card>
             </TabsContent>
             <TabsContent value="news">
                 <Card>
                     <CardHeader>
-                        <CardTitle>Newsletter</CardTitle>
+                        <CardTitle className="text-green-700">Newsletter</CardTitle>
                         <CardDescription>
                         </CardDescription>
                     </CardHeader>
@@ -89,9 +81,6 @@ export function ProgramTab() {
                         </div>
                         <Textarea placeholder="Description" />
                     </CardContent>
-                    <CardFooter>
-                        <Button className="bg-green-600 hover:bg-green-500">Save password</Button>
-                    </CardFooter>
                 </Card>
             </TabsContent>
         </Tabs>

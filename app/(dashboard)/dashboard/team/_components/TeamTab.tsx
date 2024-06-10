@@ -68,9 +68,9 @@ export async function TeamTab() {
                     </CardHeader>
                     <CardContent className="space-y-2">
                         <div className="pb-4 flex justify-end">
-                            <CreateButton />
+                            <CreateButton link={'team/chair'} />
                         </div>
-                        <ChairsList chairs={chairs} />
+                        <ChairsList />
                     </CardContent>
                 </Card>
             </TabsContent>
@@ -83,9 +83,9 @@ export async function TeamTab() {
                     </CardHeader>
                     <CardContent className="space-y-2">
                         <div className="pb-4 flex justify-end">
-                            <CreateButton />
+                            <CreateButton link={'team/core'} />
                         </div>
-                        <CoreList cores={cores} />
+                        <CoreList />
                     </CardContent>
                 </Card>
             </TabsContent>
@@ -98,9 +98,9 @@ export async function TeamTab() {
                     </CardHeader>
                     <CardContent className="space-y-2">
                         <div className="pb-4 flex justify-end">
-                            <CreateButton />
+                            <CreateButton link={'team'} />
                         </div>
-                        <TeamList teams={teams} />
+                        <TeamList />
                     </CardContent>
                 </Card>
             </TabsContent>

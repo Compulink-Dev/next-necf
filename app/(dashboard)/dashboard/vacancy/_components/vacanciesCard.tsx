@@ -13,7 +13,7 @@ function VacanciesCard({ name, jobType, dueDate, link }: VacancyProps) {
     return (
         <Link href={`/dashboard/vacancy/${link}`}>
             <div className="border p-4 shadow rounded">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between text-sm text-slate-600">
                     <p className="">{name}</p>
                     <p className="">{jobType}</p>
                     <p className="">{dueDate}</p>

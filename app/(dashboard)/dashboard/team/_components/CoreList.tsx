@@ -1,7 +1,19 @@
 import React from 'react'
 import CoresCard from './CoresCard'
+import { connectToDB } from '@/lib/connectToDB'
+import Core from '@/models/cores'
 
-function CoreList({ cores }: any) {
+export async function loadCores() {
+    await connectToDB()
+    const core = await Core.find()
+    return core
+}
+
+
+async function CoreList() {
+
+    const cores = await loadCores()
+
     return (
         <div>
             {

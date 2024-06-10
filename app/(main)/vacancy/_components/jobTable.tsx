@@ -1,4 +1,3 @@
-"use client";
 import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,29 +8,41 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button } from "@/components/ui/button";
 import { JobModal } from "./jobModal";
+import getVacancies from "@/lib/vacancy/getVacancies";
+import { connectToDB } from "@/lib/connectToDB";
+import Vacancy from "@/models/vacancy";
 
 function createData(
   id: number,
   name: string,
   jobType: string,
-  salary: string,
-  apply: number
+  dueDate: string,
 ) {
-  return { id, name, jobType, salary, apply };
+  return { id, name, jobType, dueDate };
 }
 
-const rows = [createData(1, "I.C.T Officer", "Full time", "11-06-24", 24)];
+export async function loadVacancy() {
+  await connectToDB()
+  const vacancies = await Vacancy.find()
+  return vacancies
+}
 
-export default function JobTable() {
-  const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
-  const handleOpenDialog = () => {
-    setIsDialogOpen(true);
-  };
 
-  const handleCloseDialog = () => {
-    setIsDialogOpen(false);
-  };
+export default async function JobTable() {
+
+  const vacancies = await loadVacancy()
+
+
+  // const [isDialogOpen, setIsDialogOpen] = React.useState(false);
+
+  // const handleOpenDialog = () => {
+  //   setIsDialogOpen(true);
+  // };
+
+  // const handleCloseDialog = () => {
+  //   setIsDialogOpen(false);
+  // };
 
   return (
     <TableContainer component={Paper}>
@@ -44,16 +55,16 @@ export default function JobTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {vacancies.map((vacancy: any) => (
             <TableRow
-              key={row.name}
+              key={vacancy.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {vacancy.name}
               </TableCell>
-              <TableCell align="right">{row.jobType}</TableCell>
-              <TableCell align="right">{row.salary}</TableCell>
+              <TableCell align="right">{vacancy.jobType}</TableCell>
+              <TableCell align="right">{vacancy.salary}</TableCell>
               <TableCell>
                 <JobModal />
               </TableCell>
