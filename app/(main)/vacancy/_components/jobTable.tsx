@@ -12,15 +12,6 @@ import getVacancies from "@/lib/vacancy/getVacancies";
 import { connectToDB } from "@/lib/connectToDB";
 import Vacancy from "@/models/vacancy";
 
-function createData(
-  id: number,
-  name: string,
-  jobType: string,
-  dueDate: string,
-) {
-  return { id, name, jobType, dueDate };
-}
-
 export async function loadVacancy() {
   await connectToDB()
   const vacancies = await Vacancy.find()

@@ -1,9 +1,8 @@
 import MainLayout from '@/components/layout'
 import React from 'react'
 import Category from './_components/category'
-import VacancyTable from './_components/vacancyTable'
-import { Button } from '@/components/ui/button'
 import JobTable from './_components/jobTable'
+
 
 
 function Vacancy() {
