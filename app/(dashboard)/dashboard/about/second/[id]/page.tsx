@@ -1,3 +1,3 @@
-import newAboutSecond from "./newAboutSecond";
+import NewAboutSecond from "./NewAboutSecond";
 
-export default newAboutSecond
+export default NewAboutSecond

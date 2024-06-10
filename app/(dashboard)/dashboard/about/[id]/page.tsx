@@ -1,3 +1,3 @@
-import NewAbout from "./newAbout";
+import NewAbout from "./NewAbout";
 
 export default NewAbout
