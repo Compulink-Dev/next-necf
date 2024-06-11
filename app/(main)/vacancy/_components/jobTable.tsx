@@ -6,7 +6,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button } from "@/components/ui/button";
 import { JobModal } from "./jobModal";
 import getVacancies from "@/lib/vacancy/getVacancies";
 import { connectToDB } from "@/lib/connectToDB";
@@ -22,7 +21,7 @@ export async function loadVacancy() {
 
 export default async function JobTable() {
 
-  const vacancies = await loadVacancy()
+  const vacancies = await getVacancies()
 
 
   // const [isDialogOpen, setIsDialogOpen] = React.useState(false);
