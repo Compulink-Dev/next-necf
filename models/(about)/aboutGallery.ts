@@ -7,7 +7,6 @@ const aboutGalleryScheme = new Schema(
     },
     {
         timestamps: true,
-        bufferCommands: false
     }
 )
 

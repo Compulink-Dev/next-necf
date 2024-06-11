@@ -10,7 +10,6 @@ const aboutSecondScheme = new Schema(
     },
     {
         timestamps: true,
-        bufferCommands: false
     }
 )
 

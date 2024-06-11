@@ -14,7 +14,6 @@ const aboutScheme = new Schema(
     },
     {
         timestamps: true,
-        bufferCommands: false
     }
 )
 
