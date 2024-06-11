@@ -11,10 +11,9 @@ function ContactList({ contacts }: { contacts: any }) {
                     <ContactCard
                         key={contact.id}
                         link={contact.id}
-                        image={contact.image}
-                        name={contact.name}
+                        address={contact.address}
+                        telephone={contact.telephone}
                         email={contact.email}
-                        contact={contact.contact}
                     />
                 ))
             }

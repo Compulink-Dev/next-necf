@@ -1,9 +1,3 @@
-import React from 'react'
+import NewContact from "./NewContact";
 
-function ContactPage() {
-    return (
-        <div className=''>ContactPage</div>
-    )
-}
-
-export default ContactPage
+export default NewContact

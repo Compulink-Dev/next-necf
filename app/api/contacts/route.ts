@@ -1,43 +1,43 @@
-import db from "@/lib/db";
-import { NextResponse } from "next/server";
+export const dynamic = "force-dynamic"
+
+import { connectToDB } from "@/lib/connectToDB"
+import Contact from "@/models/ contact"
+
+
+import { NextRequest, NextResponse } from "next/server"
+
+export async function POST(req: NextRequest) {
+    const { email, address, telephone } = await req.json()
+    await connectToDB()
+    await Contact.create({ email, address, telephone })
+    return NextResponse.json({ message: "about Created" }, { status: 201 })
+}
 
 
 export async function GET() {
-    try {
-        const contacts = await db.contact.findMany()
-
-        return NextResponse.json(contacts, {
-            status: 201
-        })
-    } catch (error) {
-        console.log('Error while fetching', error);
-        return NextResponse.json({
-            message: "Failed to fetch contact",
-        }, {
-            status: 500
-        })
-    }
+    await connectToDB()
+    const about = await Contact.find()
+    return NextResponse.json({ about })
 }
 
-export async function POST(request: Request) {
+//@ts-ignore
+export async function DELETE(request, { params }) {
+    await connectToDB()
     try {
-        const { name, contact, email, image } = await request.json()
-        const data = { name, contact, email, image }
+        const about = await Contact.findByIdAndDelete(params.id)
 
-        const contactData = await db.contact.create({ data })
+        if (!about) {
+            return NextResponse.json(
+                {
+                    message: "about not found"
+                },
+                { status: 400 }
+            )
+        }
 
-        console.log(contactData);
-
-        return NextResponse.json(contactData, {
-            status: 201
-        })
+        return NextResponse.json(about)
 
     } catch (error) {
-        console.log('Error while creating', error);
-        return NextResponse.json({
-            message: "Failed to create contact",
-        }, {
-            status: 500
-        })
+        return NextResponse.json({ message: "about error" }, { status: 400 })
     }
 }
