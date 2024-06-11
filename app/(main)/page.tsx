@@ -6,6 +6,7 @@ import Statistic from "./_components/statistic";
 import Subscribe from "@/components/subscribe";
 import Event from "./_components/event";
 import AboutImage from "./_components/aboutImage";
+require('events').EventEmitter.defaultMaxListeners = 15;
 
 
 function Home() {
