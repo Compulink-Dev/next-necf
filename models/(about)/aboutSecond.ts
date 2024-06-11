@@ -9,7 +9,8 @@ const aboutSecondScheme = new Schema(
         imageUrl: String
     },
     {
-        timestamps: true
+        timestamps: true,
+        bufferCommands: false
     }
 )
 
