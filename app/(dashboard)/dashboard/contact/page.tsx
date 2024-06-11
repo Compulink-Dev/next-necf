@@ -1,8 +1,11 @@
 import React from 'react'
 import ContactList from './_components/ContactList'
 import getContacts from '@/lib/getContact'
+import { connectToDB } from '@/lib/connectToDB'
+import Contact from '@/models/ contact'
 
-async function Contact() {
+
+async function ContactPage() {
 
     const contacts = await getContacts()
 
@@ -13,4 +16,4 @@ async function Contact() {
     )
 }
 
-export default Contact
+export default ContactPage

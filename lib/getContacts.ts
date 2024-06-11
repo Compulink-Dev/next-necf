@@ -1,7 +1,9 @@
+import Contact from "@/models/ contact"
+import { connectToDB } from "./connectToDB"
+
 export default async function getContacts() {
-    const response = await fetch(`${process.env.API_ROUTE}/api/contacts`, {
-        cache: "no-store",
-    });
-    const contacts = await response.json();
-    return contacts;
+    await connectToDB()
+    const contacts = await Contact.find()
+    return contacts
 }
+
