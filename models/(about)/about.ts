@@ -13,7 +13,8 @@ const aboutScheme = new Schema(
         imageUrl4: String
     },
     {
-        timestamps: true
+        timestamps: true,
+        bufferCommands: false
     }
 )
 

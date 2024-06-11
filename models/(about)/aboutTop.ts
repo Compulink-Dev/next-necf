@@ -6,7 +6,8 @@ const aboutTopScheme = new Schema(
         title2: String
     },
     {
-        timestamps: true
+        timestamps: true,
+        bufferCommands: false
     }
 )
 
