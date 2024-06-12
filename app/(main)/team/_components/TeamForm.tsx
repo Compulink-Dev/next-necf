@@ -2,12 +2,7 @@ import React from "react";
 import TeamCard from "./TeamCard";
 import { Chairperson, Committee, Team } from "@/constant/data";
 
-console.log(Team);
-
 function TeamForm() {
-
-
-
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">

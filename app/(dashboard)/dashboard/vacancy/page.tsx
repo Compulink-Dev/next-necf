@@ -14,7 +14,6 @@ import Vacancy from "@/models/vacancy";
 
 async function VacancyPage() {
   const vacancies = await getVacancies();
-  console.log(vacancies);
 
   return (
     <div className="p-4">
