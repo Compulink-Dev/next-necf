@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import BackButton from "@/components/backButton";
 import { Textarea } from "@/components/ui/textarea";
+import EventEmitter from "events";
 
 const NewAboutSecond = () => {
     const [newVacant, setNewVacant] = useState({
@@ -17,6 +18,9 @@ const NewAboutSecond = () => {
     const params = useParams();
     const router = useRouter();
 
+    const emitter = new EventEmitter()
+    emitter.setMaxListeners(20)
+
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errors, setErrors] = useState({});
 
@@ -27,11 +31,11 @@ const NewAboutSecond = () => {
         setNewVacant({ title: data.title, title2: data.title2, title3: data.title3, title4: data.title4, imageUrl: data.imageUrl });
     };
 
-    useEffect(() => {
-        if (params.id) {
-            getVacant();
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (params.id) {
+    //         getVacant();
+    //     }
+    // }, []);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
