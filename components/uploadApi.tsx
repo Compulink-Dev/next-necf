@@ -1,35 +1,56 @@
-// pages/api/upload.ts
-import type { NextApiRequest, NextApiResponse } from "next";
-import cloudinary from "@/utils/cloudinary";
-import formidable from "formidable";
-import fs from "fs";
+// pages/upload.tsx
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+import { useState } from 'react';
+import axios from 'axios';
 
-export default async function POST(req: NextApiRequest, res: NextApiResponse) {
-  const form = new formidable.IncomingForm();
-  form.parse(req, async (err, fields, files) => {
-    if (err) {
-      return res.status(500).json({ message: "Error parsing the files" });
-    }
+const UploadPage: React.FC = () => {
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    file: null,
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    setFormData({
+      ...formData,
+      //@ts-ignore
+      file,
+    });
+  };
+
+  const handleUpload = async () => {
     //@ts-ignore
-    const file = files.file as formidable.File;
-    //@ts-ignore
-    const data = fs.readFileSync(file.path);
-    const base64 = Buffer.from(data).toString("base64");
-    const image = `data:${file.mimetype};base64,${base64}`;
+    const { title, description, file } = formData;
+
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('file', file);
 
     try {
-      const result = await cloudinary.uploader.upload(image, {
-        folder: "uploads",
-      });
-      return res.status(200).json({ url: result.secure_url });
+      const response = await axios.post('/api/upload', formData);
+      console.log('Uploaded:', response.data);
     } catch (error) {
-      return res.status(500).json({ message: "Error uploading to Cloudinary" });
+      console.error('Upload failed:', error);
     }
-  });
-}
+  };
+
+  return (
+    <div>
+      <input type="text" name="title" placeholder="Title" onChange={handleInputChange} />
+      <input type="text" name="description" placeholder="Description" onChange={handleInputChange} />
+      <input type="file" onChange={handleFileChange} />
+      <button onClick={handleUpload}>Upload</button>
+    </div>
+  );
+};
+
+export default UploadPage;

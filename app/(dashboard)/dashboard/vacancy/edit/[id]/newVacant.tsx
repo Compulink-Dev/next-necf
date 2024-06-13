@@ -23,11 +23,11 @@ const NewVacancy = () => {
         setNewVacant({ name: data.name, jobType: data.jobType, dueDate: data.dueDate });
     };
 
-    // useEffect(() => {
-    //     if (params.id) {
-    //         getVacant();
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (params.id) {
+            getVacant();
+        }
+    }, []);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
