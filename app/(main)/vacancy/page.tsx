@@ -1,16 +1,11 @@
 import MainLayout from '@/components/layout'
 import React from 'react'
 import Category from './_components/category'
-import JobTable from './_components/jobTable'
-import VacancyTable from './_components/vacancyTable'
-import Image from 'next/image'
 
+import VacancyTable from './_components/vacancyTable'
 
 
 function Vacancy() {
-
-    const image2 = '/mutize.jpeg'
-    const image = 'https://res.cloudinary.com/dxkna0tuc/image/upload/v1716906145/necf/i9efes1xwl2hlhsgppzd.jpg'
     return (
         <MainLayout>
             <div className='px-12 pb-12'>
@@ -24,11 +19,6 @@ function Vacancy() {
                 <div className="my-12">
                     <VacancyTable />
                 </div>
-                <img
-                    alt=''
-                    width={200}
-                    height={200}
-                    src={`${image}`} />
             </div>
         </MainLayout>
     )
