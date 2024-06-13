@@ -5,13 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import BackButton from "@/components/backButton";
 
-const NewChair = () => {
+const NewTeam = () => {
     const [newVacant, setNewVacant] = useState({
         title: "",
         subtitle: "",
         imageUrl: "",
         position: "",
-        link: ""
+        link: "",
+        file: null
     });
     const params = useParams();
     const router = useRouter();
@@ -20,7 +21,7 @@ const NewChair = () => {
     const [errors, setErrors] = useState({});
 
     const getVacant = async () => {
-        const res = await fetch(`/api/teams/chairs/${params.id}`);
+        const res = await fetch(`/api/teams/${params.id}`);
         const data = await res.json();
         //@ts-ignore
         setNewVacant({ title: data.title, subtitle: data.subtitle, imageUrl: data.imageUrl, position: data.position, link: data.link });
@@ -52,6 +53,17 @@ const NewChair = () => {
     const handleChange = (e: any) =>
         setNewVacant({ ...newVacant, [e.target.name]: e.target.value });
 
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        setNewVacant({
+            ...newVacant,
+            //@ts-ignore
+            file,
+        });
+    };
+
+
+
     const validate = () => {
         let errors = {};
 
@@ -60,7 +72,7 @@ const NewChair = () => {
 
     const createTask = async () => {
         try {
-            await fetch("/api/teams/chairs", {
+            await fetch("/api/teams", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -77,7 +89,7 @@ const NewChair = () => {
     const handleDelete = async () => {
         if (window.confirm("Are you sure you want to delete this task?")) {
             try {
-                const res = await fetch(`/api/teams/chairs/${params.id}`, {
+                const res = await fetch(`/api/teams/${params.id}`, {
                     method: "DELETE",
                 });
                 router.push("/dashboard/team");
@@ -90,7 +102,7 @@ const NewChair = () => {
 
     const updateTask = async () => {
         try {
-            await fetch(`/api/teams/chairs/${params.id}`, {
+            await fetch(`/api/teams/${params.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -113,7 +125,7 @@ const NewChair = () => {
                 <form onSubmit={handleSubmit}>
                     <header className="flex justify-between">
                         <h1 className="font-bold text-3xl">
-                            {!params.id ? "Create Chairperson" : "Update Chairperson"}
+                            {!params.id ? "Create Secretary" : "Update Secretary"}
                         </h1>
                         {params.id && (
                             <Button
@@ -164,10 +176,8 @@ const NewChair = () => {
                     />
                     <Input
                         type="file"
-                        placeholder="Job type"
-                        name="imageUrl"
+                        name="image"
                         onChange={handleChange}
-                        value={newVacant.imageUrl}
                         autoFocus
                         className=" border-2  w-[400px] my-4"
                     />
@@ -181,4 +191,4 @@ const NewChair = () => {
     );
 };
 
-export default NewChair;
+export default NewTeam;

@@ -2,6 +2,7 @@ import React from 'react'
 import TeamCard from './TeamsCard'
 import { connectToDB } from '@/lib/connectToDB'
 import Team from '@/models/teams/team'
+import Image from 'next/image'
 
 
 export async function loadTeam() {
@@ -13,10 +14,9 @@ export async function loadTeam() {
 
 //@ts-ignore
 async function TeamList() {
-
     const teams = await loadTeam()
-
     return (
+
         <div className='flex flex-col gap-4' >
             {
                 teams.map((team: any) => {

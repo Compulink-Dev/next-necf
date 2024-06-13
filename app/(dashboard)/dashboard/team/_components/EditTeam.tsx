@@ -43,8 +43,8 @@ function EditForm({ team }) {
         try {
             const teamData = { ...data, image: imageUrl }
 
-            const response = await fetch(`/api/teams/${team.id}`, {
-                method: "PATCH",
+            const response = await fetch(`/api/teams/${team._id}`, {
+                method: "PUT",
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify(teamData)
             })
@@ -120,14 +120,13 @@ function EditForm({ team }) {
                 <div className="mb-6 flex items-center gap-4">
                     <Image
                         src={team.image}
-                        alt=''
+                        alt='image'
                         width={100}
                         height={100}
                         className='rounded-full object-cover h-32 w-32' />
                     <div className="">
                         <Label className='text-slate-600'>Image</Label>
                         <Input
-
                             {...register("image")}
                             className='w-full'
                             type='file'
