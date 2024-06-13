@@ -124,8 +124,8 @@ function Footer() {
             >
               <svg
                 fill="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                stroke-linecap="round"
+                stroke-linejoin="round"
                 stroke-width="2"
                 className="w-5 h-5"
                 viewBox="0 0 24 24"
@@ -134,7 +134,7 @@ function Footer() {
               </svg>
             </Link>
             <Link
-              href={"https://x.com/FofficialNec?mx=2"}
+              href={"NECFofficial (@FofficialNec) / X"}
               target="_blank"
               className="ml-3 pt-1 text-white hover:text-slate-600"
             >
@@ -148,8 +148,8 @@ function Footer() {
               <svg
                 fill="none"
                 stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                stroke-linecap="round"
+                stroke-linejoin="round"
                 stroke-width="2"
                 className="w-5 h-5"
                 viewBox="0 0 24 24"
@@ -166,8 +166,8 @@ function Footer() {
               <svg
                 fill="currentColor"
                 stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                stroke-linecap="round"
+                stroke-linejoin="round"
                 stroke-width="0"
                 className="w-5 h-5"
                 viewBox="0 0 24 24"
