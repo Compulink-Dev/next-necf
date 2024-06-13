@@ -22,7 +22,7 @@ export function JobModal() {
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
-                    <DialogTitle>Share link</DialogTitle>
+                    <DialogTitle>Send Application</DialogTitle>
                     <DialogDescription>
                         Upload your CV and send to apply
                     </DialogDescription>
@@ -30,18 +30,13 @@ export function JobModal() {
                 <div className="flex items-center space-x-2">
                     <div className="grid flex-1 gap-2">
                         <Label htmlFor="link" className="sr-only">
-                            Link
+                            Upload
                         </Label>
                         <Input
-                            id="link"
-                            defaultValue="https://ui.shadcn.com/docs/installation"
-                            readOnly
+                            id="file"
+                            type="file"
                         />
                     </div>
-                    <Button type="submit" size="sm" className="px-3">
-                        <span className="sr-only">Copy</span>
-                        <Copy className="h-4 w-4" />
-                    </Button>
                 </div>
                 <DialogFooter className="sm:justify-start">
                     <DialogClose asChild>
@@ -49,6 +44,7 @@ export function JobModal() {
                             Close
                         </Button>
                     </DialogClose>
+                    <Button className="bg-green-600 hover:bg-green-500">Send Application</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

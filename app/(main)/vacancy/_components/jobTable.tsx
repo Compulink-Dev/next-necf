@@ -11,13 +11,6 @@ import getVacancies from "@/lib/vacancy/getVacancies";
 import { connectToDB } from "@/lib/connectToDB";
 import Vacancy from "@/models/vacancy";
 
-export async function loadVacancy() {
-  await connectToDB()
-  const vacancies = await Vacancy.find()
-  return vacancies
-}
-
-
 
 export default async function JobTable() {
 
