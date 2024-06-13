@@ -12,6 +12,7 @@ export async function loadVacancy() {
 }
 
 import React from 'react'
+import { JobModal } from './jobModal';
 
 async function VacancyTable() {
 
@@ -23,7 +24,16 @@ async function VacancyTable() {
                 vacancies.map((vacancy) => (
                     <div
                         key={vacancy.name}
-                        className="">{vacancy.name}</div>
+                        className="flex items-center justify-between  border-b mb-4">
+                        <div className="space-y-1 mb-4">
+                            <p className="text-lg font-bold">{vacancy.name}</p>
+                            <p className="text-sm text-slate-600">{vacancy.jobType}</p>
+                            <p className="text-sm text-slate-600">{vacancy.dueDate}</p>
+                        </div>
+                        <div className="">
+                            <JobModal />
+                        </div>
+                    </div>
                 ))
             }
         </div>
