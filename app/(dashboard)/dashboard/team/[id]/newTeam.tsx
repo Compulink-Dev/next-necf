@@ -11,7 +11,8 @@ const NewTeam = () => {
         subtitle: "",
         imageUrl: "",
         position: "",
-        link: ""
+        link: "",
+        file: null
     });
     const params = useParams();
     const router = useRouter();
@@ -51,6 +52,17 @@ const NewTeam = () => {
 
     const handleChange = (e: any) =>
         setNewVacant({ ...newVacant, [e.target.name]: e.target.value });
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        setNewVacant({
+            ...newVacant,
+            //@ts-ignore
+            file,
+        });
+    };
+
+
 
     const validate = () => {
         let errors = {};
@@ -167,7 +179,6 @@ const NewTeam = () => {
                         placeholder="Job type"
                         name="imageUrl"
                         onChange={handleChange}
-                        value={newVacant.imageUrl}
                         autoFocus
                         className=" border-2  w-[400px] my-4"
                     />

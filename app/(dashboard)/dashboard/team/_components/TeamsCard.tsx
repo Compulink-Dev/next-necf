@@ -17,7 +17,7 @@ function TeamCard({ link, title, position, image }: TeamProps) {
                 className='border p-4 shadow rounded'>
                 <div className="flex gap-2">
                     <div className="">
-                        <Image src={`/${image}`} alt='' height={80} width={80} className='w-full h-32 border rounded' />
+                        <img src={`${image}`} alt='image' height={80} width={80} className='w-full h-32 border rounded' />
                     </div>
                     <div className="">
                         <p className="text-lg font-bold capitalize">{title}</p>
