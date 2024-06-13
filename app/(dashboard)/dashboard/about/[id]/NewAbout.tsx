@@ -27,7 +27,6 @@ const NewAbout = () => {
     const getVacant = async () => {
         const res = await fetch(`/api/about/${params.id}`);
         const data = await res.json();
-        //@ts-ignore
         setNewVacant({
             title: data.title,
             title2: data.title2,
@@ -41,11 +40,11 @@ const NewAbout = () => {
         });
     };
 
-    // useEffect(() => {
-    //     if (params.id) {
-    //         getVacant();
-    //     }
-    // }, []);
+    useEffect(() => {
+        if (params.id) {
+            getVacant();
+        }
+    }, []);
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
