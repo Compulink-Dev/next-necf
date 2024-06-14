@@ -1,7 +1,8 @@
+import Core from "@/models/cores";
+import { connectToDB } from "../connectToDB";
+
 export default async function getCores() {
-    const response = await fetch(`${process.env.API_ROUTE}/api/teams/cores`, {
-        cache: "no-store",
-    });
-    const cores = await response.json();
+    await connectToDB()
+    const cores = await Core.find()
     return cores;
 }

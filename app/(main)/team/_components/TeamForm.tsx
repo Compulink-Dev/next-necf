@@ -1,8 +1,19 @@
 import React from "react";
 import TeamCard from "./TeamCard";
 import { Chairperson, Committee, Team } from "@/constant/data";
+import getTeams from "@/lib/getTeams";
+import getChairs from "@/lib/team/getChairs";
+import getCores from "@/lib/team/getCores";
 
-function TeamForm() {
+
+
+
+async function TeamForm() {
+
+  const teams = await getTeams()
+  const chairs = await getChairs()
+  const cores = await getCores()
+
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
@@ -20,7 +31,7 @@ function TeamForm() {
             NECF National Co-Chairpersons{" "}
           </h1>
           <div className="flex flex-wrap -m-4 items-center justify-center mx-auto gap-10">
-            {Chairperson.map((person) => (
+            {chairs.map((person: any) => (
               <TeamCard
                 key={person.id}
                 title={person.title}
@@ -35,7 +46,7 @@ function TeamForm() {
             NECF Steering Committee Co-Chairpersons
           </h1>
           <div className="flex flex-wrap -m-4 items-center justify-center mx-auto gap-10">
-            {Committee.map((person) => (
+            {cores.map((person: any) => (
               <TeamCard
                 key={person.id}
                 title={person.title}
@@ -48,7 +59,7 @@ function TeamForm() {
         <div className="">
           <h1 className="my-16 pl-2 text-2xl font-bold">NECF SECRETARIAT</h1>
           <div className="flex flex-wrap -m-4 items-center justify-center mx-auto gap-10">
-            {Team.map((person: any) => (
+            {teams.map((person: any) => (
               <TeamCard
                 key={person.id}
                 title={person.title}
