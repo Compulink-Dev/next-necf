@@ -24,12 +24,13 @@ async function ProgramCard() {
                         <div className="border p-4 shadow rounded">
                             <div className="flex items-start gap-2 text-sm text-slate-600">
                                 <Image
-                                    src={`/${program.imageUrl}`}
-                                    alt={`${program.title}`}
-                                    width={100} height={100}
-                                    className='rounded border' />
+                                    src={program.image}
+                                    alt={program.title}
+                                    width={200} height={200}
+                                    className='rounded border ' />
                                 <div className="space-y-2">
-                                    <p className="">{program.title}</p>
+                                    <p className="text-lg font-bold">{program.title}</p>
+                                    <p className="">{program.subtitle}</p>
                                     <p className="">{program.description}</p>
                                 </div>
                             </div>

@@ -18,7 +18,7 @@ async function VacancyPage() {
   return (
     <div className="p-4">
       <div className="pb-4 flex justify-end">
-        <CreateButton />
+        <CreateButton link={'vacancy'} />
       </div>
       <div className={'flex flex-col gap-4'}>
         {vacancies.map((vacancy: any) => (

@@ -3,6 +3,8 @@ import TaskForce from '@/models/(programs)/taskforce'
 import React from 'react'
 import ProgramsCard from './programsCard'
 import Annual from '@/models/(programs)/annual'
+import Link from 'next/link'
+import Image from 'next/image'
 
 export async function loadTasks() {
     await connectToDB()
@@ -17,14 +19,25 @@ async function AnnualList() {
         <div className=''>
             {
                 tasks.map((task) => (
-                    <ProgramsCard
-                        route={'annual'}
+                    <Link
+                        className=''
                         key={task.id}
-                        link={task.id}
-                        title={task.title}
-                        description={task.description}
-                        imageUrl={task.imageUrl}
-                    />
+                        href={`/dashboard/programs/annual/${task.id}`}>
+                        <div className="border p-4 shadow rounded mb-4">
+                            <div className="flex items-start gap-2 text-sm text-slate-600">
+                                <Image
+                                    src={task.image}
+                                    alt={task.title}
+                                    width={200} height={200}
+                                    className='rounded border' />
+                                <div className="space-y-2">
+                                    <p className="text-lg font-bold">{task.title}</p>
+                                    <p className="font-bold">{task.subtitle}</p>
+                                    <p className="">{task.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
                 ))
             }
         </div>
