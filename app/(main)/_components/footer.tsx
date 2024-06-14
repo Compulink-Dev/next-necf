@@ -134,7 +134,7 @@ function Footer() {
               </svg>
             </Link>
             <Link
-              href={"NECFofficial (@FofficialNec) / X"}
+              href={"https://x.com/FofficialNec"}
               target="_blank"
               className="ml-3 pt-1 text-white hover:text-slate-600"
             >

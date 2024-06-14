@@ -7,9 +7,9 @@ import Program from "@/models/(programs)/program"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-    const { title, description, imageUrl } = await req.json()
+    const { title, description, image, subtitle } = await req.json()
     await connectToDB()
-    await Program.create({ title, description, imageUrl })
+    await Program.create({ title, description, image, subtitle })
     return NextResponse.json({ message: "program program Created" }, { status: 201 })
 }
 

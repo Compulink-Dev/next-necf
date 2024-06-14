@@ -8,8 +8,6 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import {
     Tabs,
     TabsContent,
@@ -17,10 +15,10 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
-import Upload from "@/components/upload"
 import TaskList from "./TaskList"
 import AnnualList from "./annualList"
 import AdhocList from "./adhocList"
+import CreateButton from "@/components/createButton"
 
 export function ProgramsTab() {
     return (
@@ -38,6 +36,7 @@ export function ProgramsTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
+                        <CreateButton link='programs/taskforce' />
                         <TaskList />
                     </CardContent>
                 </Card>
@@ -50,6 +49,7 @@ export function ProgramsTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
+                        <CreateButton link='programs/annual' />
                         <AnnualList />
                     </CardContent>
 
@@ -63,6 +63,7 @@ export function ProgramsTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
+                        <CreateButton link='programs/adhoc' />
                         <AdhocList />
                     </CardContent>
                 </Card>

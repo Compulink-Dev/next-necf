@@ -4,7 +4,8 @@ const programScheme = new Schema(
     {
         title: String,
         description: String,
-        imageUrl: String,
+        image: String,
+        subtitle: String,
     },
     {
         timestamps: true

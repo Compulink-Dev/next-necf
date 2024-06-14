@@ -1,43 +1,29 @@
-export const dynamic = "force-dynamic"
-
-import { connectToDB } from "@/lib/connectToDB"
-import Adhoc from "@/models/(programs)/adhoc"
-
-
-import { NextRequest, NextResponse } from "next/server"
-
-export async function POST(req: NextRequest) {
-    const { title, description, imageUrl } = await req.json()
-    await connectToDB()
-    await Adhoc.create({ title, description, imageUrl })
-    return NextResponse.json({ message: "Adhoc program Created" }, { status: 201 })
-}
+import { connectToDB } from "@/lib/connectToDB";
+import Adhoc from "@/models/(programs)/adhoc";
+import { NextRequest, NextResponse } from "next/server";
 
 
 export async function GET() {
     await connectToDB()
-    const adhoc = await Adhoc.find()
-    return NextResponse.json({ adhoc })
+    const teams = await Adhoc.find()
+    return NextResponse.json({ teams })
 }
 
-//@ts-ignore
-export async function DELETE(request, { params }) {
-    await connectToDB()
+
+export async function POST(req: NextRequest) {
     try {
-        const adhoc = await Adhoc.findByIdAndDelete(params.id)
-
-        if (!adhoc) {
-            return NextResponse.json(
-                {
-                    message: "adhoc not found"
-                },
-                { status: 400 }
-            )
-        }
-
-        return NextResponse.json(adhoc)
-
+        const body = await req.json()
+        const newVacancy = new Adhoc(body)
+        const savedVacancy = await newVacancy.save()
+        return NextResponse.json(savedVacancy)
     } catch (error) {
-        return NextResponse.json({ message: "adhoc error" }, { status: 400 })
+        return NextResponse.json({ message: "Failed to post team" }, { status: 400 })
     }
+}
+
+export async function DELETE(req: NextRequest) {
+    const id = req.nextUrl.searchParams.get("id")
+    await connectToDB()
+    await Adhoc.findByIdAndDelete(id)
+    return NextResponse.json({ message: "Team Deleted" }, { status: 201 })
 }
