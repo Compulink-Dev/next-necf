@@ -101,7 +101,7 @@ function Programme() {
         </div>
       </div>
 
-      <div className="flex flex-col items-start justify-center mx-4 gap-12">
+      <div className="flex flex-col items-start justify-center mx-8 gap-12">
         <div className="my-10 flex flex-col items-center justify-center">
           <h1 className="text-2xl font-semibold mb-4 text-center text-green-600 uppercase">
             Task Forces
@@ -124,7 +124,7 @@ function Programme() {
             Annual Programs
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 mt-8 gap-6 mx-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 mt-8 gap-6 ">
             <ProgrammeCard
               title="INTERNATIONAL BUSINESS CONFERENCE (IBC)"
               desc="The NECF hosts the International Business Conference in partnership with the Zimbabwe International Trade Fair Company (ZITF) on a Wednesday of the Trade Fair Week. The Conference is held at the end of the year’s first quarter and has become Zimbabwe’s largest business forum for both public and private sector decision makers. The high-level conference brings together policy makers, both local and international captains of industry and commerce, indigenous entrepreneurs, academics and business leaders who have a vested interest in positively contributing to the economic discourse and development of the country."
