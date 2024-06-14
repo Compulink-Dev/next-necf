@@ -4,7 +4,7 @@ const coreScheme = new Schema(
     {
         title: String,
         subtitle: String,
-        imageUrl: String,
+        image: String,
         position: String,
         link: String,
     },

@@ -1,25 +1,22 @@
-// import React from 'react'
-// import ChairsList from '../../_components/ChairsList'
-// import BackButton from '@/components/backButton'
-// import getChair from '@/lib/team/getChair'
-// import ChairCard from '../../_components/ChairCard'
+import React from 'react'
+import BackButton from '@/components/backButton'
+import EditChair from '../../_components/EditChair';
+import getChair from '@/lib/team/getChair';
 
-// //@ts-ignore
-// async function ChairPage({ params: { id } }) {
 
-//     const chair = await getChair(id)
+//@ts-ignore
+async function ChairEdit({ params: { id } }) {
+    const team = await getChair(id)
+    console.log(team);
 
-//     return (
-//         <div>
-//             <div className="flex justify-end items-center pb-4">
-//                 <BackButton />
-//             </div>
-//             <ChairCard chair={chair} />
-//         </div>
-//     )
-// }
+    return (
+        <div className='p-4'>
+            <div className="flex justify-end">
+                <BackButton />
+            </div>
+            <EditChair team={team} />
+        </div>
+    )
+}
 
-// export default ChairPage
-
-import NewChair from "./newChair";
-export default NewChair
+export default ChairEdit

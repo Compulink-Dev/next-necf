@@ -1,7 +1,8 @@
+import Chair from "@/models/chairs";
+import { connectToDB } from "../connectToDB";
+
 export default async function getChairs() {
-    const response = await fetch(`${process.env.API_ROUTE}/api/teams/chairs`, {
-        cache: "no-store",
-    });
-    const chairs = await response.json();
+    await connectToDB()
+    const chairs = await Chair.find()
     return chairs;
 }
