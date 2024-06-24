@@ -1,7 +1,7 @@
 import React from 'react'
 import TeamCard from './TeamsCard'
 import { connectToDB } from '@/lib/connectToDB'
-import Team from '@/models/teams/team'
+import Team from '@/models/(team)/team'
 import Image from 'next/image'
 
 

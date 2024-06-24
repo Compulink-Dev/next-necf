@@ -12,6 +12,6 @@ const taskForceScheme = new Schema(
     }
 )
 
-const TaskForce = mongoose.models.TaskForce || mongoose.model("TaskForce", taskForceScheme)
+const TaskForce = mongoose.models?.TaskForce || mongoose.model("TaskForce", taskForceScheme)
 
 export default TaskForce
