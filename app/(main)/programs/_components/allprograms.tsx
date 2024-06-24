@@ -1,7 +1,5 @@
 "use client";
-import Link from "next/link";
 import React, { useState } from "react";
-import GalleryCard from "./galleryCard";
 import Programme from "./programme";
 import { Button } from "@/components/ui/button";
 import { galleries } from "@/constants/data";
