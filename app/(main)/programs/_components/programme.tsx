@@ -1,20 +1,14 @@
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import React from "react";
-import getTasks from "@/lib/(programs)/taskforce/getTasks";
 import AnnualList from "./anuual";
 import AdhocList from "./adhoclist";
-import getAdhocs from "@/lib/(programs)/adhoc/getAdhocs";
 import ProgrammeList from "./prograameList";
 import TaskForces from "./taskforce";
 
 
-
-
 async function Programme() {
 
-  const taskforces = await getTasks()
-  const adhoc = await getAdhocs()
+
   return (
     <>
       <div className="flex w-full p-8">
@@ -62,17 +56,7 @@ async function Programme() {
           <h1 className="text-2xl font-semibold mb-4 text-center text-green-600 uppercase">
             Task Forces
           </h1>
-          {taskforces.length ? (
-            <TaskForces />
-          ) : (
-            <Image
-              src={"/loading.gif"}
-              alt="loading..."
-              height={100}
-              width={100}
-              className=" py-10"
-            />
-          )}
+          <TaskForces />
         </div>
 
         <div className="flex flex-col items-center justify-center">
@@ -85,18 +69,7 @@ async function Programme() {
           <h1 className="text-2xl text-center font-semibold mb-4 text-green-600 uppercase">
             Ad hoc Programs
           </h1>
-
-          {adhoc.length ? (
-            <AdhocList />
-          ) : (
-            <Image
-              src={"/loading.gif"}
-              alt="loading..."
-              height={100}
-              width={100}
-              className=" py-10"
-            />
-          )}
+          <AdhocList />
         </div>
       </div>
     </>

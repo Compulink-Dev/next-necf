@@ -12,5 +12,6 @@ const programScheme = new Schema(
     }
 )
 
-export default mongoose.models?.Program || mongoose.model("Program", programScheme)
+const Program = mongoose.models?.Program || mongoose.model("Program", programScheme)
 
+export default Program

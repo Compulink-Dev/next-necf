@@ -1,6 +1,5 @@
 import React from "react";
 import TeamCard from "./TeamCard";
-import { Chairperson, Committee, Team } from "@/constant/data";
 import getTeams from "@/lib/getTeams";
 import getChairs from "@/lib/team/getChairs";
 import getCores from "@/lib/team/getCores";

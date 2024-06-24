@@ -13,6 +13,6 @@ const teamScheme = new Schema(
     }
 )
 
-const Team = mongoose.models.Team || mongoose.model("Team", teamScheme)
+const Team = mongoose.models?.Team || mongoose.model("Team", teamScheme)
 
 export default Team

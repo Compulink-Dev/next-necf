@@ -1,9 +1,9 @@
 import { connectToDB } from '@/lib/connectToDB'
 import TaskForce from '@/models/(programs)/taskforce'
 import React from 'react'
-import ProgramsCard from './programsCard'
 import Link from 'next/link'
 import Image from 'next/image'
+import getTaskForces from '@/lib/download/getTaskforces'
 
 export async function loadTasks() {
     await connectToDB()
@@ -13,11 +13,11 @@ export async function loadTasks() {
 
 
 async function TaskList() {
-    const tasks = await loadTasks()
+    const tasks = await getTaskForces()
     return (
         <div className=''>
             {
-                tasks.map((task) => (
+                tasks.map((task: any) => (
                     <Link
                         className=''
                         key={task.id}

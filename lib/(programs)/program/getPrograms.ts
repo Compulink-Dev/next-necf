@@ -3,6 +3,6 @@ import Program from "@/models/(programs)/program";
 
 export default async function getPrograms() {
     await connectToDB()
-    const program = await Program.find()
-    return program;
+    const programs = await Program.find()
+    return programs;
 }
