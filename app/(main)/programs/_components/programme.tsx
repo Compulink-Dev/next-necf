@@ -20,6 +20,7 @@ import getPrograms from "@/lib/(programs)/program/getPrograms";
 import getTasks from "@/lib/(programs)/taskforce/getTasks";
 import AnnualList from "./anuual";
 import AdhocList from "./adhoclist";
+import getAdhocs from "@/lib/(programs)/adhoc/getAdhocs";
 
 
 interface ProgramProps {
@@ -62,6 +63,7 @@ const ProgramCard = ({ title, desc, image, subtitle }: ProgramProps) => {
 async function Programme() {
   const programs = await getPrograms()
   const taskforces = await getTasks()
+  const adhoc = await getAdhocs()
   return (
     <>
       <div className="flex w-full p-8">
@@ -144,7 +146,7 @@ async function Programme() {
             Ad hoc Programs
           </h1>
 
-          {hocprograms.length ? (
+          {adhoc.length ? (
             <AdhocList />
           ) : (
             <Image
