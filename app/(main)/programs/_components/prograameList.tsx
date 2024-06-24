@@ -2,13 +2,13 @@ import React from 'react'
 import { ProgrammeCard } from './programmeCard'
 import { connectToDB } from '@/lib/connectToDB';
 import Program from "@/models/(programs)/program";
+import getPrograms from '@/lib/(programs)/program/getPrograms';
 
-
-export async function getPrograms() {
-    await connectToDB()
-    const program = await Program.find()
-    return program;
-}
+// export async function loadProgram() {
+//     await connectToDB()
+//     const programs = await Program.find()
+//     return programs
+// }
 
 
 async function ProgrammeList() {
@@ -16,7 +16,7 @@ async function ProgrammeList() {
     const programs = await getPrograms()
 
     return (
-        <div className='w-full'>
+        <div className=''>
             {
                 programs.map((program: any) => {
                     return (

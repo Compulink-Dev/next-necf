@@ -1,11 +1,11 @@
 import React from "react";
 import { ProgrammeCard } from "./programmeCard";
 import { connectToDB } from "@/lib/connectToDB";
-import Task from "@/models/(downloads)/task";
+import TaskForce from "@/models/(programs)/taskforce";
 
 export async function getTasks() {
   await connectToDB()
-  const tasks = await Task.find()
+  const tasks = await TaskForce.find()
   return tasks;
 }
 

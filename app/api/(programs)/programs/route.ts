@@ -16,8 +16,8 @@ export async function POST(req: NextRequest) {
 
 export async function GET() {
     await connectToDB()
-    const program = await Program.find()
-    return NextResponse.json({ program })
+    const programs = await Program.find()
+    return NextResponse.json({ programs })
 }
 
 //@ts-ignore
