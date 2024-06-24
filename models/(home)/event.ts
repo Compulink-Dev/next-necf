@@ -5,12 +5,13 @@ const eventScheme = new Schema(
         title: String,
         date: String,
         imageUrl: String,
+        link: String
     },
     {
         timestamps: true
     }
 )
 
-const Event = mongoose.models.Event || mongoose.model("Event", eventScheme)
+const MainEvent = mongoose.models.MainEvent || mongoose.model("MainEvent", eventScheme)
 
-export default Event
+export default MainEvent

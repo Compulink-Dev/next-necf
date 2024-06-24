@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     const { title, description, image, subtitle } = await req.json()
     await connectToDB()
     await Program.create({ title, description, image, subtitle })
-    return NextResponse.json({ message: "program program Created" }, { status: 201 })
+    return NextResponse.json({ message: "Program  Created" }, { status: 201 })
 }
 
 
