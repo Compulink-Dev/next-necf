@@ -1,43 +1,42 @@
-import db from "@/lib/db";
-import { NextResponse } from "next/server";
+export const dynamic = "force-dynamic"
+
+import { connectToDB } from "@/lib/connectToDB"
+import Event from "@/models/events/events"
+
+import { NextRequest, NextResponse } from "next/server"
+
+export async function POST(req: NextRequest) {
+    const { title, description, image, subtitle } = await req.json()
+    await connectToDB()
+    await Event.create({ title, description, image, subtitle })
+    return NextResponse.json({ message: "Events program Created" }, { status: 201 })
+}
 
 
 export async function GET() {
-    try {
-        const teams = await db.team.findMany()
-
-        return NextResponse.json(teams, {
-            status: 201
-        })
-    } catch (error) {
-        console.log('Error while fetching', error);
-        return NextResponse.json({
-            message: "Failed to fetch member",
-        }, {
-            status: 500
-        })
-    }
+    await connectToDB()
+    const events = await Event.find()
+    return NextResponse.json({ events })
 }
 
-export async function POST(request: Request) {
+//@ts-ignore
+export async function DELETE(request, { params }) {
+    await connectToDB()
     try {
-        const { title, position, link, image } = await request.json()
-        const data = { title, position, link, image }
+        const events = await Event.findByIdAndDelete(params.id)
 
-        const teamData = await db.team.create({ data })
+        if (!events) {
+            return NextResponse.json(
+                {
+                    message: "Events not found"
+                },
+                { status: 400 }
+            )
+        }
 
-        console.log(teamData);
-
-        return NextResponse.json(teamData, {
-            status: 201
-        })
+        return NextResponse.json(events)
 
     } catch (error) {
-        console.log('Error while creating', error);
-        return NextResponse.json({
-            message: "Failed to create member",
-        }, {
-            status: 500
-        })
+        return NextResponse.json({ message: "Events error" }, { status: 400 })
     }
 }

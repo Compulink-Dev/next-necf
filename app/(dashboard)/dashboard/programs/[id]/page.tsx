@@ -1,7 +1,7 @@
 import React from 'react'
 import BackButton from '@/components/backButton'
 import EditProgram from '../_components/EditProgramme'
-import getProgram from '@/lib/program/getProgram'
+import getProgram from '@/lib/(programs)/program/getProgram'
 
 //@ts-ignore
 async function ProgramEdit({ params: { id } }) {

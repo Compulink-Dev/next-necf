@@ -1,4 +1,8 @@
 import Button from "@/components/button";
+import { connectToDB } from "@/lib/connectToDB";
+import getEvents from "@/lib/event/getEvents";
+import MainEvent from "@/models/(home)/event";
+import Event from "@/models/events/events";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -13,9 +17,9 @@ interface EventProps {
 const EventCard = ({ imageUrl, title, date, link }: EventProps) => {
   return (
     <div className="lg:flex">
-      <Image
+      <img
         className="object-contain md:object-cover w-full h-56 rounded-lg lg:w-64"
-        src={imageUrl}
+        src={`${imageUrl}`}
         alt=""
         width={300}
         height={300}
@@ -38,40 +42,48 @@ const EventCard = ({ imageUrl, title, date, link }: EventProps) => {
   )
 }
 
+export async function mainEvents() {
+  await connectToDB()
+  const events = await MainEvent.find()
+  return events;
+}
 
-function Event() {
+
+async function EventPage() {
+
+  const events = await mainEvents()
+
   return (
     <div>
-      <section className="bg-white dark:bg-gray-900">
+      <section className="bg-white dark:bg-gray-900 my-6">
         <div className="container px-6 py-10 mx-auto">
           <h1 className="text-2xl font-semibold text-green-800 capitalize lg:text-3xl dark:text-white">
             Up Coming Events
           </h1>
 
           <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
-            <EventCard
-              title="INTERNATIONAL BUSINESS CONFERENCE (IBC)"
-              imageUrl="/ibcmain.jpeg"
-              link="/"
-              date="8 October 2024"
-            />
-            <EventCard
-              title="THE INFRASTRUCTURE SUMMIT AND EXPO (ISE)"
-              imageUrl="/trans.jpg"
-              link=""
-              date="8 October 2024"
-            />
-            <EventCard
-              title="ANNUAL NATIONAL AGRI-BUSINESS CONFERENCE (ANAC)"
-              imageUrl="/agric.jpeg"
-              link="/"
-              date="8 October 2024"
-            />
+
+            {
+              events.map((event: any) => {
+                return (
+                  <EventCard
+                    key={event.title}
+                    title={event.title}
+                    imageUrl={event.imageUrl}
+                    date={event.date}
+                    link={event.link}
+                  />
+                )
+              })
+            }
           </div>
         </div>
+        <Link
+          className="px-4 py-3  text-white rounded-md text-sm bg-green-600 hover:bg-green-500 m-6"
+          href={'/programs'}>View more</Link>
       </section>
     </div>
   );
 }
 
-export default Event;
+export default EventPage;
