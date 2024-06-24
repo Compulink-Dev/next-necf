@@ -12,6 +12,6 @@ const annualScheme = new Schema(
     }
 )
 
-const Annual = mongoose.models.Annual || mongoose.model("Annual", annualScheme)
+const Annual = mongoose.models?.Annual || mongoose.model("Annual", annualScheme)
 
 export default Annual

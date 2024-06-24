@@ -12,6 +12,6 @@ const adhocScheme = new Schema(
     }
 )
 
-const Adhoc = mongoose.models.Adhoc || mongoose.model("Adhoc", adhocScheme)
+const Adhoc = mongoose.models?.Adhoc || mongoose.model("Adhoc", adhocScheme)
 
 export default Adhoc

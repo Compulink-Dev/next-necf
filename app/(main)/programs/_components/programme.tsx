@@ -1,84 +1,24 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
-import TaskForces from "./adhoclist";
-import { hocprograms } from "@/constants/hocprograms";
-import HocPrograms from "./hocprograms";
-import { ProgrammeCard } from "./programmeCard";
-import { Check } from "lucide-react"
-
-import { cn } from "@/lib/utils"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import getPrograms from "@/lib/(programs)/program/getPrograms";
 import getTasks from "@/lib/(programs)/taskforce/getTasks";
 import AnnualList from "./anuual";
 import AdhocList from "./adhoclist";
 import getAdhocs from "@/lib/(programs)/adhoc/getAdhocs";
+import ProgrammeList from "./prograameList";
+import TaskForces from "./taskforce";
 
 
-interface ProgramProps {
-  title: string;
-  desc: string;
-  image: string;
-  subtitle?: string
-}
 
-const ProgramCard = ({ title, desc, image, subtitle }: ProgramProps) => {
-  return (
-    <Card className={cn("w-full md:w-2/4")} >
-      <CardHeader>
-        <CardTitle className="text-green-600">{title}</CardTitle>
-        <CardDescription>Register now to join</CardDescription>
-        <p className="text-green-600 font-bold">{subtitle}</p>
-      </CardHeader>
-      <CardContent className="grid gap-4">
-        <div className=" flex items-center space-x-4 rounded-md border p-4">
-
-          <div className="flex-1 flex items-center justify-center space-y-1">
-            <Image src={image} alt="" width={100} height={100} className="w-2/4 object-contain" />
-          </div>
-        </div>
-        <div>
-          <p className="text-xs text-slate-700">
-            {desc}
-          </p>
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full bg-green-600 hover:bg-green-500">
-          <Check className="mr-2 h-4 w-4" />Register now
-        </Button>
-      </CardFooter>
-    </Card>
-  );
-};
 
 async function Programme() {
-  const programs = await getPrograms()
+
   const taskforces = await getTasks()
   const adhoc = await getAdhocs()
   return (
     <>
       <div className="flex w-full p-8">
-        {
-          programs.map((program: any) => {
-            return (
-              <ProgrammeCard
-                key={program.title}
-                image={program.image}
-                title={program.title}
-                desc={program.description}
-              />
-            )
-          })
-        }
+        <ProgrammeList />
         <div className="flex-1 hidden md:flex flex-col text-slate-500">
           <div className="flex flex-col gap-4 border m-4 md:mt-0 rounded">
             <input
