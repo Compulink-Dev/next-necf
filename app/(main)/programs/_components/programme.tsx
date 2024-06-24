@@ -68,12 +68,11 @@ async function Programme() {
         {
           programs.map((program: any) => {
             return (
-              <ProgramCard
+              <ProgrammeCard
                 key={program.title}
                 image={program.image}
                 title={program.title}
                 desc={program.description}
-                subtitle={program.subtitle}
               />
             )
           })
