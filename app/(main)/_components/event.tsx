@@ -55,7 +55,7 @@ let eventsCache: any = null
 
 export async function mainEvents() {
 
-  const _cookies = cookies()
+  const _ = cookies()
 
   if (eventsCache !== null) {
     console.log('Events from cache');
