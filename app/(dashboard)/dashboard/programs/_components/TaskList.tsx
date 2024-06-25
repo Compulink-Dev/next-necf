@@ -13,7 +13,7 @@ export async function loadTasks() {
 
 
 async function TaskList() {
-    const tasks = await getTaskForces()
+    const tasks = await loadTasks()
     return (
         <div className=''>
             {

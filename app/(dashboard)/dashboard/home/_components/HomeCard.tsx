@@ -1,12 +1,14 @@
 
+import { connectToDB } from '@/lib/connectToDB'
+import MainEvent from '@/models/(home)/event'
 import Link from 'next/link'
 import React from 'react'
 
-// export async function loadVacancy() {
-//     await connectToDB()
-//     const vacancies = await Vacancy.find()
-//     return vacancies
-// }
+export async function loadVacancy() {
+    await connectToDB()
+    const events = await MainEvent.find()
+    return events
+}
 
 interface AboutProps {
     about: any
