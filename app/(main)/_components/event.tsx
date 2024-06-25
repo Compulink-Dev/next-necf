@@ -46,9 +46,22 @@ const EventCard = ({ image, title, date, link }: EventProps) => {
   )
 }
 
+let eventsCache: any = null
+
 export async function mainEvents() {
+
+  if (eventsCache !== null) {
+    console.log('Events from cache');
+    return eventsCache
+
+  }
+
   await connectToDB()
   const events = await MainEvent.find()
+
+  eventsCache = events
+
+
   return events;
 }
 
