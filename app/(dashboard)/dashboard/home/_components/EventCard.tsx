@@ -1,4 +1,5 @@
 import { connectToDB } from '@/lib/connectToDB'
+import getMainEvents from '@/lib/home/getMainEvents'
 import MainEvent from '@/models/(home)/event'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,12 +13,12 @@ export async function loadEvents() {
 
 async function EventCard() {
 
-    const events = await loadEvents()
+    const events = await getMainEvents()
 
     return (
         <div className=''>
             {
-                events.map((event) => (
+                events.map((event: any) => (
                     <Link
                         key={event.id}
                         className=''
