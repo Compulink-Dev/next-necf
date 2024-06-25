@@ -6,15 +6,28 @@ import Link from 'next/link'
 import React from 'react'
 import { MdTimer } from 'react-icons/md'
 
+
+let eventsCache: any = null
+
 export async function loadEvents() {
+
+    if (eventsCache !== null) {
+        console.log('Events from cache');
+        return eventsCache
+
+    }
+
     await connectToDB()
     const events = await MainEvent.find()
+
+    eventsCache = events
+
     return events
 }
 
 async function EventCard() {
 
-    const events = await loadEvents()
+    const events = await getMainEvents()
 
     return (
         <div className=''>
