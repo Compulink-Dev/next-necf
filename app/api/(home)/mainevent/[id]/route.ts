@@ -1,3 +1,4 @@
+
 import { connectToDB } from "@/lib/connectToDB";
 import MainEvent from "@/models/(home)/event";
 
