@@ -3,6 +3,7 @@ import { ProgrammeCard } from './programmeCard'
 import { connectToDB } from '@/lib/connectToDB';
 import Program from "@/models/(programs)/program";
 import getPrograms from '@/lib/(programs)/program/getPrograms';
+import { ProgramModal } from './programModal';
 
 // export async function loadProgram() {
 //     await connectToDB()
@@ -20,11 +21,11 @@ async function ProgrammeList() {
             {
                 programs.map((program: any) => {
                     return (
-                        <ProgrammeCard
+                        <ProgramModal
                             key={program.title}
                             image={program.image}
                             title={program.title}
-                            desc={program.description}
+                            description={program.description}
                         />
                     )
                 })

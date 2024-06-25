@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import Upload from "@/components/upload";
+import EventCard from "./EventCard";
 
 export function HomeTabs() {
   return (
@@ -97,24 +98,9 @@ export function HomeTabs() {
             <CardDescription></CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <Upload />
-            <div className="space-y-1">
-              <Label htmlFor="current">Title</Label>
-              <Input id="current" type="text" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="current">Slug</Label>
-              <Input id="current" type="text" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="current">Date</Label>
-              <DatePicker />
-            </div>
+            <EventCard />
           </CardContent>
           <CardFooter>
-            <Button className="bg-green-600 hover:bg-green-500">
-              Save changes
-            </Button>
           </CardFooter>
         </Card>
       </TabsContent>

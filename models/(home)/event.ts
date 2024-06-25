@@ -4,7 +4,7 @@ const eventScheme = new Schema(
     {
         title: String,
         date: String,
-        imageUrl: String,
+        image: String,
         link: String
     },
     {

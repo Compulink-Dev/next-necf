@@ -1,7 +1,5 @@
 import { connectToDB } from "@/lib/connectToDB";
-import Hero from "@/models/(home)/hero";
-
-
+import MainEvent from "@/models/(home)/event";
 
 
 import { NextRequest, NextResponse } from "next/server";
@@ -10,21 +8,21 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request, { params }) {
     await connectToDB()
     try {
-        const about = await Hero.findById(params.id)
+        const event = await MainEvent.findById(params.id)
 
-        if (!about) {
+        if (!event) {
             return NextResponse.json(
                 {
-                    message: "about not found"
+                    message: "event not found"
                 },
                 { status: 400 }
             )
         }
 
-        return NextResponse.json(about)
+        return NextResponse.json(event)
 
     } catch (error) {
-        return NextResponse.json({ message: "about error" }, { status: 400 })
+        return NextResponse.json({ message: "event error" }, { status: 400 })
     }
 }
 
@@ -34,21 +32,21 @@ export async function PUT(request, { params }) {
     const body = await request.json()
     await connectToDB()
     try {
-        const aboutUpdated = await Hero.findByIdAndUpdate(params.id, body)
+        const eventUpdated = await MainEvent.findByIdAndUpdate(params.id, body)
 
-        if (!aboutUpdated) {
+        if (!eventUpdated) {
             return NextResponse.json(
                 {
-                    message: "about not found"
+                    message: "event not found"
                 },
                 { status: 404 }
             )
         }
 
-        return NextResponse.json(aboutUpdated)
+        return NextResponse.json(eventUpdated)
 
     } catch (error) {
-        return NextResponse.json({ message: "about error" }, { status: 400 })
+        return NextResponse.json({ message: "event error" }, { status: 400 })
     }
 }
 
@@ -57,20 +55,20 @@ export async function PUT(request, { params }) {
 export async function DELETE(request, { params }) {
     await connectToDB()
     try {
-        const about = await Hero.findByIdAndDelete(params.id)
+        const event = await MainEvent.findByIdAndDelete(params.id)
 
-        if (!about) {
+        if (!event) {
             return NextResponse.json(
                 {
-                    message: "about not found"
+                    message: "event not found"
                 },
                 { status: 400 }
             )
         }
 
-        return NextResponse.json(about)
+        return NextResponse.json(event)
 
     } catch (error) {
-        return NextResponse.json({ message: "about error" }, { status: 400 })
+        return NextResponse.json({ message: "event error" }, { status: 400 })
     }
 }

@@ -8,18 +8,18 @@ import Link from "next/link";
 import React from "react";
 
 interface EventProps {
-  imageUrl: string,
+  image: string,
   title: string,
   date: string,
   link: string
 }
 
-const EventCard = ({ imageUrl, title, date, link }: EventProps) => {
+const EventCard = ({ image, title, date, link }: EventProps) => {
   return (
     <div className="lg:flex">
       <img
         className="object-contain md:object-cover w-full h-56 rounded-lg lg:w-64"
-        src={`${imageUrl}`}
+        src={`${image}`}
         alt=""
         width={300}
         height={300}
@@ -69,7 +69,7 @@ async function EventPage() {
                   <EventCard
                     key={event.title}
                     title={event.title}
-                    imageUrl={event.imageUrl}
+                    image={event.image}
                     date={event.date}
                     link={event.link}
                   />
