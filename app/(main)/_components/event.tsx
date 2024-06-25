@@ -1,9 +1,13 @@
 export const dynamic = 'force-dynamic'
+
+
+
 import Button from "@/components/button";
 import { connectToDB } from "@/lib/connectToDB";
 import getEvents from "@/lib/event/getEvents";
 import MainEvent from "@/models/(home)/event";
 import Event from "@/models/events/events";
+import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -50,6 +54,8 @@ const EventCard = ({ image, title, date, link }: EventProps) => {
 let eventsCache: any = null
 
 export async function mainEvents() {
+
+  const _cookies = cookies()
 
   if (eventsCache !== null) {
     console.log('Events from cache');
