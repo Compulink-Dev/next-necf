@@ -4,16 +4,28 @@ import MainEvent from '@/models/(home)/event'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { MdTimer } from 'react-icons/md'
+
+let eventsCache: any = null
 
 export async function loadEvents() {
+
+    if (eventsCache !== null) {
+        console.log('Returning events from cache');
+        return eventsCache
+
+    }
+
     await connectToDB()
     const events = await MainEvent.find()
+
+    eventsCache = events
     return events
 }
 
 async function EventCard() {
 
-    const events = await getMainEvents()
+    const events = await loadEvents()
 
     return (
         <div className=''>
@@ -32,7 +44,10 @@ async function EventCard() {
                             />
                             <div className="space-y-2">
                                 <p className="text-lg font-bold">{event.title}</p>
-                                <p className="">{event.date}</p>
+                                <div className="flex gap-2 items-center">
+                                    <MdTimer className='text-slate-400 text-sm' />
+                                    <p className="">{event.date}</p>
+                                </div>
                             </div>
                         </div>
                     </Link>

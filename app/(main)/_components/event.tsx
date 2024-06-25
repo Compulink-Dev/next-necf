@@ -6,6 +6,7 @@ import Event from "@/models/events/events";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { MdTimer } from "react-icons/md";
 
 interface EventProps {
   image: string,
@@ -35,7 +36,10 @@ const EventCard = ({ image, title, date, link }: EventProps) => {
 
         <Button name={"Register"} />
         <span className="text-sm text-gray-500 dark:text-gray-300">
-          {date}
+          <div className="flex gap-2 items-center">
+            <MdTimer />
+            <p className=""> {date}</p>
+          </div>
         </span>
       </div>
     </div>
