@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import Button from "@/components/button";
 import { connectToDB } from "@/lib/connectToDB";
 import getEvents from "@/lib/event/getEvents";
