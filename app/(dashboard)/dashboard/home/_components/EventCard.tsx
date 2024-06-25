@@ -27,7 +27,7 @@ export async function loadEvents() {
 
 async function EventCard() {
 
-    const events = await getMainEvents()
+    const events = await loadEvents()
 
     return (
         <div className=''>
