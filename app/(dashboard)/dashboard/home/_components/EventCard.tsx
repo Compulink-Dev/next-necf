@@ -17,6 +17,7 @@ export async function loadEvents() {
 
     }
 
+
     await connectToDB()
     const events = await MainEvent.find()
 
