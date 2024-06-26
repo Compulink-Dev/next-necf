@@ -151,6 +151,12 @@ function EditAdhoc({ program }) {
                         >Save changes</Button>
                 }
 
+                <div className="">
+                    <Button
+                        type='submit'
+                        className='bg-red-600 hover:bg-red-500'
+                    >Delete</Button>
+                </div>
             </form>
             <Toaster />
         </div>

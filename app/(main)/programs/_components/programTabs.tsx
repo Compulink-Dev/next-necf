@@ -37,14 +37,12 @@ export function ProgramTab() {
             </TabsList>
             <TabsContent value="program">
                 <Card>
-                    <CardHeader>
-                        <CardTitle className="text-green-700">Program</CardTitle>
-                        <CardDescription>
-                        </CardDescription>
-                    </CardHeader>
                     <CardContent className="space-y-4">
                         <div className="mx-8">
-                            <ProgrammeList />
+                            <div className="mt-12">
+                                <p className="my-2 font-bold text-2xl text-green-600">Annual Programs</p>
+                                <AnnualList />
+                            </div>
                             <div className="mt-12">
                                 <p className="my-2 font-bold text-2xl text-green-600">Task Forces</p>
                                 <TaskForces />
@@ -52,10 +50,6 @@ export function ProgramTab() {
                             <div className="mt-12">
                                 <p className="my-2 font-bold text-2xl text-green-600">Adhoc Programs</p>
                                 <AdhocList />
-                            </div>
-                            <div className="mt-12">
-                                <p className="my-2 font-bold text-2xl text-green-600">Annual Programs</p>
-                                <AnnualList />
                             </div>
                         </div>
                     </CardContent>
