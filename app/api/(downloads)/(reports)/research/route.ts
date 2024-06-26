@@ -7,9 +7,9 @@ import Research from "@/models/(downloads)/research"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-    const { title, document, imageUrl, date } = await req.json()
+    const { title, document, date } = await req.json()
     await connectToDB()
-    await Research.create({ title, document, imageUrl, date })
+    await Research.create({ title, document, date })
     return NextResponse.json({ message: "research Created" }, { status: 201 })
 }
 
