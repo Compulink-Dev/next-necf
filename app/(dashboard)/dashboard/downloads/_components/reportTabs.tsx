@@ -21,6 +21,7 @@ import PresentList from "./presesntList"
 import PolicyList from "./policyList"
 import MonthList from "./monthlyList copy 2"
 import QuarterList from "./quartetList"
+import CreateButton from "@/components/createButton"
 
 
 export function ReportTab() {
@@ -41,6 +42,7 @@ export function ReportTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
+                        <CreateButton link='downloads/research' />
                         <ResearchList />
                     </CardContent>
                     <CardFooter>
@@ -56,6 +58,7 @@ export function ReportTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
+                        <CreateButton link='downloads/task' />
                         <TaskList />
                     </CardContent>
                     <CardFooter>
@@ -71,6 +74,7 @@ export function ReportTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
+                        <CreateButton link='downloads/conference' />
                         <ConferenceList />
                     </CardContent>
                     <CardFooter>
@@ -87,6 +91,7 @@ export function ReportTab() {
                                         </CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-2">
+                                        <CreateButton link='downloads/presentation' />
                                         <PresentList />
                                     </CardContent>
                                     <CardFooter>
@@ -106,6 +111,7 @@ export function ReportTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
+                        <CreateButton link='downloads/policy' />
                         <PolicyList />
                     </CardContent>
                     <CardFooter>
@@ -123,6 +129,7 @@ export function ReportTab() {
                                         </CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-2">
+                                        <CreateButton link='downloads/monthly' />
                                         <MonthList />
                                     </CardContent>
                                     <CardFooter>
@@ -138,6 +145,7 @@ export function ReportTab() {
                                         </CardDescription>
                                     </CardHeader>
                                     <CardContent className="space-y-2">
+                                        <CreateButton link='downloads/quarterly' />
                                         <QuarterList />
                                     </CardContent>
                                     <CardFooter>

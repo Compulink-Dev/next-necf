@@ -7,9 +7,9 @@ import Quarterly from "@/models/(downloads)/quarterly"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-    const { title, document, imageUrl, date } = await req.json()
+    const { title, document, date } = await req.json()
     await connectToDB()
-    await Quarterly.create({ title, document, imageUrl, date })
+    await Quarterly.create({ title, document, date })
     return NextResponse.json({ message: "quarterly Created" }, { status: 201 })
 }
 

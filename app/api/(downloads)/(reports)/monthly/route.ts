@@ -7,9 +7,9 @@ import Monthly from "@/models/(downloads)/monthly"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-    const { title, document, imageUrl, date } = await req.json()
+    const { title, document, date } = await req.json()
     await connectToDB()
-    await Monthly.create({ title, document, imageUrl, date })
+    await Monthly.create({ title, document, date })
     return NextResponse.json({ message: "monthly Created" }, { status: 201 })
 }
 

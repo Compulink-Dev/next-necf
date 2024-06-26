@@ -4,7 +4,6 @@ const monthlyScheme = new Schema(
     {
         title: String,
         document: String,
-        imageUrl: String,
         date: String
     },
     {

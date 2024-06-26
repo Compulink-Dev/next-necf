@@ -7,9 +7,9 @@ import Policy from "@/models/(downloads)/policy"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-    const { title, document, imageUrl, date } = await req.json()
+    const { title, document, date } = await req.json()
     await connectToDB()
-    await Policy.create({ title, document, imageUrl, date })
+    await Policy.create({ title, document, date })
     return NextResponse.json({ message: "policy Created" }, { status: 201 })
 }
 

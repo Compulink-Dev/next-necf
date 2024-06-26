@@ -19,6 +19,7 @@ import {
 import Upload from "@/components/upload"
 import { ReportTab } from "./reportTabs"
 import DownloadList from "./downloadList"
+import CreateButton from "@/components/createButton"
 
 export function DownloadTab() {
     return (
@@ -35,6 +36,9 @@ export function DownloadTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
+                        <div className="">
+                            <CreateButton link='downloads' />
+                        </div>
                         <DownloadList />
                     </CardContent>
                 </Card>

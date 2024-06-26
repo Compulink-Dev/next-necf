@@ -7,9 +7,9 @@ import Task from "@/models/(downloads)/task"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-    const { title, document, imageUrl, date } = await req.json()
+    const { title, document, date } = await req.json()
     await connectToDB()
-    await Task.create({ title, document, imageUrl, date })
+    await Task.create({ title, document, date })
     return NextResponse.json({ message: "task Created" }, { status: 201 })
 }
 

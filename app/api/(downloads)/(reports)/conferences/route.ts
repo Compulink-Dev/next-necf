@@ -9,7 +9,7 @@ import { NextRequest, NextResponse } from "next/server"
 export async function POST(req: NextRequest) {
     const { title, document, imageUrl, date } = await req.json()
     await connectToDB()
-    await Conference.create({ title, document, imageUrl, date })
+    await Conference.create({ title, document, date })
     return NextResponse.json({ message: "Conference Created" }, { status: 201 })
 }
 
