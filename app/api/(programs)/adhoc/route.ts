@@ -11,14 +11,10 @@ export async function GET() {
 
 
 export async function POST(req: NextRequest) {
-    try {
-        const body = await req.json()
-        const newVacancy = new Adhoc(body)
-        const savedVacancy = await newVacancy.save()
-        return NextResponse.json(savedVacancy)
-    } catch (error) {
-        return NextResponse.json({ message: "Failed to post team" }, { status: 400 })
-    }
+    const { title, description, image, subtitle } = await req.json()
+    await connectToDB()
+    await Adhoc.create({ title, description, image, subtitle })
+    return NextResponse.json({ message: "Adhoc  Created" }, { status: 201 })
 }
 
 export async function DELETE(req: NextRequest) {
