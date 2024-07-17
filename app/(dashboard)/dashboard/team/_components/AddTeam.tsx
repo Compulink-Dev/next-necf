@@ -12,6 +12,7 @@ function AddTeam() {
     const [loading, setLoading] = useState(false)
     const router = useRouter()
 
+
     async function onSubmit(data: any) {
         setLoading(true)
         const raw_image = data.image[0]

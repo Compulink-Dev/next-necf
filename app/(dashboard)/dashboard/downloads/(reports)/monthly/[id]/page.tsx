@@ -1,12 +1,11 @@
 import React from 'react'
 import BackButton from '@/components/backButton'
-import EditConference from '../../../_components/editConference'
-import getConference from '@/lib/download/getConference'
 import EditMonthly from '../../../_components/editMonthly'
+import getMonthly from '@/lib/download/getMonthly'
 
 //@ts-ignore
 async function MonthlyEdit({ params: { id } }) {
-    const download = await getConference(id)
+    const download = await getMonthly(id)
     return (
         <div className='p-4'>
             <div className="flex justify-end">
