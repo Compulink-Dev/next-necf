@@ -1,21 +1,19 @@
 import React from 'react'
+import EditHero from '../../_components/EditHero'
 import BackButton from '@/components/backButton'
-import EditEvent from '../../_components/EventEdit';
-import getEvent from '@/lib/(home)/getMainEvent';
-
-
+import getHero from '@/lib/(home)/hero/getHero'
 
 //@ts-ignore
-async function EventEdit({ params: { id } }) {
-    const event = await getEvent(id)
+async function ProgramEdit({ params: { id } }) {
+    const hero = await getHero(id)
     return (
         <div className='p-4'>
             <div className="flex justify-end">
                 <BackButton />
             </div>
-            <EditEvent event={event} />
+            <EditHero hero={hero} />
         </div>
     )
 }
 
-export default EventEdit
+export default ProgramEdit

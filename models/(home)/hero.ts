@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const heroScheme = new Schema(
     {
-        imageUrl: String,
+        image: String,
     },
     {
         timestamps: true

@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic'
 
 
 import { connectToDB } from '@/lib/connectToDB'
-import getMainEvents from '@/lib/home/getMainEvents'
+import getMainEvents from '@/lib/(home)/getMainEvents'
 import MainEvent from '@/models/(home)/event'
 import { cookies } from 'next/headers'
 import Image from 'next/image'

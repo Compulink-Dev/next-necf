@@ -1,6 +1,16 @@
+import { connectToDB } from '@/lib/connectToDB'
+import Home from '@/models/(home)/home'
 import React from 'react'
 
-function HomeList() {
+
+export async function loadTasks() {
+    await connectToDB()
+    const homes = await Home.find()
+    return homes
+}
+
+
+async function HomeList() {
     return (
         <div>HomeList</div>
     )

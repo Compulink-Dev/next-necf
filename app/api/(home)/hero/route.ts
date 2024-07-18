@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
     const { imageUrl } = await req.json()
     await connectToDB()
     await Hero.create({ imageUrl })
-    return NextResponse.json({ message: "hero Created" }, { status: 201 })
+    return NextResponse.json({ message: "Hero Created" }, { status: 201 })
 }
 
 

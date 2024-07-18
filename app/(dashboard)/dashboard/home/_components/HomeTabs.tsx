@@ -15,6 +15,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import Upload from "@/components/upload";
 import EventCard from "./EventCard";
+import HeroList from "./HeroList";
+import CreateButton from "@/components/createButton";
 
 export function HomeTabs() {
   return (
@@ -34,13 +36,9 @@ export function HomeTabs() {
             <CardDescription></CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <Upload />
+            <CreateButton link='home/hero' />
+            <HeroList />
           </CardContent>
-          <CardFooter>
-            <Button className="bg-green-600 hover:bg-green-500">
-              Save changes
-            </Button>
-          </CardFooter>
         </Card>
       </TabsContent>
       <TabsContent value="main">
