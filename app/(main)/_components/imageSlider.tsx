@@ -1,33 +1,31 @@
-import { connectToDB } from '@/lib/connectToDB';
-import Hero from '@/models/(home)/hero';
+"use client"
 import React from 'react'
-import { SwiperSlide } from "swiper/react";
-import TopSection from './topsection';
-import { cookies } from 'next/headers';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import TopSection from './topsection'
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
-export async function loadHero() {
-    await connectToDB()
-    const heros = await Hero.find()
-    return heros
-}
-
-
-async function MainImages() {
-
-    const heros = await loadHero()
-    console.log(heros);
+function ImageSlider({ images }: any) {
+    console.log("Image data :", { images });
 
 
     return (
-        <div>
+        <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            autoplay={{ delay: 5000 }}
+        >
             {
-                heros.map((hero: any) => (
+                images?.map((image: any, index: any) => (
                     <SwiperSlide
-                        key={hero._id}
+
+                        key={index}
                     >
                         <div className="w-full h-[50%]">
                             <div
-                                style={{ backgroundImage: `url(${hero.image})` }}
+                                style={{ backgroundImage: `url(${image})` }}
                                 className="bg-scroll bg-cover bg-center bg-no-repeat w-full h-[40%] object-cover">
                                 <div className="flex flex-col items-center justify-center bg-scroll bg-center bg-black w-full h-screen bg-opacity-25">
                                     <div className=" flex gap-3 text-center text-xl md:text-5xl  text-gray-300 py-4"></div>
@@ -38,8 +36,8 @@ async function MainImages() {
                     </SwiperSlide>
                 ))
             }
-        </div>
+        </Swiper>
     )
 }
 
-export default MainImages
+export default ImageSlider

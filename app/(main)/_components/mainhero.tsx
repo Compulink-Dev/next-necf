@@ -1,67 +1,55 @@
-"use client";
-import React from "react";
-import { MdPerson } from "react-icons/md";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+import { connectToDB } from '@/lib/connectToDB'
+import Hero from '@/models/(home)/hero'
+import React from 'react'
+import ImageSlider from './imageSlider'
 
-import "swiper/css/autoplay";
-import TopSection from "./topsection";
-
-function MainHero() {
-  return (
-    <>
-      <div className=" ">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          autoplay={{ delay: 5000 }}
-        >
-          <SwiperSlide>
-            <div className="w-full h-[50%]">
-              <div
-                className="bg-scroll bg-cover bg-center
-   bg-no-repeat bg-[url('/IMG_0904.JPG')] w-full h-[40%] object-cover "
-              >
-                <div className="flex flex-col items-center justify-center bg-scroll bg-center bg-black w-full h-screen bg-opacity-25">
-                  <div className=" flex gap-3 text-center text-xl md:text-5xl  text-gray-300 py-4"></div>
-                </div>
-              </div>
-            </div>
-            <TopSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="w-full h-[50%]">
-              <div
-                className="bg-scroll bg-cover bg-center
-   bg-no-repeat bg-[url('/slide2.jpg')] w-full h-[40%] object-cover "
-              >
-                <div className="flex flex-col items-center justify-center bg-scroll bg-center bg-black w-full h-screen bg-opacity-25">
-                  <div className=" flex gap-3 text-center text-xl md:text-5xl  text-gray-300 py-4"></div>
-                </div>
-              </div>
-            </div>
-            <TopSection />
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="w-full h-[50%]">
-              <div
-                className="bg-scroll bg-cover bg-center
-   bg-no-repeat bg-[url('/NECF.jpg')] w-full h-[40%] object-cover "
-              >
-                <div className="flex flex-col items-center justify-center bg-scroll bg-center bg-black w-full h-screen bg-opacity-25">
-                  <div className=" flex gap-3 text-center text-xl md:text-5xl  text-gray-300 py-4"></div>
-                </div>
-              </div>
-            </div>
-            <TopSection />
-          </SwiperSlide>
-        </Swiper>
-      </div>
-    </>
-  );
+export async function loadHero() {
+  await connectToDB()
+  const heros = await Hero.find()
+  return heros
 }
 
-export default MainHero;
+
+async function MainHero() {
+
+  const heros = await loadHero()
+
+  console.log(heros);
+
+  const hero = heros
+
+  const slide = hero[0].image
+  const slide2 = hero[1].image
+  const slide3 = hero[2].image
+  const slide4 = hero[3].image
+
+  const images = [
+    slide,
+    slide2,
+    slide3,
+    slide4
+  ];
+
+
+
+  return (
+    <div>
+
+      {/* {
+        heros.map((hero: any) => (
+          <ImageSlider
+            key={hero._id}
+            images={hero.image}
+          />
+        ))
+      } */}
+
+      <ImageSlider
+        images={images}
+      />
+
+    </div>
+  )
+}
+
+export default MainHero
