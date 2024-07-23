@@ -1,7 +1,8 @@
 import React from 'react'
 import BackButton from '@/components/backButton'
 import EditEvent from '../../_components/EventEdit';
-import getEvent from '@/lib/(home)/getMainEvent';
+import getEvent from '@/lib/(home)/events/getEvent';
+
 
 
 

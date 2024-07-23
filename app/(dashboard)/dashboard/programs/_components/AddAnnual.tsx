@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
-function AddAnnual() {
+function AddGallery() {
   const {
     register,
     handleSubmit,
@@ -169,4 +169,4 @@ function AddAnnual() {
   );
 }
 
-export default AddAnnual;
+export default AddGallery;

@@ -9,6 +9,6 @@ const heroScheme = new Schema(
     }
 )
 
-const Hero = mongoose.models.Hero || mongoose.model("Hero", heroScheme)
+const Hero = mongoose.models?.Hero || mongoose.model("Hero", heroScheme)
 
 export default Hero

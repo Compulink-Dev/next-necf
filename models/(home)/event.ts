@@ -3,9 +3,8 @@ import mongoose, { Schema } from "mongoose";
 const eventScheme = new Schema(
     {
         title: String,
-        date: String,
         image: String,
-        link: String
+        date: String,
     },
     {
         timestamps: true

@@ -3,14 +3,26 @@ import React from 'react'
 import { SiDialogflow } from "react-icons/si";
 import { MdOutlineJoinFull } from "react-icons/md";
 import { HiSpeakerphone } from "react-icons/hi";
+import { connectToDB } from '@/lib/connectToDB';
+import Service from '@/models/(home)/service';
 
-function AboutImage() {
+export async function loadService() {
+    await connectToDB()
+    const services = await Service.find()
+    return services
+}
+
+
+async function AboutImage() {
+
+    const services = await loadService()
+
     return (
         <div>
             <section className="bg-white dark:bg-gray-900">
                 <div className="container px-6 py-10 mx-auto">
-                    <div className="lg:flex lg:items-center">
-                        <div className="w-full space-y-12 lg:w-1/2 ">
+                    <div className="">
+                        <div className="w-full">
                             <div>
                                 <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">explore our <br /> awesome Services</h1>
 
@@ -21,55 +33,63 @@ function AboutImage() {
                                 </div>
                             </div>
 
-                            <div className="md:flex md:items-start md:-mx-4">
-                                <span className="inline-block p-2 text-green-500 bg-green-100 rounded-xl md:mx-4 dark:text-white dark:bg-green-500">
-                                    <SiDialogflow />
-                                </span>
+                            {
+                                services.map((service) => (
+                                    <div
+                                        key={service.title}
+                                        className='flex items-center justify-between gap-8 w-full'>
+                                        <div className="flex flex-col gap-12">
+                                            <div className="md:flex md:items-start md:-mx-4">
+                                                <span className="inline-block p-2 text-green-500 bg-green-100 rounded-xl md:mx-4 dark:text-white dark:bg-green-500">
+                                                    <SiDialogflow />
+                                                </span>
 
-                                <div className="mt-4 md:mx-4 md:mt-0">
-                                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">Conferences</h1>
+                                                <div className="mt-4 md:mx-4 md:mt-0">
+                                                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">{service.title}</h1>
 
-                                    <p className="mt-3 text-gray-500 dark:text-gray-300">
-                                        We do facilitate and organize dialogues and conferences
-                                    </p>
-                                </div>
-                            </div>
+                                                    <p className="mt-3 text-gray-500 dark:text-gray-300">
+                                                        {service.description}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="md:flex md:items-start md:-mx-4">
+                                                <span className="inline-block p-2 text-green-500 bg-green-100 rounded-xl md:mx-4 dark:text-white dark:bg-green-500">
+                                                    <MdOutlineJoinFull />
+                                                </span>
 
-                            <div className="md:flex md:items-start md:-mx-4">
-                                <span className="inline-block p-2 text-green-500 bg-green-100 rounded-xl md:mx-4 dark:text-white dark:bg-green-500">
-                                    <MdOutlineJoinFull />
-                                </span>
+                                                <div className="mt-4 md:mx-4 md:mt-0">
+                                                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">{service.title2}</h1>
 
-                                <div className="mt-4 md:mx-4 md:mt-0">
-                                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">Union</h1>
+                                                    <p className="mt-3 text-gray-500 dark:text-gray-300">
+                                                        {service.description2}
+                                                    </p>
+                                                </div>
+                                            </div>
 
-                                    <p className="mt-3 text-gray-500 dark:text-gray-300">
-                                        We aim to unite and cement the relationship of public-private partnership
-                                    </p>
-                                </div>
-                            </div>
+                                            <div className="md:flex md:items-start md:-mx-4">
+                                                <span className="inline-block p-2 text-green-500 bg-green-100 rounded-xl md:mx-4 dark:text-white dark:bg-green-500">
+                                                    <HiSpeakerphone />
+                                                </span>
+                                                <div className="mt-4 md:mx-4 md:mt-0">
+                                                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">{service.title3}</h1>
 
-                            <div className="md:flex md:items-start md:-mx-4">
-                                <span className="inline-block p-2 text-green-500 bg-green-100 rounded-xl md:mx-4 dark:text-white dark:bg-green-500">
-                                    <HiSpeakerphone />
-                                </span>
+                                                    <p className="mt-3 text-gray-500 dark:text-gray-300">
+                                                        {service.description3}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                <div className="mt-4 md:mx-4 md:mt-0">
-                                    <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">Socio-economic</h1>
-
-                                    <p className="mt-3 text-gray-500 dark:text-gray-300">
-                                        Highlight and addresses the socio-economic issues in order to workout a viable solution
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="hidden lg:flex lg:items-center lg:w-1/2 lg:justify-center">
-                            <Image
-                                width={200}
-                                height={200}
-                                className="w-[26rem] h-[26rem] object-contain xl:w-[30rem] xl:h-[30rem] rounded-full"
-                                src="/ibc20.JPG" alt="" />
+                                        <div className="">
+                                            <Image
+                                                width={200}
+                                                height={200}
+                                                className="w-[26rem] h-[26rem] object-contain xl:w-[30rem] xl:h-[30rem] rounded-full"
+                                                src={service.image} alt="" />
+                                        </div>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
 

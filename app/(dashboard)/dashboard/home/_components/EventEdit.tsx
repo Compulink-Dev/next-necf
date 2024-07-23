@@ -20,7 +20,7 @@ function EditEvent({ event }) {
     async function handleDelete() {
         try {
 
-            const res = await fetch(`/api/mainevent/${event._id}`, {
+            const res = await fetch(`/api/main-events/${event._id}`, {
                 method: 'DELETE'
             })
 
@@ -28,7 +28,7 @@ function EditEvent({ event }) {
             if (res.ok) {
                 setLoading(false)
                 toast.success("Download deleted successfully")
-                router.push('/dashboard/downloads')
+                router.push('/dashboard/home')
                 return data
             }
 
@@ -65,7 +65,7 @@ function EditEvent({ event }) {
         try {
             const teamData = { ...data, image: imageUrl }
 
-            const response = await fetch(`/api/mainevent/${event._id}`, {
+            const response = await fetch(`/api/main-events/${event._id}`, {
                 method: "PUT",
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify(teamData)
@@ -92,67 +92,50 @@ function EditEvent({ event }) {
                 action=""
                 className="">
                 <div className="mb-6">
-                    <Label className='text-slate-600'>Title</Label>
+                    <Label className="text-slate-600">Title</Label>
                     <Input
                         defaultValue={event.title}
                         {...register("title", { required: true })}
                         type="text"
-                        id='title'
+                        id="title"
                         className=""
-                        placeholder='Enter title' />
-                    {
-                        errors.title && <p className="text-red-600 text-sm">
+                        placeholder="Enter title"
+                    />
+                    {errors.title && (
+                        <p className="text-red-600 text-sm">
                             Oops!
-                            <span className="">{" "}title already taken</span>
+                            <span className=""> title already taken</span>
                         </p>
-                    }
+                    )}
                 </div>
                 <div className="mb-6">
-                    <Label className='text-slate-600'>Date</Label>
+                    <Label className="text-slate-600">Date</Label>
                     <Input
                         defaultValue={event.date}
                         {...register("date", { required: true })}
-                        type="date"
-                        className=""
-                        id='date'
-                        placeholder='Enter date' />
-                    {
-                        errors.date && <p className="text-red-600 text-sm">
-                            Oops!
-                            <span className="">{" "} date already taken</span>
-                        </p>
-                    }
-                </div>
-                <div className="mb-6">
-                    <Label className='text-slate-600'>Link</Label>
-                    <Input
-                        defaultValue={event.link}
-                        {...register("link")}
                         type="text"
-                        id='link'
+                        id="date"
                         className=""
-                        placeholder='Enter link' />
-                    {
-                        errors.subtitle && <p className="">
+                        placeholder="Enter date"
+                    />
+                    {errors.date && (
+                        <p className="text-red-600 text-sm">
                             Oops!
-                            <span className="">link already taken</span>
+                            <span className=""> date already taken</span>
                         </p>
-                    }
+                    )}
                 </div>
                 <div className="mb-6 flex items-center gap-4">
                     <Image
                         src={event.image}
-                        alt='image'
+                        alt="image"
                         width={100}
                         height={100}
-                        className='rounded-full object-cover h-32 w-32' />
+                        className="rounded-full object-cover h-32 w-32"
+                    />
                     <div className="">
-                        <Label className='text-slate-600'>Image</Label>
-                        <Input
-                            {...register("image")}
-                            className='w-full'
-                            type='file'
-                        />
+                        <Label className="text-slate-600">Image</Label>
+                        <Input {...register("image")} className="w-full" type="file" />
                     </div>
                 </div>
                 <div className="flex gap-1">

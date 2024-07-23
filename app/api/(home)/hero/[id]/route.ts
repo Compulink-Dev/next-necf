@@ -10,21 +10,21 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request, { params }) {
     await connectToDB()
     try {
-        const about = await Hero.findById(params.id)
+        const hero = await Hero.findById(params.id)
 
-        if (!about) {
+        if (!hero) {
             return NextResponse.json(
                 {
-                    message: "about not found"
+                    message: "hero not found"
                 },
                 { status: 400 }
             )
         }
 
-        return NextResponse.json(about)
+        return NextResponse.json(hero)
 
     } catch (error) {
-        return NextResponse.json({ message: "about error" }, { status: 400 })
+        return NextResponse.json({ message: "hero error" }, { status: 400 })
     }
 }
 
@@ -34,21 +34,21 @@ export async function PUT(request, { params }) {
     const body = await request.json()
     await connectToDB()
     try {
-        const aboutUpdated = await Hero.findByIdAndUpdate(params.id, body)
+        const heroUpdated = await Hero.findByIdAndUpdate(params.id, body)
 
-        if (!aboutUpdated) {
+        if (!heroUpdated) {
             return NextResponse.json(
                 {
-                    message: "about not found"
+                    message: "hero not found"
                 },
                 { status: 404 }
             )
         }
 
-        return NextResponse.json(aboutUpdated)
+        return NextResponse.json(heroUpdated)
 
     } catch (error) {
-        return NextResponse.json({ message: "about error" }, { status: 400 })
+        return NextResponse.json({ message: "hero error" }, { status: 400 })
     }
 }
 
@@ -57,20 +57,20 @@ export async function PUT(request, { params }) {
 export async function DELETE(request, { params }) {
     await connectToDB()
     try {
-        const about = await Hero.findByIdAndDelete(params.id)
+        const hero = await Hero.findByIdAndDelete(params.id)
 
-        if (!about) {
+        if (!hero) {
             return NextResponse.json(
                 {
-                    message: "about not found"
+                    message: "hero not found"
                 },
                 { status: 400 }
             )
         }
 
-        return NextResponse.json(about)
+        return NextResponse.json(hero)
 
     } catch (error) {
-        return NextResponse.json({ message: "about error" }, { status: 400 })
+        return NextResponse.json({ message: "hero error" }, { status: 400 })
     }
 }

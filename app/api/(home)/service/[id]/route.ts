@@ -7,21 +7,21 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request, { params }) {
     await connectToDB()
     try {
-        const about = await Service.findById(params.id)
+        const service = await Service.findById(params.id)
 
-        if (!about) {
+        if (!service) {
             return NextResponse.json(
                 {
-                    message: "about not found"
+                    message: "service not found"
                 },
                 { status: 400 }
             )
         }
 
-        return NextResponse.json(about)
+        return NextResponse.json(service)
 
     } catch (error) {
-        return NextResponse.json({ message: "about error" }, { status: 400 })
+        return NextResponse.json({ message: "service error" }, { status: 400 })
     }
 }
 
@@ -31,21 +31,21 @@ export async function PUT(request, { params }) {
     const body = await request.json()
     await connectToDB()
     try {
-        const aboutUpdated = await Service.findByIdAndUpdate(params.id, body)
+        const serviceUpdated = await Service.findByIdAndUpdate(params.id, body)
 
-        if (!aboutUpdated) {
+        if (!serviceUpdated) {
             return NextResponse.json(
                 {
-                    message: "about not found"
+                    message: "service not found"
                 },
                 { status: 404 }
             )
         }
 
-        return NextResponse.json(aboutUpdated)
+        return NextResponse.json(serviceUpdated)
 
     } catch (error) {
-        return NextResponse.json({ message: "about error" }, { status: 400 })
+        return NextResponse.json({ message: "service error" }, { status: 400 })
     }
 }
 
@@ -54,20 +54,20 @@ export async function PUT(request, { params }) {
 export async function DELETE(request, { params }) {
     await connectToDB()
     try {
-        const about = await Service.findByIdAndDelete(params.id)
+        const service = await Service.findByIdAndDelete(params.id)
 
-        if (!about) {
+        if (!service) {
             return NextResponse.json(
                 {
-                    message: "about not found"
+                    message: "service not found"
                 },
                 { status: 400 }
             )
         }
 
-        return NextResponse.json(about)
+        return NextResponse.json(service)
 
     } catch (error) {
-        return NextResponse.json({ message: "about error" }, { status: 400 })
+        return NextResponse.json({ message: "service error" }, { status: 400 })
     }
 }
