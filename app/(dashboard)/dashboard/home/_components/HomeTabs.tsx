@@ -50,7 +50,7 @@ export function HomeTabs() {
             <CardDescription></CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <CreateButton link='home/main' />
+            {/* <CreateButton link='home/main' /> */}
             <MainList />
           </CardContent>
         </Card>
@@ -62,7 +62,7 @@ export function HomeTabs() {
             <CardDescription></CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <CreateButton link='home/service' />
+            {/* <CreateButton link='home/service' /> */}
             <ServiceList />
           </CardContent>
 
