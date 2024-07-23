@@ -43,11 +43,14 @@ function EditHero({ hero }) {
     }
   }
 
+  console.log("Hero image : ", hero.image);
 
   async function onSubmit(data: any) {
     setLoading(true);
     const len = data.image.length;
     let imageUrl = hero.image;
+
+
 
     if (len > 0) {
       const raw_image = data.image[0];

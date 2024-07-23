@@ -1,40 +1,23 @@
 export const dynamic = 'force-dynamic'
-
-
 import { connectToDB } from '@/lib/connectToDB'
-import getMainEvents from '@/lib/(home)/getMainEvents'
 import MainEvent from '@/models/(home)/event'
-import { cookies } from 'next/headers'
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { MdTimer } from 'react-icons/md'
 
-
-let eventsCache: any = null
-
 export async function loadEvents() {
-
-    const _cookies = cookies()
-
-    if (eventsCache !== null) {
-        console.log('Events from cache');
-        return eventsCache
-
-    }
-
-
     await connectToDB()
     const events = await MainEvent.find()
-
-    eventsCache = events
-
     return events
 }
+
 
 async function EventCard() {
 
     const events = await loadEvents()
+
+    console.log("Events : ", events);
+
 
     return (
         <div className=''>

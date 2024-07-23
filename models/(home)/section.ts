@@ -4,7 +4,7 @@ const sectionScheme = new Schema(
     {
         title: String,
         title2: String,
-        imageUrl: String,
+        image: String,
     },
     {
         timestamps: true

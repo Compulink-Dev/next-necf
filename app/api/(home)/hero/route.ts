@@ -6,26 +6,26 @@ import Hero from "@/models/(home)/hero"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-    const { imageUrl } = await req.json()
+    const { image } = await req.json()
     await connectToDB()
-    await Hero.create({ imageUrl })
+    await Hero.create({ image })
     return NextResponse.json({ message: "Hero Created" }, { status: 201 })
 }
 
 
 export async function GET() {
     await connectToDB()
-    const about = await Hero.find()
-    return NextResponse.json({ about })
+    const hero = await Hero.find()
+    return NextResponse.json({ hero })
 }
 
 //@ts-ignore
 export async function DELETE(request, { params }) {
     await connectToDB()
     try {
-        const about = await Hero.findByIdAndDelete(params.id)
+        const hero = await Hero.findByIdAndDelete(params.id)
 
-        if (!about) {
+        if (!hero) {
             return NextResponse.json(
                 {
                     message: "hero not found"
@@ -34,7 +34,7 @@ export async function DELETE(request, { params }) {
             )
         }
 
-        return NextResponse.json(about)
+        return NextResponse.json(hero)
 
     } catch (error) {
         return NextResponse.json({ message: "hero error" }, { status: 400 })

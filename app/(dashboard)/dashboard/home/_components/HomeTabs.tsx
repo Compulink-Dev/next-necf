@@ -17,6 +17,8 @@ import Upload from "@/components/upload";
 import EventCard from "./EventCard";
 import HeroList from "./HeroList";
 import CreateButton from "@/components/createButton";
+import MainList from "./MainList";
+import ServiceList from "./ServiceList ";
 
 export function HomeTabs() {
   return (
@@ -48,45 +50,22 @@ export function HomeTabs() {
             <CardDescription></CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <Upload />
-            <div className="space-y-1">
-              <Label htmlFor="current">Title</Label>
-              <Input id="current" type="text" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="new">Description</Label>
-              <Textarea placeholder="Type your message here." />
-            </div>
+            <CreateButton link='home/main' />
+            <MainList />
           </CardContent>
-          <CardFooter>
-            <Button className="bg-green-600 hover:bg-green-500">
-              Save changes
-            </Button>
-          </CardFooter>
         </Card>
       </TabsContent>
       <TabsContent value="services">
         <Card>
           <CardHeader>
-            <CardTitle>Services</CardTitle>
+            <CardTitle>Service</CardTitle>
             <CardDescription></CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <Upload />
-            <div className="space-y-1">
-              <Label htmlFor="current">Title</Label>
-              <Input id="current" type="text" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="new">Description</Label>
-              <Textarea placeholder="Type your message here." />
-            </div>
+            <CreateButton link='home/service' />
+            <ServiceList />
           </CardContent>
-          <CardFooter>
-            <Button className="bg-green-600 hover:bg-green-500">
-              Save changes
-            </Button>
-          </CardFooter>
+
         </Card>
       </TabsContent>
       <TabsContent value="events">
@@ -96,6 +75,7 @@ export function HomeTabs() {
             <CardDescription></CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
+            <CreateButton link='home/event' />
             <EventCard />
           </CardContent>
           <CardFooter>
