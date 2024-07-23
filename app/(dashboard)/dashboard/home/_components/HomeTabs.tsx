@@ -38,7 +38,7 @@ export function HomeTabs() {
             <CardDescription></CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <CreateButton link='home/hero' />
+            {/* <CreateButton link='home/hero' /> */}
             <HeroList />
           </CardContent>
         </Card>
