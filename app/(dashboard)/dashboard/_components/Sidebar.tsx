@@ -44,7 +44,7 @@ const menuItems = [
                 icon: <IoCloudDownload />,
             },
             {
-                title: "Programs",
+                title: "Programmes",
                 path: "/dashboard/programs",
                 icon: <MdEventNote />,
             },

@@ -30,14 +30,14 @@ export function ProgramTab() {
     return (
         <Tabs defaultValue="account" className="w-full">
             <TabsList className="flex gap-2 bg-green-600 text-white">
-                <TabsTrigger value="program">Program</TabsTrigger>
+                <TabsTrigger value="program">Programmes</TabsTrigger>
                 <TabsTrigger value="gallery">Gallery</TabsTrigger>
                 <TabsTrigger value="news">Newsletter</TabsTrigger>
             </TabsList>
             <TabsContent value="program">
                 <Card>
                     <CardHeader>
-                        <CardTitle className="text-green-700">Program</CardTitle>
+                        <CardTitle className="text-green-700">Programmes</CardTitle>
                         <CardDescription>
                         </CardDescription>
                     </CardHeader>
