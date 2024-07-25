@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 const aboutGalleryScheme = new Schema(
     {
         title: String,
-        imageUrl: String
+        image: String
     },
     {
         timestamps: true,

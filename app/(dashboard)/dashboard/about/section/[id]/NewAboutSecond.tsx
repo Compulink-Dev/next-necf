@@ -4,23 +4,31 @@ import { useRouter, useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import BackButton from "@/components/backButton";
+import { Textarea } from "@/components/ui/textarea";
+import EventEmitter from "events";
 
-const NewAboutGallery = () => {
+const NewAboutSecond = () => {
     const [newVacant, setNewVacant] = useState({
         title: "",
         title2: "",
+        title3: "",
+        title4: "",
+        imageUrl: ""
     });
     const params = useParams();
     const router = useRouter();
+
+    const emitter = new EventEmitter()
+    emitter.setMaxListeners(20)
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errors, setErrors] = useState({});
 
     const getVacant = async () => {
-        const res = await fetch(`/api/aboutGallery/${params.id}`);
+        const res = await fetch(`/api/aboutSecond/${params.id}`);
         const data = await res.json();
         //@ts-ignore
-        setNewVacant({ title: data.title, imageUrl: data.imageUrl });
+        setNewVacant({ title: data.title, title2: data.title2, title3: data.title3, title4: data.title4, imageUrl: data.imageUrl });
     };
 
     useEffect(() => {
@@ -57,7 +65,7 @@ const NewAboutGallery = () => {
 
     const createTask = async () => {
         try {
-            await fetch("/api/aboutGallery", {
+            await fetch("/api/aboutSecond", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -74,7 +82,7 @@ const NewAboutGallery = () => {
     const handleDelete = async () => {
         if (window.confirm("Are you sure you want to delete this task?")) {
             try {
-                const res = await fetch(`/api/aboutGallery/${params.id}`, {
+                const res = await fetch(`/api/aboutSecond/${params.id}`, {
                     method: "DELETE",
                 });
                 router.push("/dashboard/about");
@@ -87,7 +95,7 @@ const NewAboutGallery = () => {
 
     const updateTask = async () => {
         try {
-            await fetch(`/api/aboutGallery/${params.id}`, {
+            await fetch(`/api/aboutSecond/${params.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -110,7 +118,7 @@ const NewAboutGallery = () => {
                 <form onSubmit={handleSubmit}>
                     <header className="flex justify-between">
                         <h1 className="font-bold text-3xl">
-                            {!params.id ? "Create About" : "Update About"}
+                            {!params.id ? "Create Task" : "Update task"}
                         </h1>
                         {params.id && (
                             <Button
@@ -122,8 +130,7 @@ const NewAboutGallery = () => {
                             </Button>
                         )}
                     </header>
-                    <Input
-                        type="text"
+                    <Textarea
                         placeholder="First title"
                         name="title"
                         onChange={handleChange}
@@ -131,13 +138,40 @@ const NewAboutGallery = () => {
                         autoFocus
                         className="border-2 w-full p-4 rounded-lg my-4"
                     />
+                    <Textarea
+
+                        placeholder="Second title"
+                        name="title2"
+                        onChange={handleChange}
+                        value={newVacant.title2}
+                        autoFocus
+                        className=" border-2  w-[400px] p-4 rounded-lg my-4"
+                    />
+                    <Textarea
+
+                        placeholder="Third title"
+                        name="title3"
+                        onChange={handleChange}
+                        value={newVacant.title3}
+                        autoFocus
+                        className="border-2 w-full p-4 rounded-lg my-4"
+                    />
+                    <Textarea
+
+                        placeholder="Fourth title"
+                        name="title4"
+                        onChange={handleChange}
+                        value={newVacant.title4}
+                        autoFocus
+                        className=" border-2  w-[400px] p-4 rounded-lg my-4"
+                    />
                     <Input
                         type="file"
                         placeholder="Cover Image"
                         name="imageUrl"
                         onChange={handleChange}
                         autoFocus
-                        className="w-[400px] p-4 rounded-lg my-4"
+                        className=" border-2  w-[400px] p-4 rounded-lg my-4"
                     />
                     <Button className="bg-green-600 text-white font-semibold px-8 py-2 rounded-lg">
                         {params.id ? "Update" : "Save"}
@@ -148,4 +182,4 @@ const NewAboutGallery = () => {
     );
 };
 
-export default NewAboutGallery;
+export default NewAboutSecond;

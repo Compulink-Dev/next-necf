@@ -7,9 +7,9 @@ import AboutGallery from "@/models/(about)/aboutGallery"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-    const { title, imageUrl } = await req.json()
+    const { title, image } = await req.json()
     await connectToDB()
-    await AboutGallery.create({ title, imageUrl })
+    await AboutGallery.create({ title, image })
     return NextResponse.json({ message: "about Created" }, { status: 201 })
 }
 

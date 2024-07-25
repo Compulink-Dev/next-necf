@@ -1,56 +1,54 @@
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import GalleryCard from "./galleryCard";
-import Image from "next/image";
+import { Copy } from "lucide-react"
 
-interface GalleryProps {
-  id: number;
-  imageUrl: string;
-  title: string;
-  desc: string;
+import { Button } from "@/components/ui/button"
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import Image from "next/image"
+
+interface AboutProps {
+    id?: number,
+    image: string
 }
 
-export function GalleryModal({ id, imageUrl, title, desc }: GalleryProps) {
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <GalleryCard
-          key={id}
-          imageUrl={imageUrl}
-          title={title}
-          description={desc}
-        />
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you are done.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="w-full h-full">
-          <Image
-            src={imageUrl}
-            alt=""
-            width={500}
-            height={500}
-            className="w-full h-full"
-          />
+const AboutImage = ({ id, image }: AboutProps) => {
+    return (
+        <div className=''>
+            <Image width={300} height={300} className="h-auto max-w-full rounded-lg hover:opacity-70 cursor-pointer" src={image} alt="" />
         </div>
-        <DialogFooter>
-          <Button type="submit">Save changes</Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  );
+    )
+}
+
+export function GalleryModal({ src, title, description }: any) {
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                <AboutImage image={src} />
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+                <div className="flex flex-col w-full items-center space-x-2">
+                    <Image src={src} alt="" width={500} height={500} className="w-full" />
+                    <div className="">
+                        <p className="mt-4">{title}</p>
+                    </div>
+                    <div className="">
+                        <p className="mt-4">{description}</p>
+                    </div>
+                </div>
+                <DialogFooter className="sm:justify-start">
+                    <DialogClose asChild>
+                    </DialogClose>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+    )
 }

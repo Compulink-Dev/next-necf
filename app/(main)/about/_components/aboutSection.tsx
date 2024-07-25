@@ -1,6 +1,8 @@
 import React from 'react'
 import SectionCard from './sectionCard'
 import { FaDotCircle } from "react-icons/fa";
+import Image from 'next/image';
+import getSections from '@/lib/(about)/aboutSection/getSections';
 
 const SectionPin = ({ text }: { text: string }) => {
     return (
@@ -11,38 +13,50 @@ const SectionPin = ({ text }: { text: string }) => {
     )
 }
 
-function AboutSection() {
+async function AboutSection() {
+
+    const sections = await getSections()
+
+    const image = sections[0].image
+    const title = sections[0].title
+    const title2 = sections[0].title2
+    const title3 = sections[0].title3
+    const title4 = sections[0].title4
+    const title5 = sections[0].title5
+    const title6 = sections[0].title6
+
+
     return (
         <div className='my-16'>
             <p className="text-2xl font-bold ">About NECF</p>
             <div className="flex gap-4">
-                <div className="flex-1 mt-4 grid grid-cols-2 gap-4">
-                    <SectionCard />
-                    <SectionCard />
-                    <SectionCard />
-                    <SectionCard />
+                <div className="flex-1 mt-4 gap-4">
+                    <Image
+                        src={image}
+                        alt=''
+                        width={200}
+                        height={200}
+                        className='rounded w-full'
+                    />
                 </div>
                 <div className="flex-1 flex flex-col items-center justify-center gap-2">
                     <SectionPin
-                        text='Creating a smart partnership amongst key economic players, namely, government, private sector, labour, civil society, academia and other stakeholders in order to enhance the socio-economic development process of Zimbabwe'
+                        text={`${title}`}
                     />
                     <SectionPin
-                        text='Providing a broad participatory framework in the formulation of national economic policy through an interchange of ideas and experiences among government, private sector, labour, academia and civil society'
+                        text={`${title2}`}
                     />
                     <SectionPin
-                        text='Providing a broad participatory framework in the formulation of national economic policy through an interchange of ideas and experiences among government, private sector, labour, academia and civil society'
+                        text={title3}
                     />
                     <SectionPin
-                        text='Facilitating the coordination, monitoring and evalution of national economic policy implementation'
+                        text={title4}
                     />
                     <SectionPin
-                        text='Providing a platform for forging national consensus on a shared vision for national economic development;'
+                        text={title5}
                     />
                     <SectionPin
-                        text='Inculcating a culture of consultation and consensus building in policy formulation through dialogue;'
-                    />
-                    <SectionPin
-                        text='Providing a forum for national debate on topical economic issues and recommend well considered views and policy options to enhance the growth of the economy.'
+                        text={title6}
                     />
                 </div>
             </div>

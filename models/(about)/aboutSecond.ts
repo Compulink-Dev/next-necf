@@ -6,7 +6,7 @@ const aboutSecondScheme = new Schema(
         title2: String,
         title3: String,
         title4: String,
-        imageUrl: String
+        image: String
     },
     {
         timestamps: true,

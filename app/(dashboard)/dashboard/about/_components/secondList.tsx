@@ -19,7 +19,7 @@ export const TopCard = ({ about }: any) => {
                 className="flex items-start gap-2 w-full">
                 <div className="w-[400px]">
                     <Image
-                        src={`/${about.imageUrl}`}
+                        src={`${about.image}`}
                         alt={about.title}
                         width={100}
                         height={100}

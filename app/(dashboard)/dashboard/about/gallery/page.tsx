@@ -1,9 +1,9 @@
 import React from 'react'
 
-function AboutGallery() {
+function Hero() {
     return (
-        <div>AboutGallery</div>
+        <div>Hero</div>
     )
 }
 
-export default AboutGallery
+export default Hero

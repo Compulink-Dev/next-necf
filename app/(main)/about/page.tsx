@@ -7,6 +7,7 @@ import { ImTarget } from "react-icons/im";
 import AboutInfo from './_components/aboutInfo';
 import AboutSection from './_components/aboutSection';
 import AboutGallery from './_components/aboutGallery';
+import getTops from '@/lib/(about)/aboutTop/getTops';
 
 
 const images = [
@@ -15,7 +16,14 @@ const images = [
     { image: '/delegates.jpg' }
 ]
 
-function About() {
+async function About() {
+
+    const top = await getTops()
+    const title = top[0].title
+    const title2 = top[0].title2
+
+    console.log("title:2 .", title2);
+
     return (
         <MainLayout>
             <div className="px-10 mb-6">
@@ -26,9 +34,7 @@ function About() {
                             <AiOutlineRise className='text-4xl font-bold text-white' />
                         </div>
                         <div className="h-20 w-full bg-green-500 rounded p-4">
-                            <p className="text-sm text-white">
-                                A leading socio-economic research institution and dialogue convener for equitable, sustainable and inclusive development by 2030.
-                            </p>
+                            <p className="text-sm text-white">{title}</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-4">
@@ -37,9 +43,7 @@ function About() {
                             <ImTarget className='text-4xl font-bold text-white' />
                         </div>
                         <div className="h-20 w-full bg-green-500 rounded p-4">
-                            <p className="text-sm text-white">
-                                {"To contribute to the country's socio-economic development through research as well as consultative and inclusive smart partnership dialogue."}
-                            </p>
+                            <p className="text-sm text-white">{title2}</p>
                         </div>
                     </div>
                 </div>

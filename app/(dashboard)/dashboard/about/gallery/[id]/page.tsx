@@ -1,3 +1,19 @@
-import NewAboutGallery from "./NewAboutGallery";
+import React from 'react'
+import BackButton from '@/components/backButton'
+import EditGallery from '../../_components/EditGallery'
+import getGallery from '@/lib/(about)/gallery/getGallery'
 
-export default NewAboutGallery
+//@ts-ignore
+async function GalleryEdit({ params: { id } }) {
+    const gallery = await getGallery(id)
+    return (
+        <div className='p-4'>
+            <div className="flex justify-end">
+                <BackButton />
+            </div>
+            <EditGallery gallery={gallery} />
+        </div>
+    )
+}
+
+export default GalleryEdit
