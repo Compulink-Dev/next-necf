@@ -15,6 +15,9 @@ import Vacancy from "@/models/vacancy";
 async function VacancyPage() {
   const vacancies = await getVacancies();
 
+  console.log("Vacancy length: ", vacancies);
+
+
   return (
     <div className="p-4">
       <div className="pb-4 flex justify-end">

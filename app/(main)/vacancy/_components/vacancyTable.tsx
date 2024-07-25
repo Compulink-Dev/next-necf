@@ -21,20 +21,25 @@ async function VacancyTable() {
     return (
         <div className='shadow p-4 border'>
             {
-                vacancies.map((vacancy) => (
-                    <div
-                        key={vacancy.name}
-                        className="flex items-center justify-between  border-b mb-4">
-                        <div className="space-y-1 mb-4">
-                            <p className="text-lg font-bold">{vacancy.name}</p>
-                            <p className="text-sm text-slate-600">{vacancy.jobType}</p>
-                            <p className="text-sm text-slate-600">{vacancy.dueDate}</p>
-                        </div>
-                        <div className="">
-                            <JobModal />
-                        </div>
-                    </div>
-                ))
+                vacancies.length === 0 ? (
+                    <div className="text-center text-sm text-slate-400">No vacancies currently...</div>
+                ) :
+                    (
+                        vacancies.map((vacancy) => (
+                            <div
+                                key={vacancy.name}
+                                className="flex items-center justify-between  border-b mb-4">
+                                <div className="space-y-1 mb-4">
+                                    <p className="text-lg font-bold">{vacancy.name}</p>
+                                    <p className="text-sm text-slate-600">{vacancy.jobType}</p>
+                                    <p className="text-sm text-slate-600">{vacancy.dueDate}</p>
+                                </div>
+                                <div className="">
+                                    <JobModal />
+                                </div>
+                            </div>
+                        ))
+                    )
             }
         </div>
     )

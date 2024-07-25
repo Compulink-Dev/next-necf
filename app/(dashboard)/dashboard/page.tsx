@@ -62,20 +62,32 @@
 import React from 'react'
 import { CldImage, CldUploadWidget } from 'next-cloudinary';
 import { Button } from '@/components/ui/button';
+import DashCard from './_components/DashCard';
 
 
 function Dashboard() {
   return (
     <div>
-      <CldUploadWidget uploadPreset="next_necf">
-        {({ open }) => {
-          return (
-            <Button className='bg-green-600 hover:bg-green-500' onClick={() => open()}>
-              Upload an Image
-            </Button>
-          );
-        }}
-      </CldUploadWidget>
+      <div className="grid grid-cols-3 gap-4">
+        <DashCard
+          title='Events Attended'
+          value={5}
+          subtile='Upcoming'
+          recent={'2 recently attended'}
+        />
+        <DashCard
+          title='Downloads'
+          value={4}
+          subtile='Upcoming'
+          recent={'2 recently downloaded'}
+        />
+        <DashCard
+          title='Events Hosted'
+          value={2}
+          subtile='Upcoming'
+          recent={'2 recently hosted'}
+        />
+      </div>
     </div>
   )
 }
