@@ -7,10 +7,10 @@ const aboutScheme = new Schema(
         title3: String,
         title4: String,
         title5: String,
-        imageUrl: String,
-        imageUrl2: String,
-        imageUrl3: String,
-        imageUrl4: String
+        image: String,
+        image2: String,
+        image3: String,
+        image4: String
     },
     {
         timestamps: true,

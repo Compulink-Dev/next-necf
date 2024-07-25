@@ -1,3 +1,19 @@
-import NewAboutTop from "./NewAboutTop";
+import React from 'react'
+import BackButton from '@/components/backButton'
+import EditTop from '../../_components/EditTop'
+import getTop from '@/lib/(about)/aboutTop/getTop'
 
-export default NewAboutTop
+//@ts-ignore
+async function ProgramEdit({ params: { id } }) {
+    const program = await getTop(id)
+    return (
+        <div className='p-4'>
+            <div className="flex justify-end">
+                <BackButton />
+            </div>
+            <EditTop gallery={program} />
+        </div>
+    )
+}
+
+export default ProgramEdit

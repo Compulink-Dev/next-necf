@@ -20,7 +20,7 @@ export const TopCard = ({ about }: any) => {
                 <div className="">
                     <Image
                         alt={about.title}
-                        src={`/${about.imageUrl}`}
+                        src={`${about.image}`}
                         width={200}
                         height={200}
                     />

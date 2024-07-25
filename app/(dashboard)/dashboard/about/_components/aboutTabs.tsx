@@ -20,6 +20,7 @@ import TopList from "./topList"
 import AboutList from "./aboutList"
 import SecondList from "./secondList"
 import GalleryList from "./galleryList"
+import CreateButton from "@/components/createButton"
 
 export function AboutTab() {
     return (
@@ -78,6 +79,7 @@ export function AboutTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
+                        <CreateButton link='about/gallery' />
                         <GalleryList />
                     </CardContent>
                 </Card>

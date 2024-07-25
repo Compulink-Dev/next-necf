@@ -20,6 +20,8 @@ import { Textarea } from "@/components/ui/textarea"
 import Upload from "@/components/upload"
 import { ProgramsTab } from "./programsTabs"
 import ProgramCard from "./programCard"
+import GalleryList from "./galleryList"
+import CreateButton from "@/components/createButton"
 
 
 
@@ -54,15 +56,8 @@ export function ProgramTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                        <Upload />
-                        <div className="space-y-1">
-                            <Label htmlFor="title">Title</Label>
-                            <Input id="title" />
-                        </div>
-                        <div className="space-y-1">
-                            <Label htmlFor="subtitle">Subtitle</Label>
-                            <Input id="subtitle" />
-                        </div>
+                        <CreateButton link='programs/gallery' />
+                        <GalleryList />
                     </CardContent>
                 </Card>
             </TabsContent>

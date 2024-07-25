@@ -17,26 +17,29 @@ import Image from "next/image"
 
 interface AboutProps {
     id?: number,
-    imageUrl: string
+    image: string
 }
 
-const AboutImage = ({ id, imageUrl }: AboutProps) => {
+const AboutImage = ({ id, image }: AboutProps) => {
     return (
         <div className=''>
-            <Image width={300} height={300} className="h-auto max-w-full rounded-lg hover:opacity-70 cursor-pointer" src={imageUrl} alt="" />
+            <Image width={300} height={300} className="h-auto max-w-full rounded-lg hover:opacity-70 cursor-pointer" src={image} alt="" />
         </div>
     )
 }
 
-export function AboutModal({ src }: { src: string }) {
+export function AboutModal({ src, title }: { src: string, title: string }) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <AboutImage imageUrl={src} />
+                <AboutImage image={src} />
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
-                <div className="flex w-full items-center space-x-2">
+                <div className="flex flex-col w-full items-center space-x-2">
                     <Image src={src} alt="" width={500} height={500} className="w-full" />
+                    <div className="">
+                        <p className="mt-4">{title}</p>
+                    </div>
                 </div>
                 <DialogFooter className="sm:justify-start">
                     <DialogClose asChild>
