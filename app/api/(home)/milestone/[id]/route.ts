@@ -1,5 +1,6 @@
 import { connectToDB } from "@/lib/connectToDB";
-import Section from "@/models/(home)/section";
+import Milestone from "@/models/(home)/milestone";
+
 
 
 
@@ -10,7 +11,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request, { params }) {
     await connectToDB()
     try {
-        const about = await Section.findById(params.id)
+        const about = await Milestone.findById(params.id)
 
         if (!about) {
             return NextResponse.json(
@@ -34,7 +35,7 @@ export async function PUT(request, { params }) {
     const body = await request.json()
     await connectToDB()
     try {
-        const aboutUpdated = await Section.findByIdAndUpdate(params.id, body)
+        const aboutUpdated = await Milestone.findByIdAndUpdate(params.id, body)
 
         if (!aboutUpdated) {
             return NextResponse.json(
@@ -57,7 +58,7 @@ export async function PUT(request, { params }) {
 export async function DELETE(request, { params }) {
     await connectToDB()
     try {
-        const about = await Section.findByIdAndDelete(params.id)
+        const about = await Milestone.findByIdAndDelete(params.id)
 
         if (!about) {
             return NextResponse.json(

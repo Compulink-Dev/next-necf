@@ -1,44 +1,45 @@
 export const dynamic = "force-dynamic"
 import { connectToDB } from "@/lib/connectToDB"
 import Hero from "@/models/(home)/hero"
-import Section from "@/models/(home)/section"
+import Milestone from "@/models/(home)/milestone"
+
 
 
 
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-    const { title, title2, imageUrl } = await req.json()
+    const { title, subtitle, number, description } = await req.json()
     await connectToDB()
-    await Section.create({ title, title2, imageUrl })
-    return NextResponse.json({ message: "Section Created" }, { status: 201 })
+    await Milestone.create({ title, subtitle, number, description })
+    return NextResponse.json({ message: "milestone Created" }, { status: 201 })
 }
 
 
 export async function GET() {
     await connectToDB()
-    const section = await Section.find()
-    return NextResponse.json({ section })
+    const milestone = await Milestone.find()
+    return NextResponse.json({ milestone })
 }
 
 //@ts-ignore
 export async function DELETE(request, { params }) {
     await connectToDB()
     try {
-        const section = await Section.findByIdAndDelete(params.id)
+        const milestone = await Milestone.findByIdAndDelete(params.id)
 
-        if (!section) {
+        if (!milestone) {
             return NextResponse.json(
                 {
-                    message: "Section not found"
+                    message: "milestone not found"
                 },
                 { status: 400 }
             )
         }
 
-        return NextResponse.json(section)
+        return NextResponse.json(milestone)
 
     } catch (error) {
-        return NextResponse.json({ message: "Section error" }, { status: 400 })
+        return NextResponse.json({ message: "milestone error" }, { status: 400 })
     }
 }

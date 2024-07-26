@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Hero() {
+function Main() {
     return (
-        <div>Hero</div>
+        <div>Main</div>
     )
 }
 
-export default Hero
+export default Main

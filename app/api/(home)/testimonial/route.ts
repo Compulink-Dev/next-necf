@@ -1,20 +1,20 @@
 export const dynamic = "force-dynamic"
 import { connectToDB } from "@/lib/connectToDB"
-import Hero from "@/models/(home)/hero"
+import Testimonial from "@/models/(home)/testimonial"
 
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-    const { title, imageUrl } = await req.json()
+    const { title, name, company, position } = await req.json()
     await connectToDB()
-    await Hero.create({ imageUrl })
-    return NextResponse.json({ message: "Hero Created" }, { status: 201 })
+    await Testimonial.create({ title, name, company, position })
+    return NextResponse.json({ message: "Testimonial Created" }, { status: 201 })
 }
 
 
 export async function GET() {
     await connectToDB()
-    const about = await Hero.find()
+    const about = await Testimonial.find()
     return NextResponse.json({ about })
 }
 
@@ -22,12 +22,12 @@ export async function GET() {
 export async function DELETE(request, { params }) {
     await connectToDB()
     try {
-        const about = await Hero.findByIdAndDelete(params.id)
+        const about = await Testimonial.findByIdAndDelete(params.id)
 
         if (!about) {
             return NextResponse.json(
                 {
-                    message: "Hero not found"
+                    message: "Testimonial not found"
                 },
                 { status: 400 }
             )
@@ -36,6 +36,6 @@ export async function DELETE(request, { params }) {
         return NextResponse.json(about)
 
     } catch (error) {
-        return NextResponse.json({ message: "Hero error" }, { status: 400 })
+        return NextResponse.json({ message: "Testimonial error" }, { status: 400 })
     }
 }

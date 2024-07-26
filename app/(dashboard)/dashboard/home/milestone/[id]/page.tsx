@@ -1,17 +1,17 @@
 import React from 'react'
-import EditHero from '../../_components/EditHero'
 import BackButton from '@/components/backButton'
-import getHero from '@/lib/(home)/hero/getHero'
+import EditMilestone from '../../_components/EditMilestone'
+import getMilestone from '@/lib/(home)/milestone/getMilestone'
 
 //@ts-ignore
 async function ProgramEdit({ params: { id } }) {
-    const hero = await getHero(id)
+    const section = await getMilestone(id)
     return (
         <div className='p-4'>
             <div className="flex justify-end">
                 <BackButton />
             </div>
-            <EditHero hero={hero} />
+            <EditMilestone section={section} />
         </div>
     )
 }

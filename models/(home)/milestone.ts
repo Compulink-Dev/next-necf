@@ -4,6 +4,8 @@ const milestoneScheme = new Schema(
     {
         number: String,
         title: String,
+        subtitle: String,
+        description: String,
     },
     {
         timestamps: true

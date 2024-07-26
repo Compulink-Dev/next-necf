@@ -5,6 +5,7 @@ import Statistic from "./_components/statistic";
 import Subscribe from "@/components/subscribe";
 import Event from "./_components/event";
 import AboutImage from "./_components/aboutImage";
+import Testimonial from "./_components/testimonial";
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
       <Event />
       <Statistic />
       <Subscribe />
+      <Testimonial />
     </MainLayout>
 
   );
