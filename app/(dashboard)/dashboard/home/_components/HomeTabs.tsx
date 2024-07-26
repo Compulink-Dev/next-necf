@@ -19,6 +19,8 @@ import HeroList from "./HeroList";
 import CreateButton from "@/components/createButton";
 import MainList from "./MainList";
 import ServiceList from "./ServiceList ";
+import MilestoneList from "./MilestoneList";
+import TestimonialList from "./TestimonialList ";
 
 export function HomeTabs() {
   return (
@@ -89,27 +91,9 @@ export function HomeTabs() {
             <CardDescription></CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="current">Title</Label>
-              <Input id="current" type="text" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="current">Number</Label>
-              <Input id="current" type="text" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="current">Subtitle</Label>
-              <Input id="current" type="text" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="new">Description</Label>
-              <Textarea placeholder="Type your message here." />
-            </div>
+            <MilestoneList />
           </CardContent>
           <CardFooter>
-            <Button className="bg-green-600 hover:bg-green-500">
-              Save changes
-            </Button>
           </CardFooter>
         </Card>
       </TabsContent>
@@ -120,27 +104,10 @@ export function HomeTabs() {
             <CardDescription></CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="current">Title</Label>
-              <Input id="current" type="text" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="current">Name</Label>
-              <Input id="current" type="text" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="current">Company</Label>
-              <Input id="current" type="text" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="current">Position</Label>
-              <Input id="current" type="text" />
-            </div>
+            <CreateButton link='home/testimonials' />
+            <TestimonialList />
           </CardContent>
           <CardFooter>
-            <Button className="bg-green-600 hover:bg-green-500">
-              Save changes
-            </Button>
           </CardFooter>
         </Card>
       </TabsContent>

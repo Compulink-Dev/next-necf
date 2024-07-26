@@ -1,5 +1,5 @@
 import { connectToDB } from "@/lib/connectToDB";
-import Hero from "@/models/(home)/hero";
+import Testimonial from "@/models/(home)/testimonial";
 
 import { NextRequest, NextResponse } from "next/server";
 
@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request, { params }) {
     await connectToDB()
     try {
-        const about = await Hero.findById(params.id)
+        const about = await Testimonial.findById(params.id)
 
         if (!about) {
             return NextResponse.json(
@@ -31,7 +31,7 @@ export async function PUT(request, { params }) {
     const body = await request.json()
     await connectToDB()
     try {
-        const aboutUpdated = await Hero.findByIdAndUpdate(params.id, body)
+        const aboutUpdated = await Testimonial.findByIdAndUpdate(params.id, body)
 
         if (!aboutUpdated) {
             return NextResponse.json(
@@ -54,7 +54,7 @@ export async function PUT(request, { params }) {
 export async function DELETE(request, { params }) {
     await connectToDB()
     try {
-        const about = await Hero.findByIdAndDelete(params.id)
+        const about = await Testimonial.findByIdAndDelete(params.id)
 
         if (!about) {
             return NextResponse.json(

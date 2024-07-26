@@ -1,10 +1,10 @@
 import React from 'react'
-import AddHero from '../../_components/AddHero'
+import AddTestimonial from '../../_components/AddTestimonial'
 
 function Hero() {
     return (
         <div>
-            <AddHero />
+            <AddTestimonial />
         </div>
     )
 }
