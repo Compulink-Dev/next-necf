@@ -40,7 +40,7 @@ export function ProgramTab() {
                     <CardContent className="space-y-4">
                         <div className="mx-8">
                             <div className="mt-12">
-                                <p className="my-2 font-bold text-2xl text-green-600">Annual Programs</p>
+                                <p className="my-2 font-bold text-2xl text-green-600">Annual Programmes</p>
                                 <AnnualList />
                             </div>
                             <div className="mt-12">
@@ -48,7 +48,7 @@ export function ProgramTab() {
                                 <TaskForces />
                             </div>
                             <div className="mt-12">
-                                <p className="my-2 font-bold text-2xl text-green-600">Adhoc Programs</p>
+                                <p className="my-2 font-bold text-2xl text-green-600">Adhoc Programmes</p>
                                 <AdhocList />
                             </div>
                         </div>
