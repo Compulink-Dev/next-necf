@@ -31,7 +31,7 @@ export function ProgramTab() {
     return (
         <Tabs defaultValue="account" className="w-full px-8 py-4">
             <TabsList className="flex gap-2 bg-green-600 text-white">
-                <TabsTrigger value="program">Program</TabsTrigger>
+                <TabsTrigger value="program">Programmes</TabsTrigger>
                 <TabsTrigger value="gallery">Gallery</TabsTrigger>
                 <TabsTrigger value="news">Newsletter</TabsTrigger>
             </TabsList>
