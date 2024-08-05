@@ -19,7 +19,7 @@ function Footer() {
             className="w-48 h-52 object-cover"
           />
           <p className="mx-10 -mt-12">
-            A think tank on economic and social policy issues.
+            Together we make Zimbabwe Great
           </p>
           <div className="flex items-center justify-center gap-12 mx-auto">
             <FaFacebook size={24} color="green" />
@@ -106,6 +106,15 @@ function Footer() {
           <p>Tel:+263 8612 701 094</p>
           <p>info@necf.org.zw</p>
           <p>www.necf.org.zw</p>
+          <div className="pt-4 flex gap-4">
+            <Link
+              href={"/https://www.herald.co.zw/"}
+              className="hover:text-green-700 focus:text-green-700 active:"
+            >
+              <Image src={'/logo.webp'} alt="" width={100} height={100} className="" />
+            </Link>
+
+          </div>
         </div>
       </div>
       <div className="bg-green-600">

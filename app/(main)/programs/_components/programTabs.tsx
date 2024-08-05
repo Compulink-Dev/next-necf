@@ -23,6 +23,7 @@ import TaskForces from "./taskforce"
 import AdhocList from "./adhoclist"
 import AnnualList from "./anuual"
 import Gallery from "./gallery"
+import NewsLetter from "./newsletter"
 
 
 
@@ -77,7 +78,7 @@ export function ProgramTab() {
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-2">
-                        <div className="mx-8">Newsletter</div>
+                        <NewsLetter />
                     </CardContent>
                 </Card>
             </TabsContent>
