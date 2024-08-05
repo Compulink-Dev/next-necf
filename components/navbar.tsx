@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
 
             {/* Navbar (visible on larger screens) */}
             <div className="flex gap-4 items-center">
-                <Image className='w-auto h-auto' src={'/logon.png'} alt='logo' width={80} height={80} />
+                <Image className='w-auto h-auto' src={'/necf-logo.png'} alt='logo' width={80} height={80} />
                 <ul className={styles.navLinks}>
                     {
                         links.map((link) => (
