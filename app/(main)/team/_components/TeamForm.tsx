@@ -80,7 +80,7 @@ async function TeamForm() {
             ))}
           </div>
 
-          <h1 className="my-8 pl-2 text-2xl font-bold">DIRECTORS</h1>
+          <h1 className="my-8 pl-2 text-2xl font-bold"></h1>
 
           {/* Second and Third persons, taking half width each */}
           <div className="flex flex-wrap items-center justify-center mx-auto">
@@ -95,7 +95,7 @@ async function TeamForm() {
             ))}
           </div>
 
-          <h1 className="my-8 pl-2 text-2xl font-bold">MANAGERS</h1>
+          <h1 className="my-8 pl-2 text-2xl font-bold"></h1>
 
           {/* Fourth and Fifth persons, taking half width each */}
           <div className="flex flex-wrap justify-center mx-auto">
@@ -110,7 +110,7 @@ async function TeamForm() {
             ))}
           </div>
 
-          <h1 className="my-8 pl-2 text-2xl font-bold">ECONOMISTS</h1>
+          <h1 className="my-8 pl-2 text-2xl font-bold"></h1>
 
           {/* Sixth person and beyond, each taking full width */}
           <div className="flex flex-wrap items-center justify-center mx-auto">
@@ -126,7 +126,7 @@ async function TeamForm() {
           </div>
 
 
-          <h1 className="my-8 pl-2 text-2xl font-bold">TEAM</h1>
+          <h1 className="my-8 pl-2 text-2xl font-bold"></h1>
           {/* Sixth person and beyond, each taking full width */}
           <div className="flex flex-wrap items-center justify-center mx-auto">
             {ninthAndBeyond.map((person: any) => (
