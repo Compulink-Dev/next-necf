@@ -63,7 +63,7 @@ function Footer() {
             target="_blank"
             className="hover:text-green-700 focus:text-green-700 active:"
           >
-            Reserve Bank Zimbabwe
+            Reserve Bank of Zimbabwe
           </Link>{" "}
           <Link
             href={"https://czi.co.zw/"}
