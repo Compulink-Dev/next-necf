@@ -62,7 +62,7 @@ function EditConference({ download }) {
         }
 
         try {
-            const teamData = { ...data, image: imageUrl }
+            const teamData = { ...data, document: imageUrl }
 
             const response = await fetch(`/api/conferences/${download._id}`, {
                 method: "PUT",

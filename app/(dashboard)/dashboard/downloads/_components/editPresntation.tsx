@@ -63,7 +63,7 @@ function EditPresentation({ download }) {
         }
 
         try {
-            const teamData = { ...data, image: imageUrl }
+            const teamData = { ...data, document: imageUrl }
 
             const response = await fetch(`/api/presentations/${download._id}`, {
                 method: "PUT",
