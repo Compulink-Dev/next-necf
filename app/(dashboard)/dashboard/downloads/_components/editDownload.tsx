@@ -68,7 +68,10 @@ function EditDownload({ download }) {
         }
 
         try {
-            const teamData = { ...data, image: imageUrl }
+            const teamData = { ...data, document: imageUrl }
+
+            console.log("Download Team Data : ", teamData);
+
 
             const response = await fetch(`/api/downloads/${download._id}`, {
                 method: "PUT",
