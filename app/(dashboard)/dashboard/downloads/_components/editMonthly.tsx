@@ -63,7 +63,7 @@ function EditMonthly({ download }) {
         }
 
         try {
-            const teamData = { ...data, image: imageUrl }
+            const teamData = { ...data, document: imageUrl }
 
             const response = await fetch(`/api/monthly/${download._id}`, {
                 method: "PUT",

@@ -64,7 +64,7 @@ function EditTaskForce({ download }) {
         }
 
         try {
-            const teamData = { ...data, image: imageUrl }
+            const teamData = { ...data, document: imageUrl }
 
             const response = await fetch(`/api/tasks/${download._id}`, {
                 method: "PUT",

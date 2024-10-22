@@ -64,7 +64,7 @@ function EditResearch({ download }) {
         }
 
         try {
-            const teamData = { ...data, image: imageUrl }
+            const teamData = { ...data, document: imageUrl }
 
             const response = await fetch(`/api/research/${download._id}`, {
                 method: "PUT",
