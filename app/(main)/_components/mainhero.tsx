@@ -39,11 +39,6 @@ async function MainHero() {
       title: hero[4].title,
       description: hero[4].description
     },
-    {
-      image: hero[5]?.image,
-      title: hero[5]?.title,
-      description: hero[5]?.description
-    },
   ]
 
 
