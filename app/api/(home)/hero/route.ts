@@ -6,9 +6,9 @@ import Hero from "@/models/(home)/hero"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-    const { image } = await req.json()
+    const { title, description, image } = await req.json()
     await connectToDB()
-    await Hero.create({ image })
+    await Hero.create({ title, description, image })
     return NextResponse.json({ message: "Hero Created" }, { status: 201 })
 }
 

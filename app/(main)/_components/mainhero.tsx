@@ -18,17 +18,33 @@ async function MainHero() {
 
   const hero = heros
 
-  const slide = hero[0].image
-  const slide2 = hero[1].image
-  const slide3 = hero[2].image
-  const slide4 = hero[3].image
-
-  const images = [
-    slide,
-    slide2,
-    slide3,
-    slide4
-  ];
+  const slides = [
+    {
+      image: hero[0].image,
+      title: hero[0].title,
+      description: hero[0].description
+    },
+    {
+      image: hero[2].image,
+      title: hero[2].title,
+      description: hero[2].description
+    },
+    {
+      image: hero[3].image,
+      title: hero[3].title,
+      description: hero[3].description
+    },
+    {
+      image: hero[4].image,
+      title: hero[4].title,
+      description: hero[4].description
+    },
+    {
+      image: hero[5]?.image,
+      title: hero[5]?.title,
+      description: hero[5]?.description
+    },
+  ]
 
 
 
@@ -44,9 +60,7 @@ async function MainHero() {
         ))
       } */}
 
-      <ImageSlider
-        images={images}
-      />
+      <ImageSlider slides={slides} />
 
     </div>
   )
