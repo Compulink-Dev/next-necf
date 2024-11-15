@@ -104,7 +104,7 @@ function EditService({ service }) {
             type="text"
             id="title"
             className=""
-            placeholder="Enter title"
+            placeholder="Enter Title"
           />
           {errors.title && (
             <p className="text-red-600 text-sm">
