@@ -70,6 +70,36 @@ function AddHero() {
             </div>
             <form onSubmit={handleSubmit(onSubmit)} action="" className="">
                 <div className="mb-6">
+                    <Label className="text-slate-600">title</Label>
+                    <Input
+                        {...register("title")}
+                        className="text-slate-400"
+                        id="title"
+                        placeholder="Enter Title"
+                    />
+                    {errors.title && (
+                        <p className="">
+                            Oops!
+                            <span className="">Title already inserted</span>
+                        </p>
+                    )}
+                </div>
+                <div className="mb-6">
+                    <Label className="text-slate-600">Description</Label>
+                    <Input
+                        {...register("description")}
+                        className="text-slate-400"
+                        id="description"
+                        placeholder="Enter description"
+                    />
+                    {errors.description && (
+                        <p className="">
+                            Oops!
+                            <span className="">Description already inserted</span>
+                        </p>
+                    )}
+                </div>
+                <div className="mb-6">
                     <Label className="text-slate-600">Image</Label>
                     <Input
                         {...register("image")}

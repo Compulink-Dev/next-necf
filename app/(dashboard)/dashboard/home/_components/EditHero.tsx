@@ -43,7 +43,6 @@ function EditHero({ hero }) {
     }
   }
 
-  console.log("Hero image : ", hero.image);
 
   async function onSubmit(data: any) {
     setLoading(true);
@@ -98,6 +97,39 @@ function EditHero({ hero }) {
   return (
     <div className="">
       <form onSubmit={handleSubmit(onSubmit)} action="" className="">
+        <div className="mb-6">
+          <Label className="text-slate-600">Title</Label>
+          <Input
+            defaultValue={hero.title}
+            {...register("title")}
+            type="text"
+            className="text-slate-400"
+            id="title"
+            placeholder="Enter Title"
+          />
+          {errors.title && (
+            <p className="">
+              Oops!
+              <span className="">Title already inserted</span>
+            </p>
+          )}
+        </div>
+        <div className="mb-6">
+          <Label className="text-slate-600">Description</Label>
+          <Input
+            defaultValue={hero.description}
+            {...register("description")}
+            className="text-slate-400"
+            id="description"
+            placeholder="Enter description"
+          />
+          {errors.description && (
+            <p className="">
+              Oops!
+              <span className="">Description already inserted</span>
+            </p>
+          )}
+        </div>
         <div className="mb-6 flex items-center gap-4">
           <Image
             src={hero.image}

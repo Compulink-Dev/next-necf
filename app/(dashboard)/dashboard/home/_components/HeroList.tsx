@@ -13,6 +13,8 @@ export async function loadHero() {
 
 async function HeroList() {
     const heros = await loadHero()
+
+    console.log("Hero : ", heros);
     return (
         <div className='grid grid-col-3 gap-4'>
             {
@@ -28,6 +30,10 @@ async function HeroList() {
                                     alt={hero.title}
                                     width={200} height={200}
                                     className='rounded border' />
+                            </div>
+                            <div className="">
+                                <p className="">{hero.title}</p>
+                                <p className="">{hero.description}</p>
                             </div>
                         </div>
                     </Link>

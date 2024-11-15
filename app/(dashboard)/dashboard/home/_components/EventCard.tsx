@@ -16,7 +16,7 @@ async function EventCard() {
 
     const events = await loadEvents()
 
-    console.log("Events : ", events);
+
 
 
     return (

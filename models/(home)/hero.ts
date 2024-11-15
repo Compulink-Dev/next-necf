@@ -3,6 +3,8 @@ import mongoose, { Schema } from "mongoose";
 const heroScheme = new Schema(
     {
         image: String,
+        title: String,
+        description: String
     },
     {
         timestamps: true
