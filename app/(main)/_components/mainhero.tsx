@@ -45,18 +45,7 @@ async function MainHero() {
 
   return (
     <div>
-
-      {/* {
-        heros.map((hero: any) => (
-          <ImageSlider
-            key={hero._id}
-            images={hero.image}
-          />
-        ))
-      } */}
-
       <ImageSlider slides={slides} />
-
     </div>
   )
 }
