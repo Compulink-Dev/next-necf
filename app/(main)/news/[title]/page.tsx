@@ -17,11 +17,11 @@ const NewsDetail: React.FC = () => {
     const date = searchParams.get('date');
 
     return (
-        <div className="flex flex-col items-center p-6 bg-gray-100 min-h-screen">
+        <div className="flex flex-col items-center p-6 bg-green-100 min-h-screen">
             <div className="flex items-center justify-end w-full">
                 <BackButton />
             </div>
-            <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-5xl transition transform hover:scale-105">
+            <div className="bg-white shadow-xl mt-6 rounded-lg p-8 w-full max-w-5xl transition transform hover:scale-105">
                 {title ? (
                     <>
                         <img
