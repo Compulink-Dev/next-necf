@@ -44,7 +44,7 @@ function ImageSlider({ slides }: { slides: { image: string, title: string, descr
                                 {/* Overlay with Unique Content */}
                                 <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
                                     {/* Title positioned at the middle far right */}
-                                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white p-6 text-right"
+                                    <div className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white p-6 text-right cursor-pointer"
                                         onClick={() =>
                                             navigateToNews({
                                                 image: slide.image,
