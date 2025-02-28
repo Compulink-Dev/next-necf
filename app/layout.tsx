@@ -1,16 +1,16 @@
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 import type { Metadata } from "next";
 import "./globals.css";
 import EventEmitter from "events";
-
+import SessionWrapper from "@/components/SessionWrapper";
 
 export const metadata: Metadata = {
   title: "NECF",
   description: "NECF",
   icons: {
-    icon: '/logo.png'
-  }
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -18,13 +18,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  const emitter = new EventEmitter()
-  emitter.setMaxListeners(20)
+  const emitter = new EventEmitter();
+  emitter.setMaxListeners(20);
 
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SessionWrapper>{children}</SessionWrapper>
+      </body>
     </html>
   );
 }
