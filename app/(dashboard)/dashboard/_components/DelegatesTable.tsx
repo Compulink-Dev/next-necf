@@ -15,10 +15,10 @@ interface Delegate {
 
 const columns = [
   {
-    accessorKey: "company.name", // Column for company name
+    accessorKey: "company", // Column for company name
     header: "Company Name",
     cell: ({ row }: any) => {
-      const companyName = row.getValue("company.name");
+      const companyName = row.getValue("company")?.name;
       return <div>{companyName ? companyName : "N/A"}</div>; // Display 'N/A' if company.name is not available
     },
   },
