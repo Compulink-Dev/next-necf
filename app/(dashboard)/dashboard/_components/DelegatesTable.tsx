@@ -79,6 +79,7 @@ const DelegatesTable: React.FC = () => {
       data={delegates}
       columns={columns}
       filterPlaceholder="Filter delegates by name..."
+      filter="fullName"
       onDelete={(id) => {
         console.log(`Delete delegate with id: ${id}`);
       }}

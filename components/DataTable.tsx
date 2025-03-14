@@ -82,7 +82,7 @@ export function DataTable<T extends { id: string }>({
             (table.getColumn(`${filter}`)?.getFilterValue() as string) ?? ""
           }
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn(`${filter}`)?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
