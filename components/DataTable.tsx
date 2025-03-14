@@ -31,6 +31,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { TableButton } from "./TableButton";
+import EditButton from "./editButton";
 
 export type DataTableProps<T> = {
   columns: ColumnDef<T>[];
@@ -142,7 +143,8 @@ export function DataTable<T extends { id: string }>({
                       )}
                     </TableCell>
                   ))}
-                  <TableCell>
+                  <TableCell className="flex items-center gap-2">
+                    <EditButton />
                     <TableButton onDelete={() => onDelete(row.original.id)} />
                   </TableCell>
                 </TableRow>
