@@ -57,9 +57,9 @@ const menuItems = [
         icon: <MdOutlineContactPage />,
       },
       {
-        title: "Messages",
-        path: "/dashboard/messages",
-        icon: <MdOutlineContactPage />,
+        title: "Delegates",
+        path: "/dashboard/delegates",
+        icon: <FaUsers />,
       },
       {
         title: "Vacancies",
