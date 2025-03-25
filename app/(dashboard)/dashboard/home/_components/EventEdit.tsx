@@ -42,6 +42,7 @@ function EditEvent({ event }) {
         setLoading(true)
         const len = data.image.length
         let imageUrl = event.image
+        let documentUrl = event.document // Initialize documentUrl with the current value of the event document
 
 
         if (len > 0) {
@@ -61,6 +62,26 @@ function EditEvent({ event }) {
             const imageData = await uploadResponse.json()
             imageUrl = imageData.secure_url
         }
+
+            // Handle document upload if a new document is provided
+            if (data.document?.length > 0) {
+                const raw_document = data.document[0]
+                const formData = new FormData()
+                formData.append('file', raw_document)
+                formData.append('upload_preset', 'next_necf') // Use the same upload preset as image
+    
+                const uploadResponse = await fetch("https://api.cloudinary.com/v1_1/dxkna0tuc/raw/upload/", {
+                    method: "POST",
+                    body: formData
+                })
+    
+                if (!uploadResponse.ok) {
+                    throw new Error('Document upload failed')
+                }
+                const documentData = await uploadResponse.json()
+                documentUrl = documentData.secure_url
+            }
+    
 
         try {
             const teamData = { ...data, image: imageUrl }
@@ -137,6 +158,15 @@ function EditEvent({ event }) {
                         <Label className="text-slate-600">Image</Label>
                         <Input {...register("image")} className="w-full" type="file" />
                     </div>
+                </div>
+                <div className="mb-6">
+                    <Label className="text-slate-600">Document</Label>
+                    <Input {...register("document")} className="w-full" type="file" />
+                    {event.document && (
+                        <p className="text-sm text-blue-600 mt-2">
+                            <a href={event.document} target="_blank" rel="noopener noreferrer">View Current Document</a>
+                        </p>
+                    )}
                 </div>
                 <div className="flex gap-1">
                     {

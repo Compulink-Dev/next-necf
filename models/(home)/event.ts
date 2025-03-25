@@ -5,6 +5,7 @@ const eventScheme = new Schema(
         title: String,
         image: String,
         date: String,
+        document: String,
     },
     {
         timestamps: true

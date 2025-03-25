@@ -10,10 +10,17 @@ interface EventProps {
   title: string;
   date: string;
   link: string;
+  document: string;  // Add the document field
 }
 
-const EventCard = ({ image, title, date, link }: EventProps) => {
+const EventCard = ({ image, title, date, link, document }: EventProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleTitleClick = () => {
+    if (document) {
+      window.open(document, "_blank");  // Open the document in a new tab
+    }
+  };
 
   return (
     <div className="lg:flex">
@@ -26,12 +33,12 @@ const EventCard = ({ image, title, date, link }: EventProps) => {
       />
 
       <div className="flex flex-col justify-between items-center py-6 lg:mx-6">
-        <Link
-          href="/programs"
-          className="text-xl font-semibold text-gray-800 hover:underline dark:text-white "
+        <p
+          onClick={handleTitleClick}  // Add an onClick handler to the title
+          className="text-xl font-semibold text-gray-800 hover:underline dark:text-white cursor-pointer"
         >
           {title}
-        </Link>
+        </p>
 
         <button
           onClick={() => setIsDialogOpen(true)}
@@ -43,7 +50,7 @@ const EventCard = ({ image, title, date, link }: EventProps) => {
         <span className="text-sm text-gray-500 dark:text-gray-300">
           <div className="flex gap-2 items-center">
             <MdTimer />
-            <p className=""> {date}</p>
+            <p>{date}</p>
           </div>
         </span>
       </div>

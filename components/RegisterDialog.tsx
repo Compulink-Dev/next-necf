@@ -91,7 +91,7 @@ const RegisterDialog = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-h-[80vh] overflow-y-auto p-4">
+      <DialogContent className="max-h-[80vh] w-full overflow-y-auto p-4">
         <DialogHeader>
           <DialogTitle>Register for {eventTitle}</DialogTitle>
         </DialogHeader>
@@ -207,23 +207,30 @@ const RegisterDialog = ({
           </div>
           <div className="text-xs">
             <p>
-              Conference Package: US$ 350 – includes teas, lunch, memorabilia,
+              <span className="font-bold">Conference Package: <br/></span>
+               US$ 350 – includes teas, lunch, memorabilia,
               and materials.
             </p>
             <p>
-              Bank Details: NECF, A/C No: 2210129490220, FBC, Samora Machel
+       <span className="font-bold">Bank Details: </span>
+              <br/>
+              <span className="">
+              NECF, A/C No: 2210129490220, FBC, Samora Machel
               Avenue Branch, Branch Code: 8101
+              </span>
             </p>
             <p>
-              For ZIG payments, contact Mrs Agnes Kawiri (0773851644) or Ms Rudo
+             <span className="font-bold"> For ZIG payments</span><br/>
+             Contact Mrs Agnes Kawiri (0773851644) or Ms Rudo
               Njerere (0773481088).
             </p>
             <p>
+              <br/>
               Send proof of payment to rnjerere@necf.org.zw,
               njerererudo@gmail.com
             </p>
           </div>
-          <Button type="submit" disabled={loading} className="w-full">
+          <Button type="submit" disabled={loading} className="w-full bg-blue-500 hover:bg-blue-800 text-white">
             {loading ? "Registering..." : "Register"}
           </Button>
           {message && <p className="text-sm text-green-600">{message}</p>}
