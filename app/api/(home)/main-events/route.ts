@@ -6,9 +6,9 @@ import MainEvent from "@/models/(home)/event"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-    const { title, image, date } = await req.json()
+    const { title, image, date,document } = await req.json()
     await connectToDB()
-    await MainEvent.create({ title, image, date })
+    await MainEvent.create({ title, image, date,document })
     return NextResponse.json({ message: "Event Created" }, { status: 201 })
 }
 
