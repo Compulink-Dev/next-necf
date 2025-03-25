@@ -1,24 +1,45 @@
 "use client";
-
 import { useState } from "react";
 import RegisterDialog from "./RegisterDialog";
 import { MdTimer } from "react-icons/md";
-import Link from "next/link";
+import { Download } from "lucide-react";
 
 interface EventProps {
   image: string;
   title: string;
   date: string;
   link: string;
-  document: string;  // Add the document field
+  document: string;
 }
 
-const EventCard = ({ image, title, date, link, document }: EventProps) => {
+const EventCard = ({ image, title, date, link, document: docUrl }: EventProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [pdfError, setPdfError] = useState(false);
 
-  const handleTitleClick = () => {
-    if (document) {
-      window.open(document, "_blank");  // Open the document in a new tab
+  const handleDownload = () => {
+    if (!docUrl) return;
+    
+    const anchor = window.document.createElement('a');
+    anchor.href = docUrl;
+    anchor.download = `${title.replace(/\s+/g, '-')}.${docUrl.split('.').pop()?.toLowerCase() || 'file'}`;
+    anchor.click();
+  };
+
+  const handleViewPdf = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!docUrl) return;
+
+    try {
+      const response = await fetch(docUrl, { method: 'HEAD' });
+      if (response.ok) {
+        window.open(docUrl, '_blank', 'noopener,noreferrer');
+      } else {
+        setPdfError(true);
+        handleDownload(); // Automatically fallback to download
+      }
+    } catch (error) {
+      setPdfError(true);
+      handleDownload(); // Automatically fallback to download
     }
   };
 
@@ -30,15 +51,41 @@ const EventCard = ({ image, title, date, link, document }: EventProps) => {
         alt={title}
         width={300}
         height={300}
+        loading="lazy"
       />
 
       <div className="flex flex-col justify-between items-center py-6 lg:mx-6">
-        <p
-          onClick={handleTitleClick}  // Add an onClick handler to the title
-          className="text-xl font-semibold text-gray-800 hover:underline dark:text-white cursor-pointer"
-        >
-          {title}
-        </p>
+        <div className="text-center">
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
+            {title}
+          </h3>
+          
+          {docUrl && (
+            <div className="mt-2 flex flex-col items-center gap-1">
+         <div className="flex gap-4 items-center justify-center">
+         <button
+                onClick={handleViewPdf}
+                className="text-sm text-blue-600 hover:underline dark:text-blue-400"
+              >
+                {docUrl.includes('.pdf') ? 'View PDF' : 'Open Document'}
+              </button>
+              
+              <button
+                onClick={handleDownload}
+                className="text-sm text-green-600 hover:underline dark:text-green-400"
+              >
+               <Download size={16} />
+              </button>
+         </div>
+              
+              {pdfError && (
+                <p className="text-red-500 text-xs mt-1">
+                  Couldn't open in browser. The file has been downloaded instead.
+                </p>
+              )}
+            </div>
+          )}
+        </div>
 
         <button
           onClick={() => setIsDialogOpen(true)}
@@ -55,7 +102,6 @@ const EventCard = ({ image, title, date, link, document }: EventProps) => {
         </span>
       </div>
 
-      {/* Dialog Component */}
       <RegisterDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
