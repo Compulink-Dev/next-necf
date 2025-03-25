@@ -1,17 +1,29 @@
 import mongoose, { Schema } from "mongoose";
 
-const eventScheme = new Schema(
-    {
-        title: String,
-        image: String,
-        date: String,
-        document: String,
+const eventSchema = new Schema(
+  {
+    title: { 
+      type: String,
+      required: true  // Making title required
     },
-    {
-        timestamps: true
+    image: {
+      type: String,
+      required: false  // Explicitly making optional
+    },
+    date: { 
+      type: String,
+      required: true  // Making date required
+    },
+    document: {
+      type: String,
+      required: false  // Explicitly making optional
     }
-)
+  },
+  {
+    timestamps: true
+  }
+);
 
-const MainEvent = mongoose.models.MainEvent || mongoose.model("MainEvent", eventScheme)
+const MainEvent = mongoose.models.MainEvent || mongoose.model("MainEvent", eventSchema);
 
-export default MainEvent
+export default MainEvent;
