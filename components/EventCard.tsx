@@ -1,52 +1,84 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RegisterDialog from "./RegisterDialog";
 import { MdTimer } from "react-icons/md";
-import { Download } from "lucide-react";
+import { Download, FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface EventProps {
+  id: string;
   image: string;
   title: string;
   date: string;
-  link: string;
-  document: string;
+  link?: string;
+  document?: string;
 }
 
-const EventCard = ({ image, title, date, link, document: docUrl }: EventProps) => {
+const EventCard = ({ id, image, title, date, link, document: docUrl }: EventProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [pdfError, setPdfError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleDownload = () => {
+  // Format date for display
+  const formattedDate = new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+  const handleDownload = async () => {
     if (!docUrl) return;
     
-    const anchor = window.document.createElement('a');
-    anchor.href = docUrl;
-    anchor.download = `${title.replace(/\s+/g, '-')}.${docUrl.split('.').pop()?.toLowerCase() || 'file'}`;
-    anchor.click();
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // Create a temporary anchor tag to trigger download
+      const anchor = document.createElement('a');
+      anchor.href = docUrl;
+      anchor.download = `${title.replace(/\s+/g, '-')}${docUrl.includes('.pdf') ? '.pdf' : 
+                       docUrl.includes('.pptx') ? '.pptx' : 
+                       docUrl.includes('.doc') ? '.doc' : '.file'}`;
+      anchor.target = '_blank';
+      anchor.rel = 'noopener noreferrer';
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+    } catch (err) {
+      setError('Failed to download file');
+      console.error('Download error:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleViewPdf = async (e: React.MouseEvent) => {
     e.preventDefault();
     if (!docUrl) return;
 
+    setIsLoading(true);
+    setError(null);
+
     try {
-      const response = await fetch(docUrl, { method: 'HEAD' });
-      if (response.ok) {
+      // For PDFs, try to open in new tab
+      if (docUrl.includes('.pdf')) {
         window.open(docUrl, '_blank', 'noopener,noreferrer');
       } else {
-        setPdfError(true);
-        handleDownload(); // Automatically fallback to download
+        // For other file types, trigger download
+        await handleDownload();
       }
-    } catch (error) {
-      setPdfError(true);
-      handleDownload(); // Automatically fallback to download
+    } catch (err) {
+      setError('Failed to open file');
+      console.error('View error:', err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="lg:flex">
+    <div className="lg:flex gap-6 border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
       <img
-        className="object-contain md:object-cover w-full h-56 rounded-lg lg:w-64"
+        className="object-cover w-full h-56 rounded-lg lg:w-64"
         src={image}
         alt={title}
         width={300}
@@ -54,52 +86,56 @@ const EventCard = ({ image, title, date, link, document: docUrl }: EventProps) =
         loading="lazy"
       />
 
-      <div className="flex flex-col justify-between items-center py-6 lg:mx-6">
-        <div className="text-center">
+      <div className="flex flex-col justify-between py-4 lg:py-0 w-full">
+        <div>
           <h3 className="text-xl font-semibold text-gray-800 dark:text-white">
             {title}
           </h3>
           
           {docUrl && (
-            <div className="mt-2 flex flex-col items-center gap-1">
-         <div className="flex gap-4 items-center justify-center">
-         <button
-                onClick={handleViewPdf}
-                className="text-sm text-blue-600 hover:underline dark:text-blue-400"
-              >
-                {docUrl.includes('.pdf') ? 'View PDF' : 'Open Document'}
-              </button>
+            <div className="mt-3 flex flex-col gap-2">
+              <div className="flex gap-3 items-center">
+                <Button 
+                  variant="outline"
+                  size="sm"
+                  onClick={handleViewPdf}
+                  disabled={isLoading}
+                >
+                  <FileText className="mr-2 h-4 w-4" />
+                  {docUrl.includes('.pdf') ? 'View PDF' : 'Open File'}
+                </Button>
+                
+                <Button 
+                  variant="outline"
+                  size="sm"
+                  onClick={handleDownload}
+                  disabled={isLoading}
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Download
+                </Button>
+              </div>
               
-              <button
-                onClick={handleDownload}
-                className="text-sm text-green-600 hover:underline dark:text-green-400"
-              >
-               <Download size={16} />
-              </button>
-         </div>
-              
-              {pdfError && (
-                <p className="text-red-500 text-xs mt-1">
-                  Couldn't open in browser. The file has been downloaded instead.
-                </p>
+              {error && (
+                <p className="text-red-500 text-sm mt-1">{error}</p>
               )}
             </div>
           )}
         </div>
 
-        <button
-          onClick={() => setIsDialogOpen(true)}
-          className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-500"
-        >
-          Register
-        </button>
+        <div className="mt-4 flex justify-between items-center">
+          <Button
+            onClick={() => setIsDialogOpen(true)}
+            className="bg-green-600 hover:bg-green-700"
+          >
+            Register
+          </Button>
 
-        <span className="text-sm text-gray-500 dark:text-gray-300">
-          <div className="flex gap-2 items-center">
-            <MdTimer />
-            <p>{date}</p>
-          </div>
-        </span>
+          <span className="text-sm text-gray-500 dark:text-gray-300 flex items-center">
+            <MdTimer className="mr-1" />
+            {formattedDate}
+          </span>
+        </div>
       </div>
 
       <RegisterDialog

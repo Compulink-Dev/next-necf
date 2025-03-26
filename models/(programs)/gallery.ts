@@ -12,6 +12,6 @@ const gallerySchema = new Schema(
 );
 
 // Safely define the model, avoiding redefinition during hot reloads
-const Gallery = mongoose.models.Gallery || mongoose.model("Gallery", gallerySchema);
+const Gallery = mongoose.models?.Gallery || mongoose.model("Gallery", gallerySchema);
 
 export default Gallery;

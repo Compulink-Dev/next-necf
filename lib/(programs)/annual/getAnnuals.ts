@@ -1,9 +1,14 @@
+
 import { connectToDB } from "@/lib/connectToDB";
-import Adhoc from "@/models/(programs)/adhoc";
 import Annual from "@/models/(programs)/annual";
 
 export default async function getAnnuals() {
-    await connectToDB()
-    const annual = await Annual.find()
-    return annual;
+  try {
+    await connectToDB();
+    const annuals = await Annual.find().sort({ date: -1 }); // Sort by newest first
+    return JSON.parse(JSON.stringify(annuals)); // Convert to plain objects
+  } catch (error) {
+    console.error("Error fetching annual programs:", error);
+    return [];
+  }
 }
