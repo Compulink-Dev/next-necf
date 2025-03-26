@@ -1,10 +1,14 @@
+'use server'
 import { connectToDB } from "@/lib/connectToDB";
-import Adhoc from "@/models/(programs)/adhoc";
-import Annual from "@/models/(programs)/annual";
 import TaskForce from "@/models/(programs)/taskforce";
 
-export default async function getTasks() {
-    await connectToDB()
-    const tasks = await TaskForce.find()
-    return tasks;
+export async function getTasks() {
+  try {
+    await connectToDB();
+    const tasks = await TaskForce.find().sort({ createdAt: -1 });
+    return JSON.parse(JSON.stringify(tasks)); // Convert to plain objects
+  } catch (error) {
+    console.error("Error fetching task forces:", error);
+    return [];
+  }
 }

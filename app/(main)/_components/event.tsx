@@ -50,6 +50,7 @@ const EventPage: React.FC<EventPageProps> = ({ events = [] }) => {
           <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
             {paginatedEvents.map((event: Event) => (
               <EventCard
+              id={event.title}
                 key={event.title}
                 title={event.title}
                 image={event.image}

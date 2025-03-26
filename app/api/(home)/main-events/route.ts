@@ -6,37 +6,68 @@ import MainEvent from "@/models/(home)/event"
 import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
-    const { title, image, date,document } = await req.json()
-    await connectToDB()
-    await MainEvent.create({ title, image, date,document })
-    return NextResponse.json({ message: "Event Created" }, { status: 201 })
-}
-
-
-export async function GET() {
-    await connectToDB()
-    const event = await MainEvent.find()
-    return NextResponse.json({ event })
-}
-
-//@ts-ignore
-export async function DELETE(request, { params }) {
-    await connectToDB()
     try {
-        const event = await MainEvent.findByIdAndDelete(params.id)
-
-        if (!event) {
+        const { title, image, date, document } = await req.json()
+        await connectToDB()
+        
+        // Validate required fields
+        if (!title || !date) {
             return NextResponse.json(
-                {
-                    message: "Event not found"
-                },
+                { message: "Title and date are required" },
                 { status: 400 }
             )
         }
 
-        return NextResponse.json(event)
-
+        const newEvent = await MainEvent.create({ title, image, date, document })
+        return NextResponse.json(
+            { message: "Event Created", event: newEvent },
+            { status: 201 }
+        )
     } catch (error) {
-        return NextResponse.json({ message: "event error" }, { status: 400 })
+        console.error("Error creating event:", error)
+        return NextResponse.json(
+            { message: "Internal server error" },
+            { status: 500 }
+        )
+    }
+}
+
+
+export async function GET() {
+    try {
+        await connectToDB()
+        const events = await MainEvent.find().sort({ date: -1 }) // Sort by newest first
+        return NextResponse.json({ events })
+    } catch (error) {
+        console.error("Error fetching events:", error)
+        return NextResponse.json(
+            { message: "Internal server error" },
+            { status: 500 }
+        )
+    }
+}
+//@ts-ignore
+export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+    try {
+        await connectToDB()
+        const deletedEvent = await MainEvent.findByIdAndDelete(params.id)
+
+        if (!deletedEvent) {
+            return NextResponse.json(
+                { message: "Event not found" },
+                { status: 404 }
+            )
+        }
+
+        return NextResponse.json(
+            { message: "Event deleted successfully" },
+            { status: 200 }
+        )
+    } catch (error) {
+        console.error("Error deleting event:", error)
+        return NextResponse.json(
+            { message: "Internal server error" },
+            { status: 500 }
+        )
     }
 }

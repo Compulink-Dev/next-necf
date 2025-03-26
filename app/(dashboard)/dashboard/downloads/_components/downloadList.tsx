@@ -18,7 +18,7 @@ export function DownloadCard({ title, document, imageUrl, date, link }: Download
     return (
         <Link href={`/dashboard/downloads/${link}`}>
             <div className="border p-4 shadow rounded flex items-center justify-between">
-                <div className="flex flex-col gap-4 text-sm text-slate-600">
+  <div className="flex flex-col gap-4 text-sm text-slate-600">
                     <p className="text-lg font-bold text-black">{title}</p>
                     <div className="flex gap-4">
                         <p className="">{document}</p>
