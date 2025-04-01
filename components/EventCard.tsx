@@ -102,10 +102,10 @@ const EventCard = ({ id, image, title, date, link, document: docUrl }: EventProp
                   disabled={isLoading}
                 >
                   <FileText className="mr-2 h-4 w-4" />
-                  {docUrl.includes('.pdf') ? 'View PDF' : 'Open File'}
+                  {docUrl.includes('.pdf') ? 'Resolutions' : 'Open File'}
                 </Button>
                 
-                <Button 
+                {/* <Button 
                   variant="outline"
                   size="sm"
                   onClick={handleDownload}
@@ -113,7 +113,7 @@ const EventCard = ({ id, image, title, date, link, document: docUrl }: EventProp
                 >
                   <Download className="mr-2 h-4 w-4" />
                   Download
-                </Button>
+                </Button> */}
               </div>
               
               {error && (

@@ -44,7 +44,7 @@ const EventPage: React.FC<EventPageProps> = ({ events = [] }) => {
       <section className="bg-white dark:bg-gray-900 my-6">
         <div className="container px-6 py-10 mx-auto">
           <h1 className="text-2xl font-semibold text-green-800 capitalize lg:text-3xl dark:text-white">
-            Upcoming Events
+            Calender of Events
           </h1>
 
           <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
