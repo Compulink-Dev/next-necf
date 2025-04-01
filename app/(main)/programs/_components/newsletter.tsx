@@ -82,7 +82,7 @@ function NewsLetter() {
         </Link>
       </div>
 
-      <h2 className="text-2xl font-bold mb-6">Latest Events</h2>
+      <h2 className="text-2xl font-bold mb-6">Calender of Events</h2>
       
       {loading ? (
         <div className="flex justify-center py-8">
@@ -120,7 +120,7 @@ function NewsLetter() {
                   {event.document ? (
                     <div className="flex items-center text-green-600">
                       <Download className="mr-2 h-4 w-4" />
-                      <span>Download Document</span>
+                      <span>Resolutions</span>
                     </div>
                   ) : (
                     <p className="text-sm text-gray-400">No document available</p>
