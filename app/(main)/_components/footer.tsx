@@ -18,11 +18,29 @@ function Footer() {
             alt="necf"
             className="w-48 h-52 object-cover"
           />
-          <p className="mx-10 -mt-12">Together we make Zimbabwe Great</p>
-          <div className="flex items-center justify-center gap-12 mx-auto">
-            <FaFacebook size={24} color="green" />
-            <BsTwitterX size={24} color="green" />
+          <p className="mx-10 -mt-12 text-sm md:text-md">Together we make Zimbabwe Great</p>
+          <div className="flex items-center my-6 justify-center gap-12 mx-auto">
+          <Link
+              className="text-white hover:text-slate-600"
+              href={"https://www.facebook.com/necfpage"}
+              target="_blank"
+            >
+               <FaFacebook size={24} color="green" />
+            </Link>
+            <Link
+              href={"https://x.com/FofficialNec"}
+              target="_blank"
+              className="ml-3 pt-1 text-white hover:text-slate-600"
+            >
+            <BsTwitterX size={20} color="green" />
+            </Link>
+            <Link
+              href={"https://www.linkedin.com/in/necf-national-economic-consultative-forum"}
+              target="_blank"
+              className="ml-3 text-white hover:text-slate-600"
+            >
             <FaLinkedin size={24} color="green" />
+            </Link>
           </div>
         </div>
         <div className="flex flex-col items-start justify-center gap-5 text-sm">
