@@ -50,7 +50,27 @@ export default function AddEvent() {
     }
 
     return await response.json();
+    
   }
+
+  async function uploadDocumentToServer(file: File): Promise<string> {
+    const formData = new FormData();
+    formData.append('document', file);
+
+    const response = await fetch('/api/upload-document', {
+      method: 'POST',
+      body: formData
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Document upload failed');
+    }
+
+    const result = await response.json();
+    return result.url;
+  }
+
 
   async function onSubmit(data: FormData) {
     setIsLoading(true);
@@ -66,8 +86,7 @@ export default function AddEvent() {
 
       // Upload document if provided
       if (data.document?.[0]) {
-        const docData = await handleFileUpload(data.document[0], "events/documents", true);
-        documentUrl = docData.secure_url;
+        documentUrl = await uploadDocumentToServer(data.document[0]);
       }
 
       // Submit to API
