@@ -14,6 +14,8 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@firebase/storage": "^0.13.7",
+    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "@hookform/resolvers": "^3.6.0",
     "@mui/material": "^5.15.19",
     "@mui/x-data-grid": "^7.6.2",
@@ -40,6 +42,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.1.4",
+    "firebase": "^11.6.0",
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.9.0",
     "formidable": "^3.5.1",
@@ -69,6 +72,7 @@
     "swiper": "^11.1.4",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
+    "uuid": "^11.1.0",
     "vaul": "^0.9.1",
     "zod": "^3.23.8"
   },
