@@ -21,6 +21,7 @@ import MainList from "./MainList";
 import ServiceList from "./ServiceList ";
 import MilestoneList from "./MilestoneList";
 import TestimonialList from "./TestimonialList ";
+import SponsorList from "./SponsorList";
 
 export function HomeTabs() {
   return (
@@ -30,6 +31,7 @@ export function HomeTabs() {
         <TabsTrigger value="main">Main</TabsTrigger>
         <TabsTrigger value="services">Services</TabsTrigger>
         <TabsTrigger value="events">Events</TabsTrigger>
+        <TabsTrigger value="sponsors">Sponsors</TabsTrigger>
         <TabsTrigger value="milestone">Milestone</TabsTrigger>
         <TabsTrigger value="testimonial">Testimonial</TabsTrigger>
       </TabsList>
@@ -40,7 +42,7 @@ export function HomeTabs() {
             <CardDescription></CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <CreateButton link='home/hero' />
+            <CreateButton link="home/hero" />
             <HeroList />
           </CardContent>
         </Card>
@@ -67,7 +69,6 @@ export function HomeTabs() {
             {/* <CreateButton link='home/service' /> */}
             <ServiceList />
           </CardContent>
-
         </Card>
       </TabsContent>
       <TabsContent value="events">
@@ -77,11 +78,10 @@ export function HomeTabs() {
             <CardDescription></CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <CreateButton link='home/event' />
+            <CreateButton link="home/event" />
             <EventCard />
           </CardContent>
-          <CardFooter>
-          </CardFooter>
+          <CardFooter></CardFooter>
         </Card>
       </TabsContent>
       <TabsContent value="milestone">
@@ -93,8 +93,19 @@ export function HomeTabs() {
           <CardContent className="space-y-2">
             <MilestoneList />
           </CardContent>
-          <CardFooter>
-          </CardFooter>
+          <CardFooter></CardFooter>
+        </Card>
+      </TabsContent>
+      <TabsContent value="sponsors">
+        <Card>
+          <CardHeader>
+            <CardTitle>Sponsors</CardTitle>
+            <CardDescription></CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <SponsorList />
+          </CardContent>
+          <CardFooter></CardFooter>
         </Card>
       </TabsContent>
       <TabsContent value="testimonial">
@@ -104,11 +115,10 @@ export function HomeTabs() {
             <CardDescription></CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <CreateButton link='home/testimonials' />
+            <CreateButton link="home/testimonials" />
             <TestimonialList />
           </CardContent>
-          <CardFooter>
-          </CardFooter>
+          <CardFooter></CardFooter>
         </Card>
       </TabsContent>
     </Tabs>
