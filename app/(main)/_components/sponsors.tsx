@@ -61,7 +61,7 @@ export default function Sponsors() {
             }}
           >
             {/* Double the array to create seamless loop */}
-            {[...sponsors, ...sponsors].map((sponsor, index) => (
+            {sponsors.map((sponsor, index) => (
               <motion.div
                 key={`${sponsor.id}-${index}`}
                 className="flex-shrink-0"
