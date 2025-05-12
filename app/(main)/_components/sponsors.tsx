@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
-import { useRef, useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
 
 interface Sponsor {
@@ -12,8 +11,11 @@ interface Sponsor {
 
 export default function Sponsors() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const [sponsors, setSponsors] = useState<Sponsor[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const controls = useAnimation();
+  const [trackWidth, setTrackWidth] = useState(0);
 
   useEffect(() => {
     const fetchSponsors = async () => {
@@ -27,9 +29,30 @@ export default function Sponsors() {
         setIsLoading(false);
       }
     };
-
     fetchSponsors();
   }, []);
+
+  useEffect(() => {
+    if (trackRef.current) {
+      setTrackWidth(trackRef.current.scrollWidth / 2); // Because we're duplicating
+    }
+  }, [sponsors]);
+
+  useEffect(() => {
+    if (trackWidth > 0) {
+      controls.start({
+        x: [-trackWidth, 0],
+        transition: {
+          x: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 30,
+            ease: "linear",
+          },
+        },
+      });
+    }
+  }, [trackWidth, controls]);
 
   if (isLoading)
     return <div className="text-center py-12">Loading sponsors...</div>;
@@ -43,30 +66,18 @@ export default function Sponsors() {
           Our Partners & Sponsors
         </h2>
 
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden" ref={containerRef}>
           {/* Gradient fade effects */}
           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-50 to-transparent z-10" />
           <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-50 to-transparent z-10" />
 
           <motion.div
-            ref={containerRef}
             className="flex gap-8 md:gap-16 items-center"
-            animate={{
-              x: ["100%", "0%"],
-            }}
-            transition={{
-              duration: 30,
-              repeat: Infinity,
-              ease: "linear",
-            }}
+            ref={trackRef}
+            animate={controls}
           >
-            {/* Double the array to create seamless loop */}
-            {sponsors.map((sponsor, index) => (
-              <motion.div
-                key={`${sponsor.id}-${index}`}
-                className="flex-shrink-0"
-                whileHover={{ scale: 1.05 }}
-              >
+            {[...sponsors, ...sponsors].map((sponsor, index) => (
+              <div key={`${sponsor.id}-${index}`} className="flex-shrink-0">
                 <div className="h-16 w-32 md:h-20 md:w-40 relative transition-all duration-300">
                   <Image
                     src={sponsor.logo}
@@ -76,7 +87,7 @@ export default function Sponsors() {
                     sizes="(max-width: 768px) 100px, 160px"
                   />
                 </div>
-              </motion.div>
+              </div>
             ))}
           </motion.div>
         </div>
