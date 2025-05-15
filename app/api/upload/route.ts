@@ -49,9 +49,9 @@ export async function POST(request: Request) {
       type: file.type,
     });
   } catch (error) {
-    console.error('Error uploading file:', error);
+    console.error('Error uploading file:', error); // 👈 Make sure this logs the error fully
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }
     );
   }
