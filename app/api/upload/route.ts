@@ -36,8 +36,10 @@ export async function POST(request: Request) {
       await fs.mkdir(uploadsDir, { recursive: true });
     }
 
+    //@ts-ignore
     const filename = `${Date.now()}-${file.name}`;
     const filePath = path.join(uploadsDir, filename);
+    //@ts-ignore
     await fs.writeFile(filePath, buffer);
 
     return NextResponse.json({
