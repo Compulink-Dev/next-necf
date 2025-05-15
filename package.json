@@ -12,7 +12,6 @@
     "prisma": "prisma generate && prisma db push"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.19.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@firebase/storage": "^0.13.7",
