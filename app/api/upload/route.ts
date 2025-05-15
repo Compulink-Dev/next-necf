@@ -1,14 +1,15 @@
-// app/api/upload/route.ts
 import { NextResponse } from 'next/server';
 import path from 'path';
 import fs from 'fs/promises';
+import type { File } from 'buffer'; // Optional for clarity
+import { Buffer } from 'buffer'; // Explicitly import Buffer
 
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
-    const file = formData.get('file') as Blob | null;
+    const file = formData.get('file') as unknown as File | null;
 
     if (!file) {
       return NextResponse.json(
@@ -17,7 +18,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Additional validation
     const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
     if (!allowedTypes.includes(file.type)) {
       return NextResponse.json(
@@ -27,18 +27,18 @@ export async function POST(request: Request) {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
+
     const uploadsDir = path.join(process.cwd(), 'public', 'downloads');
-    
-    // Create directory if it doesn't exist
     try {
       await fs.access(uploadsDir);
     } catch {
       await fs.mkdir(uploadsDir, { recursive: true });
     }
 
-    //@ts-ignore
     const filename = `${Date.now()}-${file.name}`;
     const filePath = path.join(uploadsDir, filename);
+
+    // ✅ Use buffer directly without casting
     //@ts-ignore
     await fs.writeFile(filePath, buffer);
 
