@@ -1,15 +1,28 @@
+// pages/api/upload.ts
 import { NextResponse } from 'next/server';
-import path from 'path';
-import fs from 'fs/promises';
-import type { File } from 'buffer'; // Optional for clarity
-import { Buffer } from 'buffer'; // Explicitly import Buffer
+import { v2 as cloudinary } from 'cloudinary';
 
-export const dynamic = "force-dynamic";
+// Define the expected Cloudinary response type
+interface CloudinaryUploadResult {
+  secure_url: string;
+  // Add other properties you might need from the response
+  public_id?: string;
+  width?: number;
+  height?: number;
+  format?: string;
+  resource_type?: string;
+}
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
-    const file = formData.get('file') as unknown as File | null;
+    const file = formData.get('file') as File | null;
 
     if (!file) {
       return NextResponse.json(
@@ -18,38 +31,35 @@ export async function POST(request: Request) {
       );
     }
 
-    const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
-    if (!allowedTypes.includes(file.type)) {
-      return NextResponse.json(
-        { error: 'File type not allowed' },
-        { status: 400 }
-      );
-    }
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
 
-    const buffer = Buffer.from(await file.arrayBuffer());
-
-    const uploadsDir = path.join(process.cwd(), 'public', 'downloads');
-    try {
-      await fs.access(uploadsDir);
-    } catch {
-      await fs.mkdir(uploadsDir, { recursive: true });
-    }
-
-    const filename = `${Date.now()}-${file.name}`;
-    const filePath = path.join(uploadsDir, filename);
-
-    // ✅ Use buffer directly without casting
-    //@ts-ignore
-    await fs.writeFile(filePath, buffer);
+    const result = await new Promise<CloudinaryUploadResult>((resolve, reject) => {
+      cloudinary.uploader
+        .upload_stream(
+          {
+            resource_type: 'auto',
+            folder: 'necf',
+          },
+          (error, result) => {
+            if (error) {
+              reject(error);
+              return;
+            }
+            resolve(result as CloudinaryUploadResult);
+          }
+        )
+        .end(buffer);
+    });
 
     return NextResponse.json({
       success: true,
-      url: `/downloads/${filename}`,
+      url: result.secure_url,
       size: file.size,
       type: file.type,
     });
   } catch (error) {
-    console.error('Error uploading file:', error); // 👈 Make sure this logs the error fully
+    console.error('Error uploading file:', error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'Internal server error' },
       { status: 500 }
