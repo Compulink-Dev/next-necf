@@ -26,6 +26,21 @@ export async function GET(request, { params }) {
     }
 }
 
+export async function POST(request: Request) {
+    await connectToDB();
+    try {
+      const body = await request.json();
+      const newDownload = new Download(body);
+      await newDownload.save();
+      return NextResponse.json(newDownload);
+    } catch (error) {
+      return NextResponse.json(
+        { error: error instanceof Error ? error.message : "Creation failed" },
+        { status: 400 }
+      );
+    }
+  }
+
 
 //@ts-ignore
 export async function PUT(request, { params }) {

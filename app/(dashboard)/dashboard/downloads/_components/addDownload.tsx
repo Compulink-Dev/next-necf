@@ -9,98 +9,126 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
-interface Download {
-  _id: string;
+interface DownloadFormData {
+  _id?: string;
   title: string;
   date: string;
-  document: string;
+  document?: FileList | string;
 }
 
 function AddDownload() {
   const {
     register,
     handleSubmit,
-    reset,
     setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm<DownloadFormData>();
   const [loading, setLoading] = useState(false);
-  const [download, setDownload] = useState<Download | null>(null);
   const [fetching, setFetching] = useState(true);
+  const [currentFileUrl, setCurrentFileUrl] = useState("");
 
   const router = useRouter();
   const params = useSearchParams();
-  const id = params.get("id"); // Assuming you pass the ID in the URL like ?id=123
+  const id = params.get("id");
 
   useEffect(() => {
-    if (!id) return;
+    const initializeForm = async () => {
+      if (!id) {
+        setValue("title", "");
+        setValue("date", new Date().toISOString().substring(0, 10));
+        setFetching(false);
+        return;
+      }
 
-    const fetchDownload = async () => {
       try {
         const res = await fetch(`/api/downloads/${id}`);
         if (!res.ok) throw new Error("Failed to fetch download");
         const data = await res.json();
-        setDownload(data);
         setValue("title", data.title);
-        setValue("date", data.date?.substring(0, 10)); // format date if needed
+        setValue("date", data.date?.substring(0, 10));
+        setCurrentFileUrl(data.document || "");
+        setFetching(false);
       } catch (error) {
         toast.error("Failed to load download");
-      } finally {
         setFetching(false);
       }
     };
 
-    fetchDownload();
+    initializeForm();
   }, [id, setValue]);
 
-  async function onSubmit(data: any) {
-    if (!download) return;
-
+  async function onSubmit(data: DownloadFormData) {
+    console.log("Form submission data:", data);
     setLoading(true);
-    let fileUrl = download.document;
 
-    // Handle file upload if new file is selected
-    if (data.document?.[0]) {
-      const formData = new FormData();
-      formData.append("file", data.document[0]);
+    try {
+      let fileUrl = currentFileUrl;
 
-      const uploadResponse = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
+      // Handle file upload if a new file was provided
+      if (data.document instanceof FileList && data.document.length > 0) {
+        const file = data.document[0];
+        console.log("Uploading file:", file.name);
 
-      if (!uploadResponse.ok) {
-        setLoading(false);
-        toast.error("File upload failed");
-        return;
+        // File validation
+        if (file.size > 5 * 1024 * 1024) {
+          throw new Error("File size exceeds 5MB limit");
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const uploadResponse = await fetch("/api/upload", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (!uploadResponse.ok) {
+          const errorText = await uploadResponse.text();
+          throw new Error(`Upload failed: ${errorText}`);
+        }
+
+        const result = await uploadResponse.json();
+        fileUrl = result.url;
+        console.log("File uploaded to:", fileUrl);
       }
 
-      const result = await uploadResponse.json();
-      fileUrl = result.url;
-    }
+      // Prepare the data to send
+      const requestData = {
+        title: data.title,
+        date: data.date,
+        document: fileUrl,
+      };
 
-    const updatedData = {
-      title: data.title || download.title,
-      date: data.date || download.date,
-      document: fileUrl,
-    };
+      console.log("Submitting data:", requestData);
 
-    const res = await fetch(`/api/downloads/${download._id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedData),
-    });
+      const endpoint = id ? `/api/downloads/${id}` : "/api/downloads";
+      const method = id ? "PUT" : "POST";
 
-    if (res.ok) {
-      toast.success("Download updated successfully");
+      const response = await fetch(endpoint, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestData),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Server error: ${errorText}`);
+      }
+
+      toast.success(id ? "Download updated!" : "Download created!");
       router.push("/dashboard/downloads");
-    } else {
-      toast.error("Failed to update download");
+      router.refresh();
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error(
+        error instanceof Error ? error.message : "An unknown error occurred"
+      );
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }
 
-  if (fetching) return <p className="p-8">Loading download...</p>;
+  if (fetching) return <div className="p-8">Loading...</div>;
 
   return (
     <div className="p-8">
@@ -108,66 +136,100 @@ function AddDownload() {
         <BackButton />
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="">
-        <div className="mb-6">
-          <Label className="text-slate-600">Title</Label>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <div>
+          <Label htmlFor="title" className="text-slate-600">
+            Title
+          </Label>
           <Input
-            {...register("title", { required: true })}
-            type="text"
+            {...register("title", { required: "Title is required" })}
             id="title"
             placeholder="Enter title"
           />
           {errors.title && (
-            <p className="text-red-600 text-sm">Oops! Title is required.</p>
+            <p className="text-red-600 text-sm mt-1">{errors.title.message}</p>
           )}
         </div>
 
-        <div className="mb-6">
-          <Label className="text-slate-600">Date</Label>
+        <div>
+          <Label htmlFor="date" className="text-slate-600">
+            Date
+          </Label>
           <Input
-            {...register("date")}
+            {...register("date", { required: "Date is required" })}
             type="date"
             id="date"
-            placeholder="Enter date"
           />
           {errors.date && (
-            <p className="text-red-600 text-sm">Oops! Date format invalid.</p>
+            <p className="text-red-600 text-sm mt-1">{errors.date.message}</p>
           )}
         </div>
 
-        <div className="mb-6">
-          <Label className="text-slate-600">Document</Label>
+        <div>
+          <Label htmlFor="document" className="text-slate-600">
+            Document
+          </Label>
           <Input
-            {...register("document")}
             type="file"
-            className="text-slate-400"
             id="document"
+            accept=".pdf,.doc,.docx"
+            className="text-slate-400"
+            onChange={(e) => {
+              if (e.target.files?.[0]) {
+                setValue("document", e.target.files);
+              }
+            }}
           />
+          {currentFileUrl && (
+            <div className="mt-2">
+              <p className="text-sm text-gray-600">
+                Current file:{" "}
+                <a
+                  href={currentFileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  View file
+                </a>
+              </p>
+            </div>
+          )}
         </div>
 
-        {loading ? (
-          <Button disabled type="button" className="bg-green-600">
-            <svg
-              aria-hidden="true"
-              role="status"
-              className="inline w-4 h-4 mr-2 text-white animate-spin"
-              viewBox="0 0 100 101"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M100 50.5908C100 78.2051 77.6142 100.591..."
-                fill="#E5E7EB"
-              />
-              <path d="M93.9676 39.0409C96.393 ..." fill="currentColor" />
-            </svg>
-            Loading...
-          </Button>
-        ) : (
-          <Button type="submit" className="bg-green-600 hover:bg-green-500">
-            Save changes
-          </Button>
-        )}
+        <Button
+          type="submit"
+          className="bg-green-600 hover:bg-green-700"
+          disabled={loading}
+        >
+          {loading ? (
+            <>
+              <svg
+                className="animate-spin -ml-1 mr-3 h-4 w-4 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              Processing...
+            </>
+          ) : (
+            "Save Changes"
+          )}
+        </Button>
       </form>
       <Toaster />
     </div>
