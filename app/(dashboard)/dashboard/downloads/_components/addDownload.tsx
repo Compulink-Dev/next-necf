@@ -70,8 +70,8 @@ function AddDownload() {
         console.log("Uploading file:", file.name);
 
         // File validation
-        if (file.size > 5 * 1024 * 1024) {
-          throw new Error("File size exceeds 5MB limit");
+        if (file.size > 20 * 1024 * 1024) {
+          throw new Error("File size exceeds 20MB limit");
         }
 
         const formData = new FormData();
@@ -172,7 +172,7 @@ function AddDownload() {
           <Input
             type="file"
             id="document"
-            accept=".pdf,.doc,.docx"
+            accept=".pdf,.doc,.docx,.pptx"
             className="text-slate-400"
             onChange={(e) => {
               if (e.target.files?.[0]) {
