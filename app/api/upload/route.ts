@@ -19,6 +19,13 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+export const config = {
+  api: {
+    bodyParser: false, // Disable default bodyParser to handle file uploads
+    sizeLimit: '60mb'
+  }
+};
+
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
@@ -31,6 +38,14 @@ export async function POST(request: Request) {
       );
     }
 
+      // Validate file size (60MB limit)
+      if (file.size > 60 * 1024 * 1024) {
+        return NextResponse.json(
+          { error: 'File size exceeds 60MB limit' },
+          { status: 400 }
+        );
+      }
+
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
@@ -40,6 +55,7 @@ export async function POST(request: Request) {
           {
             resource_type: 'auto',
             folder: 'necf',
+            chunk_size: 60 * 1024 * 1024 // Set chunk size for large files
           },
           (error, result) => {
             if (error) {

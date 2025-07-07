@@ -70,8 +70,8 @@ function AddDownload() {
         console.log("Uploading file:", file.name);
 
         // File validation
-        if (file.size > 20 * 1024 * 1024) {
-          throw new Error("File size exceeds 20MB limit");
+        if (file.size > 60 * 1024 * 1024) {
+          throw new Error("File size exceeds 60MB limit");
         }
 
         const formData = new FormData();
