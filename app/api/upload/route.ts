@@ -20,11 +20,10 @@ cloudinary.config({
 });
 
 export const config = {
-  api: {
-    bodyParser: false, // Disable default bodyParser to handle file uploads
-    sizeLimit: '60mb'
-  }
+  runtime: 'nodejs', // or 'edge' if using Edge Runtime, but 'nodejs' is better for streams
 };
+
+
 
 export async function POST(request: Request) {
   try {
