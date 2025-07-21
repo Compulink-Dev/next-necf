@@ -200,37 +200,43 @@ const RegisterDialog = ({
             <Button
               type="button"
               onClick={addDelegate}
-              className="bg-blue-500 text-white"
+              className="bg-green-500 text-white"
             >
               Add Delegate
             </Button>
           </div>
           <div className="text-xs">
             <p>
-              <span className="font-bold">Conference Package: <br/></span>
-               US$ 350 – includes teas, lunch, memorabilia,
-              and materials.
+              <span className="font-bold">
+                Conference Package: <br />
+              </span>
+              US$ 350 – includes teas, lunch, memorabilia, and materials.
             </p>
             <p>
-       <span className="font-bold">Bank Details: </span>
-              <br/>
+              <span className="font-bold">Bank Details: </span>
+              <br />
               <span className="">
-              NECF, A/C No: 2210129490220, FBC, Samora Machel
-              Avenue Branch, Branch Code: 8101
+                NECF, A/C No: 2210129490220, FBC, Samora Machel Avenue Branch,
+                Branch Code: 8101
               </span>
             </p>
             <p>
-             <span className="font-bold"> For ZIG payments</span><br/>
-             Contact Mrs Agnes Kawiri (0773851644) or Ms Rudo
-              Njerere (0773481088).
+              <span className="font-bold"> For ZIG payments</span>
+              <br />
+              Contact Mrs Agnes Kawiri (0773851644) or Ms Rudo Njerere
+              (0773481088).
             </p>
             <p>
-              <br/>
+              <br />
               Send proof of payment to rnjerere@necf.org.zw,
               njerererudo@gmail.com
             </p>
           </div>
-          <Button type="submit" disabled={loading} className="w-full bg-blue-500 hover:bg-blue-800 text-white">
+          <Button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-green-500 hover:bg-green-800 text-white"
+          >
             {loading ? "Registering..." : "Register"}
           </Button>
           {message && <p className="text-sm text-green-600">{message}</p>}
