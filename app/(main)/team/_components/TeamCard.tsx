@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { MdPerson } from "react-icons/md";
 import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
@@ -16,40 +16,44 @@ interface TeamCardProps {
   gmail?: string;
 }
 
-function TeamCard({
-  position,
-  image,
-  title,
-  link
-}: TeamCardProps) {
+function TeamCard({ position, image, title, link }: TeamCardProps) {
   return (
-    <div className="w-72 h-96 border border-green-800 flex flex-col rounded">
-      <div className="flex-1 h-60 w-full flex items-center justify-center ">
+    <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 w-full max-w-xs overflow-hidden border border-gray-200">
+      <div className="flex flex-col items-center p-6">
         {image && image.trim().length > 0 ? (
           <Image
             src={image}
-            alt="logo"
-            width={80}
-            height={80}
-            className="w-40 h-40 mx-auto object-cover rounded-3xl"
+            alt="Profile"
+            width={120}
+            height={120}
+            className="rounded-full object-cover w-32 h-32 border-4 border-green-700"
           />
         ) : (
-          <MdPerson size={250} color="green" className="mx-auto" />
+          <MdPerson size={120} color="green" className="mb-2" />
         )}
-      </div>
-      <div className="flex-1 flex flex-col items-center justify-center gap-1 w-full h-[35%] bg-green-800 object-cover">
-        <p className="text-white font-semibold text-lg ">{title}</p>
-        <p className="text-gray-300 text-sm">{position}</p>
-        <p className="">{link}</p>
-        <div className="flex items-center justify-center gap-12 mx-auto">
-          <Link href={"/"}>
-            <FaFacebook size={18} color="white" />
+        <div className="mt-4 text-center">
+          <h2 className="text-lg font-semibold text-green-900">{title}</h2>
+          <p className="text-sm text-gray-600">{position}</p>
+        </div>
+
+        <div className="mt-4 flex justify-center space-x-4">
+          <Link href={link ?? "#"}>
+            <FaFacebook
+              size={20}
+              className="text-green-800 hover:text-green-600"
+            />
           </Link>
-          <Link href={"/"}>
-            <BsTwitterX size={18} color="white" />
+          <Link href="#">
+            <BsTwitterX
+              size={20}
+              className="text-green-800 hover:text-green-600"
+            />
           </Link>
-          <Link href={"/"}>
-            <FaLinkedin size={18} color="white" />
+          <Link href="#">
+            <FaLinkedin
+              size={20}
+              className="text-green-800 hover:text-green-600"
+            />
           </Link>
         </div>
       </div>
