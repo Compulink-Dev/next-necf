@@ -4,7 +4,10 @@ const teamScheme = new Schema(
     {
         title: String,
         subtitle: String,
-        image: String,
+        image: {
+            type: String,
+            required: false
+        },
         position: String,
         link: String,
     },
