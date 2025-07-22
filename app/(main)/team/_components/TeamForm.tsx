@@ -15,17 +15,6 @@ async function TeamForm() {
     { title: "NECF Secretariat", members: teams },
   ];
 
-  const secretariatGroups = [
-    [teams[0]], // Mr. M. Muzite
-    [teams[1], teams[2]], // Mr. G. Murehwa | Mrs. A. Kawiri
-    [teams[3], teams[4], teams[5]], // Mr. G. Gowere | Mr. J. Dzama |  Ms. S. Makiwa
-    [teams[6]], // Mr. B. Machiva
-    [teams[7], teams[8], teams[9], teams[10]], // Mr. P. Wilo | Mr. J. Masuka | Mr. S. Maponga | Economist
-    [teams[11], teams[12], teams[13], teams[14]], // ICTO | BD0 | ACCOUNTANT |HR ADMIN OFFICER
-    [teams[15], teams[16], teams[17], teams[18], teams[19]], // ASSISTANTs
-    [teams[20], teams[21], teams[22]], // RECRUITMENT | ASSISTANT | DRIVER
-  ];
-
   return (
     <section className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
       <div className="text-center max-w-3xl mx-auto mb-16">
@@ -55,7 +44,10 @@ async function TeamForm() {
               </h2>
               <div className="space-y-8">
                 {grouped.map((group, i) => (
-                  <div key={i} className="flex flex-wrap gap-6 justify-center">
+                  <div
+                    key={i}
+                    className="flex flex-wrap gap-6 items-center justify-center"
+                  >
                     {group.map((person: any) => (
                       <TeamCard
                         key={person?._id}
@@ -78,7 +70,7 @@ async function TeamForm() {
             <h2 className="text-2xl font-bold text-green-800 mb-8 border-l-4 border-green-600 pl-4">
               {title}
             </h2>
-            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
               {members.map((person: any) => (
                 <TeamCard
                   key={person._id}
