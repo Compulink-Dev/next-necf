@@ -39,9 +39,11 @@ async function TeamForm() {
 
           return (
             <div key={idx} className="mb-20">
-              <h2 className="text-2xl font-bold text-green-800 mb-8 border-l-4 border-green-600 pl-4">
-                {title}
-              </h2>
+              <div className="flex items-center justify-center">
+                <h2 className="text-2xl font-bold text-green-800 mb-8 border-l-4 border-green-600 pl-4">
+                  {title}
+                </h2>
+              </div>
               <div className="space-y-8">
                 {grouped.map((group, i) => (
                   <div
@@ -67,9 +69,11 @@ async function TeamForm() {
         // Default layout for other sections
         return (
           <div key={idx} className="mb-20">
-            <h2 className="text-2xl font-bold text-green-800 mb-8 border-l-4 border-green-600 pl-4">
-              {title}
-            </h2>
+            <div className="flex items-center justify-center">
+              <h2 className="text-2xl font-bold text-green-800 mb-8 border-l-4 border-green-600 pl-4">
+                {title}
+              </h2>
+            </div>
             <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
               {members.map((person: any) => (
                 <TeamCard
