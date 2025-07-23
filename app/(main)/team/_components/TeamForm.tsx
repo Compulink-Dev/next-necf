@@ -29,7 +29,7 @@ async function TeamForm() {
           const grouped = [
             [members[0]],
             [members[1], members[2]],
-            [members[3], members[4], members[5]],
+            [members[5], members[4], members[3]],
             [members[6]],
             [members[7], members[8], members[9], members[10]],
             [members[11], members[12], members[13], members[14]],
