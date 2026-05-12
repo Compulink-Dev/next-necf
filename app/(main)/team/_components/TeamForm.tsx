@@ -45,9 +45,9 @@ async function TeamForm() {
     return out;
   }
 
-  console.log("Teams : ", teams);
-  console.log("Chairs : ", chairs);
-  console.log("Cores : ", cores);
+  console.log("Teams  : ", teams);
+  console.log("Chairs  : ", chairs);
+  console.log("Cores  : ", cores);
 
   return (
     <div className="space-y-14">
