@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { Bell, LogOut, Search, User } from "lucide-react";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -43,13 +44,16 @@ export default function Header() {
 
   return (
     <div className="flex w-full items-center justify-between gap-4 px-4 md:px-6 lg:px-8">
-      {/* Search */}
-      <div className="relative hidden w-full max-w-sm lg:block">
+      <div className="flex items-center gap-2">
+        <SidebarTrigger className="shrink-0" />
+        {/* Search */}
+        <div className="relative hidden w-full max-w-sm lg:block">
         <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
         <Input
           placeholder="Search pages..."
           className="h-9 rounded-xl border-border/60 bg-muted/60 pl-9 text-sm"
         />
+      </div>
       </div>
 
       {/* Right actions */}
