@@ -4,6 +4,7 @@ import getTeams from "@/lib/getTeams";
 import getChairs from "@/lib/team/getChairs";
 import getCores from "@/lib/team/getCores";
 
+
 async function TeamForm() {
   const teams = await getTeams();
   const chairs = await getChairs();
@@ -14,6 +15,8 @@ async function TeamForm() {
     { title: "NECF Steering Committee Co-Chairpersons", members: cores },
     { title: "NECF Secretariat", members: teams },
   ];
+
+
 
   function pickMembers<T>(arr: T[], indices: number[]) {
     return indices.map((i) => arr?.[i]).filter(Boolean) as T[];
@@ -41,6 +44,10 @@ async function TeamForm() {
     }
     return out;
   }
+
+  console.log("Teams : ", teams);
+  console.log("Chairs : ", chairs);
+  console.log("Cores : ", cores);
 
   return (
     <div className="space-y-14">
