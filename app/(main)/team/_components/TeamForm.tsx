@@ -45,10 +45,6 @@ async function TeamForm() {
     return out;
   }
 
-  console.log("Teams  : ", teams);
-  console.log("Chairs  : ", chairs);
-  console.log("Cores  : ", cores);
-
   return (
     <div className="space-y-14">
       <section className="overflow-hidden rounded-3xl bg-background/70 p-6 ring-1 ring-border/60 backdrop-blur md:p-10">
