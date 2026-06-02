@@ -16,6 +16,10 @@ function DownloadCard({ title, date, document }: DownloadProps) {
         day: "numeric",
     }) : "";
 
+    const downloadUrl = document?.includes('.blob.vercel-storage.com')
+        ? `/api/download?url=${encodeURIComponent(document)}`
+        : document;
+
     return (
         <div className="flex w-full flex-col gap-4 rounded-3xl bg-background/60 p-5 ring-1 ring-border/60 transition hover:bg-background/70 md:flex-row md:items-center">
             <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-700/10 text-emerald-800 ring-1 ring-emerald-600/20">
@@ -33,7 +37,7 @@ function DownloadCard({ title, date, document }: DownloadProps) {
             </div>
 
             <Button asChild className="h-11 rounded-xl bg-emerald-700 hover:bg-emerald-600">
-                <Link href={document} target="_blank">
+                <Link href={downloadUrl} target="_blank">
                     Open
                 </Link>
             </Button>

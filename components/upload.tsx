@@ -19,21 +19,14 @@ function Upload() {
 
 
         const formData = new FormData()
-
         formData.append('file', image)
 
-        formData.append('upload_preset', "next_necf")
-
-        const uploadResponse = await fetch(
-            "https://api.cloudinary.com/v1_1/dxkna0tuc/image/upload", {
+        const uploadResponse = await fetch("/api/upload", {
             method: "POST",
             body: formData
-        }
-        )
+        })
 
-        const uploadedImageData = await uploadResponse.json()
-
-        const uploadUrl = uploadedImageData.secure_url
+        const { url: uploadUrl } = await uploadResponse.json()
         setImageUrl(uploadUrl)
         console.log(uploadUrl);
 

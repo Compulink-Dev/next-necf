@@ -21,7 +21,7 @@ import { ReportTab } from "./reportTabs"
 import DownloadList from "./downloadList"
 import CreateButton from "@/components/createButton"
 
-export function DownloadTab() {
+export function DownloadTab({ currentPage = 1 }: { currentPage?: number }) {
     return (
         <div className="flex h-full">
             <Tabs defaultValue="download" orientation="vertical" className="flex w-full">
@@ -43,7 +43,7 @@ export function DownloadTab() {
                                 <div className="">
                                     <CreateButton link='downloads' />
                                 </div>
-                                <DownloadList />
+                                <DownloadList page={currentPage} />
                             </CardContent>
                         </Card>
                     </TabsContent>

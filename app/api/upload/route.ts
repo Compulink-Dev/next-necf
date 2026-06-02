@@ -1,13 +1,7 @@
+import { put } from '@vercel/blob';
 import { NextResponse } from 'next/server';
-import { v2 as cloudinary } from 'cloudinary';
 
-export const runtime = 'nodejs'; // ✅ The only required config
-
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
   try {
@@ -22,25 +16,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'File size exceeds 60MB limit' }, { status: 400 });
     }
 
-    const buffer = Buffer.from(await file.arrayBuffer());
-
-    const result = await new Promise((resolve, reject) => {
-      cloudinary.uploader.upload_stream(
-        {
-          resource_type: 'auto',
-          folder: 'necf',
-          chunk_size: 60 * 1024 * 1024,
-        },
-        (error, result) => {
-          if (error) return reject(error);
-          resolve(result);
-        }
-      ).end(buffer);
+    const blob = await put(file.name, file, {
+      access: 'private',
+      addRandomSuffix: true,
     });
 
     return NextResponse.json({
       success: true,
-      url: (result as any).secure_url,
+      url: blob.url,
       size: file.size,
       type: file.type,
     });

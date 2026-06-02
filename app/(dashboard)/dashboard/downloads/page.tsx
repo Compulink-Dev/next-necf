@@ -1,10 +1,11 @@
 import React from 'react'
 import { DownloadTab } from './_components/downloadTab'
 
-function Downloads() {
+async function Downloads({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
+    const { page } = await searchParams
     return (
         <div className='p-8'>
-            <DownloadTab />
+            <DownloadTab currentPage={page ? parseInt(page) : 1} />
         </div>
     )
 }

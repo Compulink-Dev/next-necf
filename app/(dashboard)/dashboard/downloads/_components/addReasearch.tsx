@@ -21,10 +21,9 @@ function AddResearch() {
 
         const formData = new FormData()
         formData.append('file', raw_doc)
-        formData.append('upload_preset', 'next_necf')
 
         try {
-            const uploadResponse = await fetch("https://api.cloudinary.com/v1_1/dxkna0tuc/auto/upload/", {
+            const uploadResponse = await fetch("/api/upload", {
                 method: "POST",
                 body: formData
             })
@@ -32,8 +31,7 @@ function AddResearch() {
             if (!uploadResponse.ok) {
                 throw new Error('File upload failed')
             }
-            const imageData = await uploadResponse.json()
-            const imageUrl = imageData.secure_url
+            const { url: imageUrl } = await uploadResponse.json()
 
 
             const teamData = { ...data, document: imageUrl }

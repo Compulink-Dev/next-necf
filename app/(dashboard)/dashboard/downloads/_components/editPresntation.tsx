@@ -48,9 +48,8 @@ function EditPresentation({ download }) {
             const raw_image = data.document[0]
             const formData = new FormData()
             formData.append('file', raw_image)
-            formData.append('upload_preset', 'next_necf')
 
-            const uploadResponse = await fetch("https://api.cloudinary.com/v1_1/dxkna0tuc/auto/upload/", {
+            const uploadResponse = await fetch("/api/upload", {
                 method: "POST",
                 body: formData
             })
@@ -58,8 +57,7 @@ function EditPresentation({ download }) {
             if (!uploadResponse.ok) {
                 throw new Error('Document upload failed')
             }
-            const imageData = await uploadResponse.json()
-            imageUrl = imageData.secure_url
+            const { url: imageUrl } = await uploadResponse.json()
         }
 
         try {
