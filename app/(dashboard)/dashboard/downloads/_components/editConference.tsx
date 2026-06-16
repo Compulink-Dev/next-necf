@@ -56,7 +56,8 @@ function EditConference({ download }) {
             if (!uploadResponse.ok) {
                 throw new Error('Document upload failed')
             }
-            const { url: imageUrl } = await uploadResponse.json()
+            const { url } = await uploadResponse.json()
+            imageUrl = url
         }
 
         try {

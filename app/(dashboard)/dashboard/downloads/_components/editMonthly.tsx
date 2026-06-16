@@ -57,7 +57,8 @@ function EditMonthly({ download }) {
             if (!uploadResponse.ok) {
                 throw new Error('Document upload failed')
             }
-            const { url: imageUrl } = await uploadResponse.json()
+            const { url } = await uploadResponse.json()
+            imageUrl = url
         }
 
         try {
@@ -107,7 +108,7 @@ function EditMonthly({ download }) {
                 <div className="mb-6">
                     <Label className='text-slate-600'>Date</Label>
                     <Input
-                        defaultValue={download.description}
+                        defaultValue={download.date ? new Date(download.date).toISOString().split('T')[0] : ''}
                         {...register("date", { required: true })}
                         type="date"
                         className=""
@@ -122,8 +123,13 @@ function EditMonthly({ download }) {
                 </div>
                 <div className="mb-6 flex items-center gap-4">
                     <MdFileUpload className='text-green-600 text-4xl pt-4' />
-                    <div className="">
+                    <div className="flex-1">
                         <Label className='text-slate-600'>Document</Label>
+                        {download.document && (
+                            <p className="mb-2 text-xs text-muted-foreground break-all">
+                                Current: <a href={download.document} target="_blank" className="text-blue-600 underline">{download.document.split('/').pop()}</a>
+                            </p>
+                        )}
                         <Input
                             {...register("document")}
                             className='w-full'
