@@ -25,50 +25,21 @@ export default function AddEvent() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  async function handleFileUpload(file: File, folder: string, isDocument = false) {
+  async function uploadFile(file: File) {
     const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", "next_necf");
-    formData.append("folder", folder);
-    
-    if (isDocument) {
-      formData.append("resource_type", "raw");
-    }
+    formData.append('file', file);
 
-    const url = isDocument
-      ? "https://api.cloudinary.com/v1_1/dxkna0tuc/raw/upload"
-      : "https://api.cloudinary.com/v1_1/dxkna0tuc/image/upload";
-
-    const response = await fetch(url, { 
-      method: "POST", 
-      body: formData 
-    });
-    
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || `${folder} upload failed`);
-    }
-
-    return await response.json();
-    
-  }
-
-  async function uploadDocumentToServer(file: File): Promise<string> {
-    const formData = new FormData();
-    formData.append('document', file);
-
-    const response = await fetch('/api/upload-document', {
+    const response = await fetch('/api/upload', {
       method: 'POST',
       body: formData
     });
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.error || 'Document upload failed');
+      throw new Error(errorData.error || 'Upload failed');
     }
 
-    const result = await response.json();
-    return result.url;
+    return await response.json();
   }
 
 
@@ -80,13 +51,14 @@ export default function AddEvent() {
 
       // Upload image if provided
       if (data.image?.[0]) {
-        const imageData = await handleFileUpload(data.image[0], "events/images");
-        imageUrl = imageData.secure_url;
+        const imageData = await uploadFile(data.image[0]);
+        imageUrl = imageData.url;
       }
 
       // Upload document if provided
       if (data.document?.[0]) {
-        documentUrl = await uploadDocumentToServer(data.document[0]);
+        const documentData = await uploadFile(data.document[0]);
+        documentUrl = documentData.url;
       }
 
       // Submit to API

@@ -53,10 +53,9 @@ function EditAnnual({ program }) {
       const raw_image = data.image[0];
       const formData = new FormData();
       formData.append("file", raw_image);
-      formData.append("upload_preset", "next_necf");
 
       const uploadResponse = await fetch(
-        "https://api.cloudinary.com/v1_1/dxkna0tuc/image/upload/",
+        "/api/upload",
         {
           method: "POST",
           body: formData,
@@ -67,7 +66,7 @@ function EditAnnual({ program }) {
         throw new Error("Image upload failed");
       }
       const imageData = await uploadResponse.json();
-      imageUrl = imageData.secure_url;
+      imageUrl = imageData.url;
     }
 
     try {

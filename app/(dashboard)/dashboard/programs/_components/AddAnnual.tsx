@@ -23,24 +23,23 @@ function AddGallery() {
     const raw_image = data.image[0];
     console.log(raw_image);
 
-    const formData = new FormData();
-    formData.append("file", raw_image);
-    formData.append("upload_preset", "next_necf");
+        const formData = new FormData();
+        formData.append("file", raw_image);
 
-    try {
-      const uploadResponse = await fetch(
-        "https://api.cloudinary.com/v1_1/dxkna0tuc/image/upload/",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+        try {
+            const uploadResponse = await fetch(
+                "/api/upload",
+                {
+                    method: "POST",
+                    body: formData,
+                }
+            );
 
-      if (!uploadResponse.ok) {
-        throw new Error("Image upload failed");
-      }
-      const imageData = await uploadResponse.json();
-      const imageUrl = imageData.secure_url;
+            if (!uploadResponse.ok) {
+                throw new Error("Image upload failed");
+            }
+            const imageData = await uploadResponse.json();
+            const imageUrl = imageData.url;
 
       const teamData = { ...data, image: imageUrl };
 

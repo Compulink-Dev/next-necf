@@ -18,10 +18,9 @@ function AddContact() {
 
         const formData = new FormData()
         formData.append('file', uploadedUrl)
-        formData.append('upload_preset', 'next_necf')
 
         try {
-            const uploadResponse = await fetch("https://api.cloudinary.com/v1_1/dxkna0tuc/image/upload/", {
+            const uploadResponse = await fetch("/api/upload", {
                 method: "POST",
                 body: formData
             })
@@ -30,7 +29,7 @@ function AddContact() {
                 throw new Error('Image upload failed')
             }
             const imageData = await uploadResponse.json()
-            const imageUrl = imageData.secure_url
+            const imageUrl = imageData.url
 
 
             const contactData = { ...data, image: imageUrl }

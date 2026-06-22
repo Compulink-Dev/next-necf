@@ -41,33 +41,17 @@ function EditEvent({ event }: { event: any }) {
         }
     }
 
-    async function uploadImageToCloudinary(file: File) {
+    async function uploadFile(file: File) {
         const formData = new FormData()
         formData.append('file', file)
-        formData.append('upload_preset', 'next_necf')
 
-        const response = await fetch("https://api.cloudinary.com/v1_1/dxkna0tuc/image/upload/", {
-            method: "POST",
-            body: formData
-        })
-
-        if (!response.ok) {
-            throw new Error('Image upload failed')
-        }
-        return await response.json()
-    }
-
-    async function uploadDocumentToServer(file: File) {
-        const formData = new FormData()
-        formData.append('document', file)
-
-        const response = await fetch('/api/upload-document', {
+        const response = await fetch('/api/upload', {
             method: 'POST',
             body: formData
         })
 
         if (!response.ok) {
-            throw new Error('Document upload failed')
+            throw new Error('Upload failed')
         }
         return await response.json()
     }
@@ -80,13 +64,13 @@ function EditEvent({ event }: { event: any }) {
 
             // Handle image upload if new image provided
             if (data.image?.length > 0) {
-                const imageData = await uploadImageToCloudinary(data.image[0])
-                imageUrl = imageData.secure_url
+                const imageData = await uploadFile(data.image[0])
+                imageUrl = imageData.url
             }
 
             // Handle document upload if new document provided
             if (data.document?.length > 0) {
-                const documentData = await uploadDocumentToServer(data.document[0])
+                const documentData = await uploadFile(data.document[0])
                 documentUrl = documentData.url
             }
 

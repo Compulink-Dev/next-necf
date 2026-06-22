@@ -26,11 +26,10 @@ function AddSection() {
 
         const formData = new FormData();
         formData.append("file", raw_image);
-        formData.append("upload_preset", "next_necf");
 
         try {
             const uploadResponse = await fetch(
-                "https://api.cloudinary.com/v1_1/dxkna0tuc/image/upload/",
+                "/api/upload",
                 {
                     method: "POST",
                     body: formData,
@@ -41,7 +40,7 @@ function AddSection() {
                 throw new Error("Image upload failed");
             }
             const imageData = await uploadResponse.json();
-            const imageUrl = imageData.secure_url;
+            const imageUrl = imageData.url;
 
             const teamData = { ...data, image: imageUrl };
 

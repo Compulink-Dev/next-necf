@@ -101,11 +101,9 @@ export default function EditSponsorPage({ params }: { params: { id: string } }) 
   async function handleFileUpload(file: File) {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "next_necf");
-    formData.append("folder", "sponsors");
 
     const response = await fetch(
-      "https://api.cloudinary.com/v1_1/dxkna0tuc/image/upload",
+      "/api/upload",
       {
         method: "POST",
         body: formData,
@@ -129,7 +127,7 @@ export default function EditSponsorPage({ params }: { params: { id: string } }) 
     if (data.logo?.[0]) {
       try {
         const logoData = await handleFileUpload(data.logo[0]);
-        logoUrl = logoData.secure_url;
+        logoUrl = logoData.url;
       } catch (error) {
         console.error(error);
         toast.error("Failed to upload logo");
