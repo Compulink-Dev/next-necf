@@ -3,6 +3,7 @@ import BackButton from "@/components/backButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { UploadButton } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -16,31 +17,13 @@ function AddGallery() {
         formState: { errors },
     } = useForm();
     const [loading, setLoading] = useState(false);
+    const [imageUrl, setImageUrl] = useState("");
     const router = useRouter();
 
     async function onSubmit(data: any) {
         setLoading(true);
-        const raw_image = data.image[0];
-        console.log(raw_image);
-
-        const formData = new FormData();
-        formData.append("file", raw_image);
 
         try {
-            const uploadResponse = await fetch(
-                "/api/upload",
-                {
-                    method: "POST",
-                    body: formData,
-                }
-            );
-
-            if (!uploadResponse.ok) {
-                throw new Error("Image upload failed");
-            }
-            const imageData = await uploadResponse.json();
-            const imageUrl = imageData.url;
-
             const teamData = { ...data, image: imageUrl };
 
             const response = await fetch("/api/aboutGallery", {
@@ -86,19 +69,18 @@ function AddGallery() {
                 </div>
                 <div className="mb-6">
                     <Label className="text-slate-600">Image</Label>
-                    <Input
-                        {...register("image")}
-                        type="file"
-                        className="text-slate-400"
-                        id="image"
-                        placeholder="Enter image"
+                    <UploadButton
+                        endpoint="imageUploader"
+                        onClientUploadComplete={(res) => {
+                            if (res?.[0]) {
+                                setImageUrl(res[0].ufsUrl);
+                                toast.success("Image uploaded");
+                            }
+                        }}
+                        onUploadError={(error: Error) => {
+                            toast.error("Upload failed: " + error.message);
+                        }}
                     />
-                    {errors.image && (
-                        <p className="">
-                            Oops!
-                            <span className="">Image already inserted</span>
-                        </p>
-                    )}
                 </div>
                 {loading ? (
                     <button

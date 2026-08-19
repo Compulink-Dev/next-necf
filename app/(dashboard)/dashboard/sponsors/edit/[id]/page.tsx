@@ -9,6 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { UploadButton } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
@@ -34,6 +35,7 @@ export default function EditSponsorPage({ params }: { params: { id: string } }) 
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [sponsor, setSponsor] = useState<Sponsor | null>(null);
+  const [logoUrl, setLogoUrl] = useState("");
   const { 
     control,
     handleSubmit, 
@@ -56,6 +58,7 @@ export default function EditSponsorPage({ params }: { params: { id: string } }) 
         if (!response.ok) throw new Error("Failed to fetch sponsor");
         const data = await response.json();
         setSponsor(data);
+        setLogoUrl(data.logo);
         reset({
           name: data.name,
           tier: data.tier,
@@ -98,43 +101,10 @@ export default function EditSponsorPage({ params }: { params: { id: string } }) 
     }
   }
 
-  async function handleFileUpload(file: File) {
-    const formData = new FormData();
-    formData.append("file", file);
-
-    const response = await fetch(
-      "/api/upload",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error("Image upload failed");
-    }
-
-    return await response.json();
-  }
-
   async function onSubmit(data: FormValues) {
     if (!sponsor) return;
     
     setLoading(true);
-    let logoUrl = sponsor.logo;
-
-    // Upload new logo if provided
-    if (data.logo?.[0]) {
-      try {
-        const logoData = await handleFileUpload(data.logo[0]);
-        logoUrl = logoData.url;
-      } catch (error) {
-        console.error(error);
-        toast.error("Failed to upload logo");
-        setLoading(false);
-        return;
-      }
-    }
 
     try {
       const sponsorData = { 
@@ -259,11 +229,17 @@ export default function EditSponsorPage({ params }: { params: { id: string } }) 
           </div>
           <div className="flex-1">
             <Label htmlFor="logo">Logo</Label>
-            <Input 
-              id="logo" 
-              type="file" 
-              accept="image/*" 
-              {...register("logo")}
+            <UploadButton
+              endpoint="imageUploader"
+              onClientUploadComplete={(res) => {
+                if (res?.[0]) {
+                  setLogoUrl(res[0].ufsUrl);
+                  toast.success("Logo uploaded");
+                }
+              }}
+              onUploadError={(error: Error) => {
+                toast.error("Upload failed: " + error.message);
+              }}
             />
             <p className="text-sm text-gray-500 mt-1">
               Leave empty to keep current logo

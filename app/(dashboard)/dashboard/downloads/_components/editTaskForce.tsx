@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/label'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import { UploadButton } from "@/lib/uploadthing";
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
 import { MdFileUpload } from 'react-icons/md'
@@ -16,6 +17,7 @@ function EditTaskForce({ download }) {
     const router = useRouter()
     const [loading, setLoading] = useState(false)
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
+    const [documentUrl, setDocumentUrl] = useState(download.document || "");
 
     async function handleDelete() {
         try {
@@ -41,30 +43,9 @@ function EditTaskForce({ download }) {
 
     async function onSubmit(data: any) {
         setLoading(true)
-        const len = data.document.length
-        let imageUrl = download.document
-
-
-        if (len > 0) {
-            const raw_image = data.document[0]
-            const formData = new FormData()
-            formData.append('file', raw_image)
-
-            const uploadResponse = await fetch("/api/upload", {
-                method: "POST",
-                body: formData
-            })
-
-            if (!uploadResponse.ok) {
-                throw new Error('Document upload failed')
-            }
-            const { url } = await uploadResponse.json()
-            imageUrl = url
-        }
+        const teamData = { ...data, document: documentUrl }
 
         try {
-            const teamData = { ...data, document: imageUrl }
-
             const response = await fetch(`/api/tasks/${download._id}`, {
                 method: "PUT",
                 body: JSON.stringify(teamData)
@@ -126,10 +107,17 @@ function EditTaskForce({ download }) {
                     <MdFileUpload className='text-green-600 text-4xl pt-4' />
                     <div className="">
                         <Label className='text-slate-600'>Document</Label>
-                        <Input
-                            {...register("document")}
-                            className='w-full'
-                            type='file'
+                        <UploadButton
+                            endpoint="documentUploader"
+                            onClientUploadComplete={(res) => {
+                                if (res?.[0]) {
+                                    setDocumentUrl(res[0].ufsUrl);
+                                    toast.success("Document uploaded");
+                                }
+                            }}
+                            onUploadError={(error: Error) => {
+                                toast.error("Upload failed: " + error.message);
+                            }}
                         />
                     </div>
 

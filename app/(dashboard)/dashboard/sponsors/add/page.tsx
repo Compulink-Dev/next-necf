@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { UploadButton } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form"; // Add Controller import
@@ -35,38 +36,12 @@ export default function AddSponsor() {
     },
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [logoUrl, setLogoUrl] = useState("");
   const router = useRouter();
-
-  async function handleFileUpload(file: File) {
-    const formData = new FormData();
-    formData.append("file", file);
-
-    const response = await fetch(
-      "/api/upload",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error("Image upload failed");
-    }
-
-    return await response.json();
-  }
 
   async function onSubmit(data: FormData) {
     setIsLoading(true);
     try {
-      let logoUrl = "";
-
-      // Upload logo if provided
-      if (data.logo?.[0]) {
-        const logoData = await handleFileUpload(data.logo[0]);
-        logoUrl = logoData.url;
-      }
-
       // Submit to API
       const response = await fetch("/api/sponsors", {
         method: "POST",
@@ -154,18 +129,21 @@ export default function AddSponsor() {
 
         <div>
           <Label htmlFor="logo">Logo *</Label>
-          <Input
-            id="logo"
-            type="file"
-            accept="image/*"
-            {...register("logo", { required: "Logo is required" })}
+          <UploadButton
+            endpoint="imageUploader"
+            onClientUploadComplete={(res) => {
+              if (res?.[0]) {
+                setLogoUrl(res[0].ufsUrl);
+                toast.success("Logo uploaded");
+              }
+            }}
+            onUploadError={(error: Error) => {
+              toast.error("Upload failed: " + error.message);
+            }}
           />
           <p className="text-sm text-gray-500 mt-1">
             Recommended size: 400x200px (transparent PNG preferred)
           </p>
-          {errors.logo && (
-            <p className="text-red-500 text-sm mt-1">{errors.logo.message}</p>
-          )}
         </div>
 
         <div className="flex justify-end">

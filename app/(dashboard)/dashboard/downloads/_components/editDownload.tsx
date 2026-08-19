@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { UploadButton } from "@/lib/uploadthing";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { MdFileUpload } from "react-icons/md";
@@ -21,6 +22,7 @@ function EditDownload({ download }) {
     reset,
     formState: { errors },
   } = useForm();
+  const [documentUrl, setDocumentUrl] = useState(download.document || "");
 
   console.log(download);
 
@@ -45,28 +47,7 @@ function EditDownload({ download }) {
   async function onSubmit(data: any) {
     setLoading(true);
 
-    let imageUrl = download.document;
-
-    if (data.document?.[0]) {
-      const formData = new FormData();
-      formData.append("file", data.document[0]);
-
-      const uploadResponse = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!uploadResponse.ok) {
-        setLoading(false);
-        toast.error("File upload failed");
-        return;
-      }
-
-      const { url } = await uploadResponse.json();
-      imageUrl = url;
-    }
-
-    const teamData = { ...data, document: imageUrl };
+    const teamData = { ...data, document: documentUrl };
 
     try {
       const response = await fetch(`/api/downloads/${download._id}`, {
@@ -132,7 +113,18 @@ function EditDownload({ download }) {
           <div className="">
             <Label className="text-slate-600">Document</Label>
             <p className="text-xs text-slate-500">{download.document}</p>
-            <Input {...register("document")} className="w-full" type="file" />
+            <UploadButton
+              endpoint="documentUploader"
+              onClientUploadComplete={(res) => {
+                if (res?.[0]) {
+                  setDocumentUrl(res[0].ufsUrl);
+                  toast.success("Document uploaded");
+                }
+              }}
+              onUploadError={(error: Error) => {
+                toast.error("Upload failed: " + error.message);
+              }}
+            />
           </div>
         </div>
         <div className="flex gap-1">

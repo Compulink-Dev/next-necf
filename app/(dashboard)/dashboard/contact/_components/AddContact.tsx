@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { UploadButton } from "@/lib/uploadthing";
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast';
@@ -9,29 +10,12 @@ import toast, { Toaster } from 'react-hot-toast';
 function AddContact() {
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
     const [loading, setLoading] = useState(false)
+    const [imageUrl, setImageUrl] = useState("")
 
     async function onSubmit(data: any) {
         setLoading(true)
-        const uploadedUrl = data.image[0]
-        console.log(uploadedUrl);
-
-
-        const formData = new FormData()
-        formData.append('file', uploadedUrl)
 
         try {
-            const uploadResponse = await fetch("/api/upload", {
-                method: "POST",
-                body: formData
-            })
-
-            if (!uploadResponse.ok) {
-                throw new Error('Image upload failed')
-            }
-            const imageData = await uploadResponse.json()
-            const imageUrl = imageData.url
-
-
             const contactData = { ...data, image: imageUrl }
 
             const response = await fetch("/api/contacts", {
@@ -108,18 +92,18 @@ function AddContact() {
                 </div>
                 <div className="mb-6">
                     <Label className='text-slate-600'>Image</Label>
-                    <Input
-                        {...register("image")}
-                        type="file"
-                        className="text-slate-400"
-                        id='image'
-                        placeholder='Enter image' />
-                    {
-                        errors.image && <p className="">
-                            Oops!
-                            <span className="">Contact already taken</span>
-                        </p>
-                    }
+                    <UploadButton
+                        endpoint="imageUploader"
+                        onClientUploadComplete={(res) => {
+                            if (res?.[0]) {
+                                setImageUrl(res[0].ufsUrl);
+                                toast.success("Image uploaded");
+                            }
+                        }}
+                        onUploadError={(error: Error) => {
+                            toast.error("Upload failed: " + error.message);
+                        }}
+                    />
                 </div>
                 {
                     loading ?

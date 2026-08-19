@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { UploadButton } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -17,31 +18,13 @@ function AddSection() {
         formState: { errors },
     } = useForm();
     const [loading, setLoading] = useState(false);
+    const [imageUrl, setImageUrl] = useState("");
     const router = useRouter();
 
     async function onSubmit(data: any) {
         setLoading(true);
-        const raw_image = data.image[0];
-        console.log(raw_image);
-
-        const formData = new FormData();
-        formData.append("file", raw_image);
 
         try {
-            const uploadResponse = await fetch(
-                "/api/upload",
-                {
-                    method: "POST",
-                    body: formData,
-                }
-            );
-
-            if (!uploadResponse.ok) {
-                throw new Error("Image upload failed");
-            }
-            const imageData = await uploadResponse.json();
-            const imageUrl = imageData.url;
-
             const teamData = { ...data, image: imageUrl };
 
             const response = await fetch("/api/aboutSection", {
@@ -162,7 +145,18 @@ function AddSection() {
                 <div className="mb-6 flex items-center gap-4">
                     <div className="">
                         <Label className="text-slate-600">Image</Label>
-                        <Input {...register("image")} className="w-full" type="file" />
+                        <UploadButton
+                            endpoint="imageUploader"
+                            onClientUploadComplete={(res) => {
+                                if (res?.[0]) {
+                                    setImageUrl(res[0].ufsUrl);
+                                    toast.success("Image uploaded");
+                                }
+                            }}
+                            onUploadError={(error: Error) => {
+                                toast.error("Upload failed: " + error.message);
+                            }}
+                        />
                     </div>
                 </div>
                 {loading ? (

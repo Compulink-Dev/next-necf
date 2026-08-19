@@ -7,16 +7,17 @@ import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
+import { UploadButton } from '@/lib/uploadthing'
 
 function EditEvent({ event }: { event: any }) {
     const router = useRouter()
     const [loading, setLoading] = useState(false)
+    const [imageUrl, setImageUrl] = useState(event.image)
+    const [documentUrl, setDocumentUrl] = useState(event.document || "")
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
         defaultValues: {
             title: event.title,
             date: event.date,
-            image: undefined,
-            document: undefined
         }
     })
 
@@ -41,40 +42,9 @@ function EditEvent({ event }: { event: any }) {
         }
     }
 
-    async function uploadFile(file: File) {
-        const formData = new FormData()
-        formData.append('file', file)
-
-        const response = await fetch('/api/upload', {
-            method: 'POST',
-            body: formData
-        })
-
-        if (!response.ok) {
-            throw new Error('Upload failed')
-        }
-        return await response.json()
-    }
-
     async function onSubmit(data: any) {
         setLoading(true)
         try {
-            let imageUrl = event.image
-            let documentUrl = event.document
-
-            // Handle image upload if new image provided
-            if (data.image?.length > 0) {
-                const imageData = await uploadFile(data.image[0])
-                imageUrl = imageData.url
-            }
-
-            // Handle document upload if new document provided
-            if (data.document?.length > 0) {
-                const documentData = await uploadFile(data.document[0])
-                documentUrl = documentData.url
-            }
-
-            // Update event data
             const response = await fetch(`/api/main-events/${event._id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
@@ -135,7 +105,7 @@ function EditEvent({ event }: { event: any }) {
 
                 <div className="mb-6 flex items-center gap-4">
                     <Image
-                        src={event.image}
+                        src={imageUrl}
                         alt="Event image"
                         width={100}
                         height={100}
@@ -143,20 +113,34 @@ function EditEvent({ event }: { event: any }) {
                     />
                     <div className="flex-1">
                         <Label className="text-slate-600">Image</Label>
-                        <Input 
-                            {...register("image")} 
-                            type="file" 
-                            accept="image/*"
+                        <UploadButton
+                            endpoint="imageUploader"
+                            onClientUploadComplete={(res) => {
+                                if (res?.[0]) {
+                                    setImageUrl(res[0].ufsUrl);
+                                    toast.success("Image uploaded");
+                                }
+                            }}
+                            onUploadError={(error: Error) => {
+                                toast.error(`Upload failed: ${error.message}`);
+                            }}
                         />
                     </div>
                 </div>
 
                 <div className="mb-6">
                     <Label className="text-slate-600">Document</Label>
-                    <Input 
-                        {...register("document")} 
-                        type="file" 
-                        accept=".pdf,.doc,.docx,.ppt,.pptx"
+                    <UploadButton
+                        endpoint="documentUploader"
+                        onClientUploadComplete={(res) => {
+                            if (res?.[0]) {
+                                setDocumentUrl(res[0].ufsUrl);
+                                toast.success("Document uploaded");
+                            }
+                        }}
+                        onUploadError={(error: Error) => {
+                            toast.error(`Upload failed: ${error.message}`);
+                        }}
                     />
                     {event.document && (
                         <p className="text-sm text-blue-600 mt-2">

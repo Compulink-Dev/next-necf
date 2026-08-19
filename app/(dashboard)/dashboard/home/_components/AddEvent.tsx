@@ -7,12 +7,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
+import { UploadButton } from "@/lib/uploadthing";
 
 type FormData = {
   title: string;
   date: string;
-  image?: FileList;
-  document?: FileList;
 };
 
 export default function AddEvent() {
@@ -23,45 +22,13 @@ export default function AddEvent() {
     formState: { errors },
   } = useForm<FormData>();
   const [isLoading, setIsLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
+  const [documentUrl, setDocumentUrl] = useState("");
   const router = useRouter();
-
-  async function uploadFile(file: File) {
-    const formData = new FormData();
-    formData.append('file', file);
-
-    const response = await fetch('/api/upload', {
-      method: 'POST',
-      body: formData
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || 'Upload failed');
-    }
-
-    return await response.json();
-  }
-
 
   async function onSubmit(data: FormData) {
     setIsLoading(true);
     try {
-      let imageUrl = "";
-      let documentUrl = "";
-
-      // Upload image if provided
-      if (data.image?.[0]) {
-        const imageData = await uploadFile(data.image[0]);
-        imageUrl = imageData.url;
-      }
-
-      // Upload document if provided
-      if (data.document?.[0]) {
-        const documentData = await uploadFile(data.document[0]);
-        documentUrl = documentData.url;
-      }
-
-      // Submit to API
       const response = await fetch("/api/main-events", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -78,6 +45,8 @@ export default function AddEvent() {
       }
 
       reset();
+      setImageUrl("");
+      setDocumentUrl("");
       toast.success("Event created successfully!");
       router.push("/dashboard/home");
     } catch (error) {
@@ -122,23 +91,35 @@ export default function AddEvent() {
         </div>
 
         <div>
-          <Label htmlFor="image">Image</Label>
-          <Input
-            id="image"
-            type="file"
-            accept="image/*"
-            {...register("image")}
+          <Label>Image</Label>
+          <UploadButton
+            endpoint="imageUploader"
+            onClientUploadComplete={(res) => {
+              if (res?.[0]) {
+                setImageUrl(res[0].ufsUrl);
+                toast.success("Image uploaded");
+              }
+            }}
+            onUploadError={(error: Error) => {
+              toast.error(`Upload failed: ${error.message}`);
+            }}
           />
           <p className="text-sm text-gray-500 mt-1">Recommended size: 800x450px</p>
         </div>
 
         <div>
-          <Label htmlFor="document">Document</Label>
-          <Input
-            id="document"
-            type="file"
-            accept=".pdf,.doc,.docx,.ppt,.pptx"
-            {...register("document")}
+          <Label>Document</Label>
+          <UploadButton
+            endpoint="documentUploader"
+            onClientUploadComplete={(res) => {
+              if (res?.[0]) {
+                setDocumentUrl(res[0].ufsUrl);
+                toast.success("Document uploaded");
+              }
+            }}
+            onUploadError={(error: Error) => {
+              toast.error(`Upload failed: ${error.message}`);
+            }}
           />
           <p className="text-sm text-gray-500 mt-1">
             PDF, Word, or PowerPoint files

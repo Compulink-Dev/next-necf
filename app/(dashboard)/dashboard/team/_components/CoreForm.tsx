@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/label'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import { UploadButton } from '@/lib/uploadthing'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
 
@@ -14,30 +15,11 @@ function CoreForm({ core }) {
 
     const router = useRouter()
     const [loading, setLoading] = useState(false)
+    const [imageUrl, setImageUrl] = useState(core.image)
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
 
     async function onSubmit(data: any) {
         setLoading(true)
-        const len = data.image.length
-        let imageUrl = core.image
-
-
-        if (len > 0) {
-            const raw_image = data.image[0]
-            const formData = new FormData()
-            formData.append('file', raw_image)
-
-            const uploadResponse = await fetch("/api/upload", {
-                method: "POST",
-                body: formData
-            })
-
-            if (!uploadResponse.ok) {
-                throw new Error('Image upload failed')
-            }
-            const imageData = await uploadResponse.json()
-            imageUrl = imageData.url
-        }
 
         try {
             const coreData = { ...data, image: imageUrl }
@@ -52,7 +34,6 @@ function CoreForm({ core }) {
                 setLoading(false)
                 toast.success('Details have updated successfully')
                 router.push('/dashboard/core')
-                console.log(coreData);
             }
         } catch (error) {
             console.log(error);
@@ -125,11 +106,17 @@ function CoreForm({ core }) {
                         className='rounded-full object-cover h-32 w-32' />
                     <div className="">
                         <Label className='text-slate-600'>Image</Label>
-                        <Input
-
-                            {...register("image")}
-                            className='w-full'
-                            type='file'
+                        <UploadButton
+                            endpoint="imageUploader"
+                            onClientUploadComplete={(res) => {
+                                if (res?.[0]) {
+                                    setImageUrl(res[0].ufsUrl);
+                                    toast.success("Image uploaded");
+                                }
+                            }}
+                            onUploadError={(error: Error) => {
+                                toast.error("Upload failed: " + error.message);
+                            }}
                         />
                     </div>
 

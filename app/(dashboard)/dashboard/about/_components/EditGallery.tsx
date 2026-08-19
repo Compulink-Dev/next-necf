@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { UploadButton } from "@/lib/uploadthing";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -13,6 +14,7 @@ import toast, { Toaster } from "react-hot-toast";
 function EditGallery({ gallery }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState(gallery.image);
   const {
     register,
     handleSubmit,
@@ -43,28 +45,6 @@ function EditGallery({ gallery }) {
 
   async function onSubmit(data: any) {
     setLoading(true);
-    const len = data.image.length;
-    let imageUrl = gallery.image;
-
-    if (len > 0) {
-      const raw_image = data.image[0];
-      const formData = new FormData();
-      formData.append("file", raw_image);
-
-      const uploadResponse = await fetch(
-        "/api/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      if (!uploadResponse.ok) {
-        throw new Error("Image upload failed");
-      }
-      const imageData = await uploadResponse.json();
-      imageUrl = imageData.url;
-    }
 
     try {
       const teamData = { ...data, image: imageUrl };
@@ -117,7 +97,18 @@ function EditGallery({ gallery }) {
           />
           <div className="">
             <Label className="text-slate-600">Image</Label>
-            <Input {...register("image")} className="w-full" type="file" />
+            <UploadButton
+              endpoint="imageUploader"
+              onClientUploadComplete={(res) => {
+                if (res?.[0]) {
+                  setImageUrl(res[0].ufsUrl);
+                  toast.success("Image uploaded");
+                }
+              }}
+              onUploadError={(error: Error) => {
+                toast.error("Upload failed: " + error.message);
+              }}
+            />
           </div>
         </div>
         <div className="flex gap-1">

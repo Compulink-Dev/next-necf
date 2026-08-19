@@ -8,6 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
+import { UploadButton } from '@/lib/uploadthing';
 
 interface DownloadFormData {
   _id?: string;
@@ -26,6 +27,7 @@ function AddDownload() {
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
   const [currentFileUrl, setCurrentFileUrl] = useState("");
+  const [documentUrl, setDocumentUrl] = useState("");
 
   const router = useRouter();
   const params = useSearchParams();
@@ -62,37 +64,8 @@ function AddDownload() {
     setLoading(true);
 
     try {
-      let fileUrl = currentFileUrl;
+      const fileUrl = documentUrl || currentFileUrl;
 
-      // Handle file upload if a new file was provided
-      if (data.document instanceof FileList && data.document.length > 0) {
-        const file = data.document[0];
-        console.log("Uploading file:", file.name);
-
-        // File validation
-        if (file.size > 60 * 1024 * 1024) {
-          throw new Error("File size exceeds 60MB limit");
-        }
-
-        const formData = new FormData();
-        formData.append("file", file);
-
-        const uploadResponse = await fetch("/api/upload", {
-          method: "POST",
-          body: formData,
-        });
-
-        if (!uploadResponse.ok) {
-          const errorText = await uploadResponse.text();
-          throw new Error(`Upload failed: ${errorText}`);
-        }
-
-        const result = await uploadResponse.json();
-        fileUrl = result.url;
-        console.log("File uploaded to:", fileUrl);
-      }
-
-      // Prepare the data to send
       const requestData = {
         title: data.title,
         date: data.date,
@@ -169,15 +142,16 @@ function AddDownload() {
           <Label htmlFor="document" className="text-slate-600">
             Document
           </Label>
-          <Input
-            type="file"
-            id="document"
-            accept=".pdf,.doc,.docx,.pptx"
-            className="text-slate-400"
-            onChange={(e) => {
-              if (e.target.files?.[0]) {
-                setValue("document", e.target.files);
+          <UploadButton
+            endpoint="documentUploader"
+            onClientUploadComplete={(res) => {
+              if (res?.[0]) {
+                setDocumentUrl(res[0].ufsUrl);
+                toast.success("Document uploaded");
               }
+            }}
+            onUploadError={(error: Error) => {
+              toast.error("Upload failed: " + error.message);
             }}
           />
           {currentFileUrl && (

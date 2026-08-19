@@ -7,34 +7,19 @@ import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import toast, { Toaster } from 'react-hot-toast'
+import { UploadButton } from '@/lib/uploadthing'
 
 function AddQuarterly() {
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
     const [loading, setLoading] = useState(false)
+    const [documentUrl, setDocumentUrl] = useState("")
     const router = useRouter()
 
     async function onSubmit(data: any) {
         setLoading(true)
-        const raw_doc = data.document[0]
-        console.log(raw_doc);
-
-
-        const formData = new FormData()
-        formData.append('file', raw_doc)
 
         try {
-            const uploadResponse = await fetch("/api/upload", {
-                method: "POST",
-                body: formData
-            })
-
-            if (!uploadResponse.ok) {
-                throw new Error('File upload failed')
-            }
-            const { url: imageUrl } = await uploadResponse.json()
-
-
-            const teamData = { ...data, document: imageUrl }
+            const teamData = { ...data, document: documentUrl }
 
             const response = await fetch("/api/quarterly", {
                 method: "POST",
@@ -96,18 +81,18 @@ function AddQuarterly() {
                 </div>
                 <div className="mb-6">
                     <Label className='text-slate-600'>Document</Label>
-                    <Input
-                        {...register("document")}
-                        type="file"
-                        className="text-slate-400"
-                        id='document'
-                        placeholder='Enter document' />
-                    {
-                        errors.image && <p className="">
-                            Oops!
-                            <span className="">Document already inserted</span>
-                        </p>
-                    }
+                    <UploadButton
+                        endpoint="documentUploader"
+                        onClientUploadComplete={(res) => {
+                            if (res?.[0]) {
+                                setDocumentUrl(res[0].ufsUrl);
+                                toast.success("Document uploaded");
+                            }
+                        }}
+                        onUploadError={(error: Error) => {
+                            toast.error("Upload failed: " + error.message);
+                        }}
+                    />
                 </div>
                 {
                     loading ?

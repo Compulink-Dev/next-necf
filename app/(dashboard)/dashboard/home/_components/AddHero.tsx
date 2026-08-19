@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
+import { UploadButton } from "@/lib/uploadthing";
+import Image from "next/image";
 
 function AddHero() {
     const {
@@ -16,31 +18,17 @@ function AddHero() {
         formState: { errors },
     } = useForm();
     const [loading, setLoading] = useState(false);
+    const [imageUrl, setImageUrl] = useState("");
     const router = useRouter();
 
     async function onSubmit(data: any) {
+        if (!imageUrl) {
+            toast.error("Please upload an image");
+            return;
+        }
         setLoading(true);
-        const raw_image = data.image[0];
-        console.log(raw_image);
-
-        const formData = new FormData();
-        formData.append("file", raw_image);
 
         try {
-            const uploadResponse = await fetch(
-                "/api/upload",
-                {
-                    method: "POST",
-                    body: formData,
-                }
-            );
-
-            if (!uploadResponse.ok) {
-                throw new Error("Image upload failed");
-            }
-            const imageData = await uploadResponse.json();
-            const imageUrl = imageData.url;
-
             const teamData = { ...data, image: imageUrl };
 
             const response = await fetch("/api/hero", {
@@ -100,18 +88,30 @@ function AddHero() {
                 </div>
                 <div className="mb-6">
                     <Label className="text-slate-600">Image</Label>
-                    <Input
-                        {...register("image")}
-                        type="file"
-                        className="text-slate-400"
-                        id="image"
-                        placeholder="Enter image"
+                    <UploadButton
+                        endpoint="imageUploader"
+                        appearance={{
+                            button: "bg-green-600 hover:bg-green-500 text-white ut-uploading:bg-green-500",
+                        }}
+                        onClientUploadComplete={(res) => {
+                            if (res?.[0]) {
+                                setImageUrl(res[0].ufsUrl);
+                                toast.success("Image uploaded");
+                            }
+                        }}
+                        onUploadError={(error: Error) => {
+                            toast.error(`Upload failed: ${error.message}`);
+                        }}
                     />
-                    {errors.image && (
-                        <p className="">
-                            Oops!
-                            <span className="">Image already inserted</span>
-                        </p>
+                    {imageUrl && (
+                        <div className="mt-4 relative h-48 w-48 overflow-hidden rounded-lg border">
+                            <Image
+                                src={imageUrl}
+                                alt="Uploaded preview"
+                                fill
+                                className="object-cover"
+                            />
+                        </div>
                     )}
                 </div>
                 {loading ? (
