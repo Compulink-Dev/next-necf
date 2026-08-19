@@ -80,13 +80,13 @@ const EventCard = ({ id, image, title, date, link, document: docUrl }: EventProp
   return (
     <article className="group overflow-hidden rounded-3xl bg-background/60 ring-1 ring-border/60 transition hover:bg-background/70">
       <div className="relative">
-        <div className="relative aspect-[16/9] w-full overflow-hidden bg-black/10">
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-black/5">
           <Image
             src={image}
             alt={title}
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover transition duration-500 group-hover:scale-[1.02]"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-contain transition duration-500 group-hover:scale-[1.02]"
           />
         </div>
 

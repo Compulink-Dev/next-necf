@@ -20,7 +20,7 @@ interface EventPageProps {
 
 const EventPage: React.FC<EventPageProps> = ({ events = [] }) => {
   const [currentPage, setCurrentPage] = useState(0);
-  const eventsPerPage = 4; // Number of events per page
+  const eventsPerPage = 6; // Number of events per page
 
   // If events is empty, handle gracefully
   if (!events || events.length === 0) {
@@ -60,7 +60,7 @@ const EventPage: React.FC<EventPageProps> = ({ events = [] }) => {
           </p>
         </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {paginatedEvents.map((event: Event) => (
               <EventCard
                 id={event.id}
