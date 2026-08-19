@@ -22,7 +22,7 @@ export const ourFileRouter = {
     }),
   documentUploader: f({
     blob: {
-      maxFileSize: "10MB",
+      maxFileSize: "8MB",
       maxFileCount: 1,
     },
   })
