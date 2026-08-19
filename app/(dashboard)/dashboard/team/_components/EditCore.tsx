@@ -118,17 +118,24 @@ function EditCore({ team }) {
                         </p>
                     }
                 </div>
-                <div className="mb-6 flex items-center gap-4">
-                    <Image
-                        src={team.image}
-                        alt='image'
-                        width={100}
-                        height={100}
-                        className='rounded-full object-cover h-32 w-32' />
-                    <div className="">
-                        <Label className='text-slate-600'>Image</Label>
+                <div className="mb-6">
+                    <Label className='text-slate-600'>Image</Label>
+                    <div className="flex items-center gap-4">
+                        {imageUrl && (
+                            <div className="relative h-32 w-32 overflow-hidden rounded-lg border">
+                                <Image
+                                    src={imageUrl}
+                                    alt="Uploaded preview"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                        )}
                         <UploadButton
                             endpoint="imageUploader"
+                            appearance={{
+                                button: "bg-green-600 hover:bg-green-500 text-white",
+                            }}
                             onClientUploadComplete={(res) => {
                                 if (res?.[0]) {
                                     setImageUrl(res[0].ufsUrl);
@@ -140,7 +147,6 @@ function EditCore({ team }) {
                             }}
                         />
                     </div>
-
                 </div>
                 <div className="flex gap-1">
                     {
