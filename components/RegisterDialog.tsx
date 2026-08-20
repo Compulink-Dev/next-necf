@@ -98,16 +98,16 @@ const RegisterDialog = ({
         if (!open) onClose();
       }}
     >
-      <DialogContent className="max-h-[85vh] w-[min(96vw,760px)] overflow-y-auto rounded-3xl bg-background/90 p-0 ring-1 ring-border/60 backdrop-blur">
+      <DialogContent className="max-h-[85vh] w-[min(96vw,760px)] overflow-y-auto rounded-3xl bg-emerald-950 p-0 ring-1 ring-border/60 backdrop-blur text-white">
         <div className="relative overflow-hidden rounded-t-3xl border-b border-border/60 bg-[radial-gradient(900px_420px_at_0%_0%,rgba(16,185,129,0.18),transparent_55%),radial-gradient(900px_420px_at_100%_0%,rgba(163,230,53,0.14),transparent_55%)] px-6 py-6">
           <DialogHeader>
-            <p className="text-xs font-semibold tracking-widest text-emerald-900/80">
+            <p className="text-xs font-semibold tracking-widest text-emerald-300/80">
               EVENT REGISTRATION
             </p>
-            <DialogTitle className="mt-2 text-balance font-[var(--font-display)] text-2xl leading-tight">
+            <DialogTitle className="mt-2 text-balance font-[var(--font-display)] text-2xl leading-tight text-white">
               Register for {eventTitle}
             </DialogTitle>
-            <p className="mt-2 text-sm text-muted-foreground">
+            <p className="mt-2 text-sm text-emerald-200/70">
               Fill in your organization details and add each delegate attending.
             </p>
           </DialogHeader>
@@ -116,15 +116,15 @@ const RegisterDialog = ({
         <form onSubmit={handleSubmit} className="space-y-8 p-6">
           <section className="space-y-4">
             <div>
-              <h3 className="text-sm font-semibold text-foreground">Organization</h3>
-              <p className="mt-1 text-xs text-muted-foreground">
+              <h3 className="text-sm font-semibold text-white">Organization</h3>
+              <p className="mt-1 text-xs text-emerald-200/70">
                 Primary contact details for invoicing and communication.
               </p>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor="companyName">Company Name</Label>
+                <Label htmlFor="companyName" className="text-emerald-100">Company Name</Label>
                 <Input
                   id="companyName"
                   type="text"
@@ -132,12 +132,12 @@ const RegisterDialog = ({
                   value={formData.companyName}
                   onChange={handleChange}
                   required
-                  className="rounded-xl"
+                  className="rounded-xl bg-emerald-900/50 text-white border-emerald-700/40 placeholder:text-emerald-300/50"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="contactPerson">Contact Person for Payment</Label>
+                <Label htmlFor="contactPerson" className="text-emerald-100">Contact Person for Payment</Label>
                 <Input
                   id="contactPerson"
                   type="text"
@@ -145,12 +145,12 @@ const RegisterDialog = ({
                   value={formData.contactPerson}
                   onChange={handleChange}
                   required
-                  className="rounded-xl"
+                  className="rounded-xl bg-emerald-900/50 text-white border-emerald-700/40 placeholder:text-emerald-300/50"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="tel">Telephone Number</Label>
+                <Label htmlFor="tel" className="text-emerald-100">Telephone Number</Label>
                 <Input
                   id="tel"
                   type="tel"
@@ -158,12 +158,12 @@ const RegisterDialog = ({
                   value={formData.tel}
                   onChange={handleChange}
                   required
-                  className="rounded-xl"
+                  className="rounded-xl bg-emerald-900/50 text-white border-emerald-700/40 placeholder:text-emerald-300/50"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="mobile">Mobile Number</Label>
+                <Label htmlFor="mobile" className="text-emerald-100">Mobile Number</Label>
                 <Input
                   id="mobile"
                   type="tel"
@@ -171,12 +171,12 @@ const RegisterDialog = ({
                   value={formData.mobile}
                   onChange={handleChange}
                   required
-                  className="rounded-xl"
+                  className="rounded-xl bg-emerald-900/50 text-white border-emerald-700/40 placeholder:text-emerald-300/50"
                 />
               </div>
 
               <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-emerald-100">Email</Label>
                 <Input
                   id="email"
                   type="email"
@@ -184,7 +184,7 @@ const RegisterDialog = ({
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="rounded-xl"
+                  className="rounded-xl bg-emerald-900/50 text-white border-emerald-700/40 placeholder:text-emerald-300/50"
                 />
               </div>
             </div>
@@ -193,15 +193,15 @@ const RegisterDialog = ({
           <section className="space-y-4">
             <div className="flex flex-wrap items-end justify-between gap-3">
               <div>
-                <h3 className="text-sm font-semibold text-foreground">Delegates</h3>
-                <p className="mt-1 text-xs text-muted-foreground">
+                <h3 className="text-sm font-semibold text-white">Delegates</h3>
+                <p className="mt-1 text-xs text-emerald-200/70">
                   Add each delegate who will attend. You can add multiple.
                 </p>
               </div>
               <Button
                 type="button"
                 variant="outline"
-                className="h-10 rounded-xl"
+                className="h-10 rounded-xl border-emerald-700/40 text-emerald-100 hover:bg-emerald-800/60"
                 onClick={addDelegate}
               >
                 <Plus className="mr-2 h-4 w-4" />
@@ -213,13 +213,13 @@ const RegisterDialog = ({
               {delegates.map((delegate, index) => (
                 <div
                   key={index}
-                  className="relative rounded-2xl bg-background/60 p-4 ring-1 ring-border/60"
+                  className="relative rounded-2xl bg-emerald-900/50 p-4 ring-1 ring-emerald-700/40"
                 >
                   {delegates.length > 1 ? (
                     <button
                       type="button"
                       onClick={() => removeDelegate(index)}
-                      className="absolute right-3 top-3 inline-flex size-9 items-center justify-center rounded-xl bg-background/70 text-muted-foreground ring-1 ring-border/60 hover:text-red-600"
+                      className="absolute right-3 top-3 inline-flex size-9 items-center justify-center rounded-xl bg-emerald-800/60 text-emerald-200 ring-1 ring-emerald-700/40 hover:text-red-400"
                       aria-label="Remove delegate"
                     >
                       <X className="h-4 w-4" />
@@ -235,7 +235,7 @@ const RegisterDialog = ({
                         handleDelegateChange(index, "title", e.target.value)
                       }
                       required
-                      className="rounded-xl"
+                      className="rounded-xl bg-emerald-900/50 text-white border-emerald-700/40 placeholder:text-emerald-300/50"
                     />
                     <Input
                       type="text"
@@ -245,7 +245,7 @@ const RegisterDialog = ({
                         handleDelegateChange(index, "fullName", e.target.value)
                       }
                       required
-                      className="rounded-xl"
+                      className="rounded-xl bg-emerald-900/50 text-white border-emerald-700/40 placeholder:text-emerald-300/50"
                     />
                     <Input
                       type="text"
@@ -255,7 +255,7 @@ const RegisterDialog = ({
                         handleDelegateChange(index, "nationalID", e.target.value)
                       }
                       required
-                      className="rounded-xl"
+                      className="rounded-xl bg-emerald-900/50 text-white border-emerald-700/40 placeholder:text-emerald-300/50"
                     />
                     <Input
                       type="email"
@@ -265,7 +265,7 @@ const RegisterDialog = ({
                         handleDelegateChange(index, "email", e.target.value)
                       }
                       required
-                      className="rounded-xl"
+                      className="rounded-xl bg-emerald-900/50 text-white border-emerald-700/40 placeholder:text-emerald-300/50"
                     />
                     <Input
                       type="tel"
@@ -283,7 +283,7 @@ const RegisterDialog = ({
             </div>
           </section>
 
-          <section className="rounded-2xl bg-emerald-950 p-5 text-white ring-1 ring-emerald-900/40">
+          <section className="rounded-2xl bg-emerald-900/60 p-5 text-white ring-1 ring-emerald-700/40">
             <p className="text-xs font-semibold tracking-widest text-white/70">
               PAYMENT
             </p>
@@ -316,8 +316,8 @@ const RegisterDialog = ({
               <p
                 className={
                   message.toLowerCase().includes("successful")
-                    ? "text-sm text-emerald-700"
-                    : "text-sm text-red-600"
+                    ? "text-sm text-emerald-300"
+                    : "text-sm text-red-400"
                 }
               >
                 {message}

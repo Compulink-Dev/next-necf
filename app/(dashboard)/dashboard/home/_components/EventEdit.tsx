@@ -13,7 +13,6 @@ function EditEvent({ event }: { event: any }) {
     const router = useRouter()
     const [loading, setLoading] = useState(false)
     const [imageUrl, setImageUrl] = useState(event.image)
-    const [documentUrl, setDocumentUrl] = useState(event.document || "")
     const { register, handleSubmit, reset, formState: { errors } } = useForm({
         defaultValues: {
             title: event.title,
@@ -52,7 +51,7 @@ function EditEvent({ event }: { event: any }) {
                     title: data.title,
                     date: data.date,
                     image: imageUrl,
-                    document: documentUrl
+                    document: event.document
                 })
             })
 
@@ -130,18 +129,6 @@ function EditEvent({ event }: { event: any }) {
 
                 <div className="mb-6">
                     <Label className="text-slate-600">Document</Label>
-                    <UploadButton
-                        endpoint="documentUploader"
-                        onClientUploadComplete={(res) => {
-                            if (res?.[0]) {
-                                setDocumentUrl(res[0].ufsUrl);
-                                toast.success("Document uploaded");
-                            }
-                        }}
-                        onUploadError={(error: Error) => {
-                            toast.error(`Upload failed: ${error.message}`);
-                        }}
-                    />
                     {event.document && (
                         <p className="text-sm text-blue-600 mt-2">
                             <a 

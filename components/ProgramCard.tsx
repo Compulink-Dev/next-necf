@@ -19,22 +19,20 @@ const ProgramCard = ({ image, title, date, link }: EventProps) => {
   return (
     <div className="border rounded-lg p-2">
       <img
-        className="object-contain md:object-cover w-full h-56 rounded-lg"
+        className="object-contain w-full h-72 rounded-lg bg-black/5"
         src={image}
         alt={title}
-        width={300}
-        height={300}
       />
 
       <div className="flex flex-col mt-2 gap-2">
         <Link
           href="/programs"
-          className="text-lg font-semibold text-gray-800 hover:underline dark:text-white "
+          className="text-lg font-semibold text-black hover:underline"
         >
           {title}
         </Link>
 
-        <span className="text-sm text-gray-500 dark:text-gray-300">
+        <span className="text-sm text-gray-700">
           <div className="flex gap-2 items-center">
             <MdTimer />
             <p className="">{date}</p>

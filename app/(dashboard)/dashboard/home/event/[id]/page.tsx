@@ -3,11 +3,8 @@ import BackButton from '@/components/backButton'
 import EditEvent from '../../_components/EventEdit';
 import getEvent from '@/lib/(home)/events/getEvent';
 
-
-
-
-//@ts-ignore
-async function EventEdit({ params: { id } }) {
+async function EventEdit({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params
     const event = await getEvent(id)
     return (
         <div className='p-4'>
