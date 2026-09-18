@@ -22,17 +22,17 @@ async function TaskList() {
                         className=''
                         key={task.id}
                         href={`/dashboard/programs/taskforce/${task.id}`}>
-                        <div className="border p-4 shadow rounded mb-4">
+                        <div className="rounded-2xl bg-background/80 p-4 shadow-sm transition hover:shadow-md ring-1 ring-border/60 mb-4">
                             <div className="flex items-start gap-2 text-sm text-slate-600">
                                 <Image
                                     src={task.image}
                                     alt={task.title}
                                     width={200} height={200}
-                                    className='rounded border' />
+                                    className='rounded-xl ring-1 ring-border/50 object-cover' />
                                 <div className="space-y-2">
-                                    <p className="text-lg font-bold">{task.title}</p>
-                                    <p className="font-bold">{task.subtitle}</p>
-                                    <p className="">{task.description}</p>
+                                    <p className="text-lg font-bold text-foreground">{task.title}</p>
+                                    <p className="font-medium text-emerald-800">{task.subtitle}</p>
+                                    <p className="text-muted-foreground">{task.description}</p>
                                 </div>
                             </div>
                         </div>

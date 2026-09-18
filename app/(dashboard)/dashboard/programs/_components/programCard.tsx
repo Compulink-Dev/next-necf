@@ -16,20 +16,20 @@ async function ProgramCard() {
   return (
     <>
       {programs.map((program) => (
-        <Link key={program.id} href={`/dashboard/programs/${program.id}`}>
-          <div className="border p-4 shadow rounded">
-            <div className="flex items-start gap-2 text-sm text-slate-600">
+        <Link key={program.id} href={`/dashboard/programs/${program.id}`} className="block">
+          <div className="rounded-2xl bg-background/80 p-4 shadow-sm transition hover:shadow-md ring-1 ring-border/60">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-4 text-sm text-slate-600">
               <Image
                 src={program.image}
                 alt={program.title}
                 width={200}
                 height={200}
-                className="rounded border "
+                className="rounded-xl ring-1 ring-border/50 object-cover"
               />
               <div className="space-y-2">
-                <p className="text-lg font-bold">{program.title}</p>
-                <p className="">{program.subtitle}</p>
-                <p className="">{program.description}</p>
+                <p className="text-lg font-bold text-foreground">{program.title}</p>
+                <p className="font-medium text-emerald-800">{program.subtitle}</p>
+                <p className="text-muted-foreground">{program.description}</p>
               </div>
             </div>
           </div>

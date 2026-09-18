@@ -1,7 +1,8 @@
 'use client';
 
 import * as React from "react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { VisuallyHidden } from "radix-ui"
 import Image from "next/image"
 
 type TriggerVariant = "square" | "featured";
@@ -26,7 +27,7 @@ const AboutImage = React.forwardRef<HTMLButtonElement, AboutImageProps>(
         type={type ?? "button"}
         aria-label={alt || "Open image"}
         className={[
-          "group relative block w-full overflow-hidden rounded-2xl text-left ring-1 ring-border/60 focus:outline-none focus:ring-2 focus:ring-emerald-500/40",
+          "group relative block w-full overflow-hidden rounded-2xl text-left ring-1 ring-border/60 transition duration-300 hover:ring-2 hover:ring-emerald-500/40 focus:outline-none focus:ring-2 focus:ring-emerald-500/40",
           className,
         ]
           .filter(Boolean)
@@ -47,7 +48,7 @@ const AboutImage = React.forwardRef<HTMLButtonElement, AboutImageProps>(
           className={
             variant === "featured"
               ? "pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent"
-              : "pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100"
+              : "pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition duration-300 group-hover:opacity-100"
           }
         />
         {variant === "featured" ? (
@@ -59,7 +60,13 @@ const AboutImage = React.forwardRef<HTMLButtonElement, AboutImageProps>(
               <p className="text-xs text-white/80">{subtitle}</p>
             ) : null}
           </div>
-        ) : null}
+        ) : (
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 p-4 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+            <p className="truncate text-sm font-semibold text-white drop-shadow">
+              {alt || "Gallery image"}
+            </p>
+          </div>
+        )}
       </button>
     );
   }
@@ -91,6 +98,9 @@ export function AboutModal({
         />
       </DialogTrigger>
       <DialogContent className="max-w-5xl bg-transparent p-0 ring-0 shadow-none sm:max-w-5xl">
+        <VisuallyHidden.Root asChild>
+          <DialogTitle>{title}</DialogTitle>
+        </VisuallyHidden.Root>
         <figure className="relative overflow-hidden rounded-2xl bg-black/60 ring-1 ring-white/10">
           <Image
             src={src}
