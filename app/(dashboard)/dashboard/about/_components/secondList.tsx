@@ -30,7 +30,7 @@ export const TopCard = ({ about }: { about: AboutSecondDoc }) => {
                 <div className="w-[400px]">
                     <Image
                         src={`${about.image}`}
-                        alt={about.title}
+                        alt={about.title ?? ""}
                         width={100}
                         height={100}
                         className='w-full rounded-xl ring-1 ring-border/50 object-cover'

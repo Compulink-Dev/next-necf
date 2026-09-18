@@ -32,8 +32,8 @@ export const TopCard = ({ about }: { about: AboutSectionDoc }) => {
       >
         <div className="flex gap-2">
           <Image
-            src={`${about.image}`}
-            alt={about.image}
+            src={about.image ?? ""}
+            alt={about.image ?? ""}
             width={400}
             height={400}
             className="w-full rounded-xl ring-1 ring-border/50 object-cover"
