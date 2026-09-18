@@ -18,15 +18,15 @@ interface DownloadProps {
 export function DownloadCard({ title, document, imageUrl, date, link }: DownloadProps) {
     return (
         <Link href={`/dashboard/downloads/${link}`}>
-            <div className="border p-4 shadow rounded flex items-center justify-between">
+            <div className="rounded-2xl bg-background/80 p-4 shadow-sm transition hover:shadow-md ring-1 ring-border/60 flex items-center justify-between">
                 <div className="flex flex-col gap-4 text-sm text-slate-600">
-                    <p className="text-lg font-bold text-black">{title}</p>
+                    <p className="text-lg font-bold text-foreground">{title}</p>
                     <div className="flex gap-4">
-                        <p className="">{document}</p>
-                        <p className="">{imageUrl}</p>
+                        <p className="text-muted-foreground">{document}</p>
+                        <p className="text-muted-foreground">{imageUrl}</p>
                     </div>
                 </div>
-                <div className="flex items-center justify-center gap-2 text-sm text-slate-600">
+                <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground text-right">
                     <MdTimer />
                     <p className="">{date}</p>
                 </div>
@@ -69,22 +69,22 @@ async function DownloadList({ page = 1 }: { page?: number }) {
                 })
             }
             {totalPages > 1 && (
-                <div className="flex items-center justify-center gap-4 mt-6">
+                <div className="flex flex-wrap items-center justify-center gap-4 mt-6">
                     {page > 1 && (
                         <Link
                             href={`/dashboard/downloads?page=${page - 1}`}
-                            className="px-4 py-2 text-sm bg-green-600 text-white rounded hover:bg-green-500"
+                            className="px-4 py-2 text-sm bg-emerald-700 text-white rounded-xl hover:bg-emerald-600"
                         >
                             Previous
                         </Link>
                     )}
-                    <span className="text-sm text-slate-600">
+                    <span className="text-sm text-muted-foreground">
                         Page {page} of {totalPages}
                     </span>
                     {page < totalPages && (
                         <Link
                             href={`/dashboard/downloads?page=${page + 1}`}
-                            className="px-4 py-2 text-sm bg-green-600 text-white rounded hover:bg-green-500"
+                            className="px-4 py-2 text-sm bg-emerald-700 text-white rounded-xl hover:bg-emerald-600"
                         >
                             Next
                         </Link>

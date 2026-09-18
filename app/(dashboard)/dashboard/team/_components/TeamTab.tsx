@@ -1,11 +1,7 @@
 import CreateButton from "@/components/createButton"
-import { DatePicker } from "@/components/dateTimePicker"
-import { Button } from "@/components/ui/button"
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
@@ -17,58 +13,60 @@ import {
     TabsList,
     TabsTrigger,
 } from "@/components/ui/tabs"
-import { Textarea } from "@/components/ui/textarea"
-import Upload from "@/components/upload"
+import { Heading, Armchair, Users, Building2 } from "lucide-react"
 import ChairsList from "./ChairsList"
-import getChairs from "@/lib/team/getChairs"
-import getCores from "@/lib/team/getCores"
-import getTeams from "@/lib/team/getTeams"
 import CoreList from "./CoreList"
 import TeamList from "./TeamList"
 
+const tabMeta = [
+    { value: "title", label: "Title", icon: Heading },
+    { value: "chairperson", label: "Chairperson", icon: Armchair },
+    { value: "steering", label: "Steering", icon: Users },
+    { value: "secretary", label: "Secretariat", icon: Building2 },
+]
+
 export async function TeamTab() {
-
-    const chairs = await getChairs()
-    const cores = await getCores()
-    const teams = await getTeams()
-
     return (
-        <div className="flex h-full">
-            <Tabs defaultValue="title" orientation="vertical" className="flex w-full">
-                <div className="w-64 border-r border-gray-200 pr-4">
-                    <TabsList className="flex flex-col h-auto bg-green-600 text-white w-full p-1">
-                        <TabsTrigger value="title" className="w-full justify-start">Title</TabsTrigger>
-                        <TabsTrigger value="chairperson" className="w-full justify-start">Chairperson</TabsTrigger>
-                        <TabsTrigger value="steering" className="w-full justify-start">Steering</TabsTrigger>
-                        <TabsTrigger value="secretary" className="w-full justify-start">Secretariat</TabsTrigger>
+        <div className="rounded-3xl bg-background/70 p-4 ring-1 ring-border/60 backdrop-blur md:p-6">
+            <Tabs defaultValue="title" orientation="vertical" className="flex w-full flex-col gap-6 lg:flex-row">
+                <div className="w-full shrink-0 lg:w-60 lg:self-start lg:sticky lg:top-20">
+                    <TabsList className="flex h-auto w-full flex-row gap-1 rounded-2xl bg-emerald-600 p-1.5 text-white lg:flex-col">
+                        {tabMeta.map(({ value, label, icon: Icon }) => (
+                            <TabsTrigger
+                                key={value}
+                                value={value}
+                                className="h-10 flex-1 justify-start gap-2.5 rounded-xl px-3 text-sm font-medium data-active:bg-white data-active:text-emerald-800"
+                            >
+                                <Icon className="size-4 shrink-0" />
+                                {label}
+                            </TabsTrigger>
+                        ))}
                     </TabsList>
                 </div>
-                <div className="flex-1 pl-6">
+
+                <div className="min-w-0 flex-1">
                     <TabsContent value="title" className="mt-0">
-                        <Card>
+                        <Card className="rounded-2xl ring-border/60">
                             <CardHeader>
-                                <CardTitle>Title</CardTitle>
-                                <CardDescription>
-                                </CardDescription>
+                                <CardTitle className="font-heading text-base text-emerald-800">Title</CardTitle>
                             </CardHeader>
                             <CardContent className="space-y-2">
                                 <div className="space-y-1">
-                                    <Label htmlFor="title">Title</Label>
+                                    <Label htmlFor="title" className="text-xs font-medium text-muted-foreground">Title</Label>
                                     <Input id="title" />
                                 </div>
                                 <div className="space-y-1">
-                                    <Label htmlFor="subtitle">Subtitle</Label>
+                                    <Label htmlFor="subtitle" className="text-xs font-medium text-muted-foreground">Subtitle</Label>
                                     <Input id="subtitle" />
                                 </div>
                             </CardContent>
                         </Card>
                     </TabsContent>
+
                     <TabsContent value="chairperson" className="mt-0">
-                        <Card>
+                        <Card className="rounded-2xl ring-border/60">
                             <CardHeader>
-                                <CardTitle>Chairperson</CardTitle>
-                                <CardDescription>
-                                </CardDescription>
+                                <CardTitle className="font-heading text-base text-emerald-800">Chairperson</CardTitle>
                             </CardHeader>
                             <CardContent className="space-y-2">
                                 <div className="pb-4 flex justify-end">
@@ -78,12 +76,11 @@ export async function TeamTab() {
                             </CardContent>
                         </Card>
                     </TabsContent>
+
                     <TabsContent value="steering" className="mt-0">
-                        <Card>
+                        <Card className="rounded-2xl ring-border/60">
                             <CardHeader>
-                                <CardTitle>Steering</CardTitle>
-                                <CardDescription>
-                                </CardDescription>
+                                <CardTitle className="font-heading text-base text-emerald-800">Steering</CardTitle>
                             </CardHeader>
                             <CardContent className="space-y-2">
                                 <div className="pb-4 flex justify-end">
@@ -93,12 +90,11 @@ export async function TeamTab() {
                             </CardContent>
                         </Card>
                     </TabsContent>
+
                     <TabsContent value="secretary" className="mt-0">
-                        <Card>
+                        <Card className="rounded-2xl ring-border/60">
                             <CardHeader>
-                                <CardTitle>Secretary</CardTitle>
-                                <CardDescription>
-                                </CardDescription>
+                                <CardTitle className="font-heading text-base text-emerald-800">Secretariat</CardTitle>
                             </CardHeader>
                             <CardContent className="space-y-2">
                                 <div className="pb-4 flex justify-end">

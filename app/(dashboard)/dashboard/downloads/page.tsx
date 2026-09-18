@@ -4,8 +4,18 @@ import { DownloadTab } from './_components/downloadTab'
 async function Downloads({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
     const { page } = await searchParams
     return (
-        <div className='p-8'>
-            <DownloadTab currentPage={page ? parseInt(page) : 1} />
+        <div className="min-h-screen bg-gradient-to-br from-emerald-50/40 via-white to-gray-50">
+            <div className="mx-auto max-w-7xl">
+                <div className="mb-8">
+                    <h1 className="text-3xl font-bold bg-gradient-to-r from-emerald-800 to-emerald-600 bg-clip-text text-transparent">
+                        Downloads Management
+                    </h1>
+                    <p className="text-emerald-600/70 mt-2">
+                        Manage downloadable documents and all report types from one place
+                    </p>
+                </div>
+                <DownloadTab currentPage={page ? parseInt(page) : 1} />
+            </div>
         </div>
     )
 }
